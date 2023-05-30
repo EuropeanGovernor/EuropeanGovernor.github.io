@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="js no-touch  progressive-image  no-reduced-motion progressive" lang="zh-hans">
+  <head>
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/img/favicon.ico">
+
+    <meta name="keyword" content="">
+
+    <title>科幻top10</title>
+
+    <link rel="canonical" href="/posts/Sci-Fi/">
+
+    <link rel="stylesheet" href="/css/global.css">
+
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <link rel="stylesheet" href="/css/search.css" />
+
+    
+    
+    <link rel="stylesheet" href="/css/autocomplete-theme-classic.css" />
+    
+
+    
+    
+
+</head>
+  </head>
+  <body class=" page-article   ">
+    <header>
+      <nav class="nav">
+  <div class="nav-wrapper">
+    <div class="nav-content-wrapper">
+      <div class="nav-content">
+        <a href="/ " class="nav-title">基于大数据的影视推荐系统</a>
+        <div class="nav-menu">
+          <div class="nav-item-wrapper">
+            <a href="/posts " class="nav-item-content">目录</a>
+          </div>
+          <div class="nav-item-wrapper">
+            <a href="/about" class="nav-item-content">关于</a>
+          </div>
+          <div class="nav-item-wrapper">
+            <a href="/index.xml" class="nav-item-content" target="_blank">RSS</a>
+          </div>
+          
+          <div class="nav-item-wrapper">
+            <a href="#" onclick="toggleSearchModal()" class="nav-item-content">搜索</a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function toggleSearchModal(){
+    const template = `
+    <div class="modal-body">
+      <div id="autocomplete" onclick="event.stopPropagation();"></div>
+    </div>
+    `
+    const modal = document.querySelector("#modal-wrapper")
+    if(!modal){
+      const div = document.createElement("div")
+      document.body.setAttribute("style","overflow: hidden;")
+      div.setAttribute("id", "modal-wrapper")
+      div.setAttribute("onclick", "toggleSearchModal()")
+      div.innerHTML = template
+      const script = document.createElement("script");script.setAttribute("src", "/js/algolia.js")
+      div.appendChild(script)
+      document.body.append(div)
+    } else {
+      document.body.removeAttribute("style")
+      document.body.removeChild(modal)
+    }
+  }
+</script>
+    </header>
+    
+  
+  
+  <main id="main" class="main">
+      <section>
+        <article class="article">
+          
+          <div class=" article-header ">
+            <div class="category component">
+              <div class="component-content">
+                <div class="category-eyebrow">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="pagetitle component">
+              <div class="component-content">
+                <h1 class="hero-headline">科幻电影Top10</h1>
+              </div>
+            </div>
+            
+
+            <div class="tagssheet component">
+              
+            </div>
+          </div>
+          
+          <div class="pagebody">
+                      
+
+            <div class="component">
+              <div class="component-content">
+                <div class="article-copyright">
+                  <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614988097.webp" alt="插图" style="float: left; margin-right: 10px;">
+                  <p class="content"><a href="https://movie.douban.com/subject/1889243" target="_blank">星际穿越 Interstellar </a></p>
+                  <p class="content">评分: <span class="rating-stars">★★★★★</span>（8.0/10）</p>
+                  <p class="content">评分人数: 417,444人</p>
+                  <p class="content">导演: 克里斯托弗·诺兰</p>
+                  <p class="content">主演: '马修·麦康纳', '安妮·海瑟薇', '杰西卡·查斯坦'</p>
+                  <p class="content">类型: '剧情', '科幻', '冒险'</p>
+                  <p class="content">制片国家/地区: 美国 / 英国 / 加拿大</p>
+                  <p class="content">年份: 2014</p>
+                </div>
+              </div>
+            </div>
+                        
+              
+                      
+            
+            
+            
+        
+
+
+
+
+
+
+
+  
+
+
+  <script>
+    var script = document.createElement("script");script.src = "/js/initPost.js";
+    document.head.appendChild(script);
+  </script>
+
+    
+    <div class="footer-main ">
+  <div class="content-body footer-wraper">
+    <div class="footer-box">
+      <div class="foot-nav">
+        <div class="foot-nav-items">
+          <div class="item">
+            <div class="logo"></div>
+            <div class="email">Email: <a href="mailto:floyd.li@outlook.com">floyd.li@outlook.com</a></div>
+          </div>
+
+          <div class="item community">
+            <div class="item-title">社交媒体</div>
+            
+              <a href="https://github.com/floyd-li" target="_blank">Github</a>
+            
+          </div>
+
+          <div class="item resources">
+            <div class="item-title">友链</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="item copyright">
+          &copy; 2023
+          Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> & <a href="https://github.com/floyd-li/hugo-theme-itheme" target="_blank">iTheme</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </body>
+    
+    
+    <script src="/js/algoliasearch.umd.js"></script>
+    <script src="/js/autocomplete-js.js"></script>
+    
+
+    
+    
+</html>
