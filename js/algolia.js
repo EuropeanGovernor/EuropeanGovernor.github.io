@@ -1,33 +1,21 @@
 (() => {
-  // ns-params:@params
-  var baseURL = "/";
-  var params = { algolia: { appid: "YOUR_KEY", appkey: "YOUR_APP_KEY", enabled: true, searchindex: "YOUR_INDEX" }, defaultcover: "https://www.apple.com.cn/newsroom/images/apple-logo_black.jpg.landing-regular_2x.jpg", email: "floyd.li@outlook.com", socialmedia: [{ name: "Github", url: "https://github.com/floyd-li" }] };
+// ns-params:@params
+var baseURL = "/";
 
-  // <stdin>
-  var { appid, appkey, searchindex: indexName, enabled } = params.algolia;
-  var searchClient = algoliasearch(appid, appkey);
-  var { autocomplete, getAlgoliaResults } = window["@algolia/autocomplete-js"];
-  function initAlgolia() {
-    autocomplete({
-      container: "#autocomplete",
-      getSources({ query }) {
-        return [
-          {
-            sourceId: "products",
-            getItems() {
-              return getAlgoliaResults({
-                searchClient,
-                queries: [
-                  {
-                    indexName,
-                    query,
-                    params: {
-                      attributesToSnippet: ["name:10", "description:35"]
-                    }
-                  }
-                ]
-              });
-            },
+console.log("Algolia has been disabled.");
+
+// <stdin>
+var { autocomplete } = window["@algolia/autocomplete-js"];
+function initAlgolia() {
+autocomplete({
+container: "#autocomplete",
+getSources({ query }) {
+return [
+{
+sourceId: "products",
+getItems() {
+return [];
+},
             templates: {
               item({ item, components, html }) {
                 return html`<a class="aa-ItemWrapper" href="${baseURL}${item.uri}">
