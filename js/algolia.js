@@ -7,6 +7,27 @@
   var { appid, appkey, searchindex: indexName, enabled } = params.algolia;
   var searchClient = algoliasearch(appid, appkey);
   var { autocomplete, getAlgoliaResults } = window["@algolia/autocomplete-js"];
+  //--------------------------------
+  function sendSearchQuery(query) {
+            // 创建一个新的 FormData 对象，用于发送数据
+            const formData = new FormData();
+            formData.append('query', query);
+
+            // 使用 Fetch API 发送异步请求
+            fetch('/search', {
+              method: 'POST',
+              body: formData
+            })
+              .then(response => response.json())
+              .then(data => {
+                // 在这里处理来自服务器的结果
+                console.log(data.result);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+          }
+  //--------------------------------
   function initAlgolia() {
     autocomplete({
       container: "#autocomplete",
@@ -28,6 +49,13 @@
                 ]
               });
             },
+            //-------------------------
+            onStateChange({ state }) {
+                  // 检测到用户输入的查询变化时
+                  if (state.query) {
+                    sendSearchQuery(state.query);
+                  }
+            //--------------------------
             templates: {
               item({ item, components, html }) {
                 return html`<a class="aa-ItemWrapper" href="${baseURL}${item.uri}">
