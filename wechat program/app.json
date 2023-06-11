@@ -1,0 +1,42 @@
+{
+  "debug": true, 
+  "window": {
+    "navigationBarTextStyle": "black", 
+    "navigationBarBackgroundColor": "#f5f5f5", 
+    "navigationBarTitleText": "MCDD\u7535\u5f71\u63a8\u8350\u7cfb\u7edf", 
+    "backgroundColor": "#300404", 
+    "enablePullDownRefresh": true, 
+    "backgroundTextStyle": "light"
+  }, 
+  "pages": [
+    "page/index/index", 
+    "page/list/list", 
+    "page/detial/detial"
+  ], 
+  "tabBar": {
+    "color": "#7F8389", 
+    "selectedColor": "#09BB07", 
+    "borderStyle": "black", 
+    "list": [
+      {
+        "selectedIconPath": "resources/cbb696e166eef1c25cee1a2497da7828.png", 
+        "pagePath": "page/index/index", 
+        "iconPath": "resources/9395f1aff0450968c55193483f1a8558.png", 
+        "text": "\u8c46\u74e3\u7535\u5f71"
+      }, 
+      {
+        "selectedIconPath": "resources/cbb696e166eef1c25cee1a2497da7828.png", 
+        "pagePath": "page/list/list", 
+        "iconPath": "resources/9395f1aff0450968c55193483f1a8558.png", 
+        "text": "\u6761\u76ee\u5217\u8868"
+      }
+    ], 
+    "backgroundColor": "#F7F7FA"
+  }, 
+  "networkTimeout": {
+    "connectSocket": 50000, 
+    "request": 50000, 
+    "downloadFile": 50000, 
+    "uploadFile": 50000
+  }
+}

@@ -1,0 +1,108 @@
+<input class="c-block c-fullwidth wx-input_DldPWb" data-c_e_id="wx_input_27f79b1f" name="input1" placeholder="请输入电影信息                            " type="text"/>
+<button class="wx-button_yRWV2B" data-c_e_id="wx_button_03ca732e" hover-class="button-hover" size="mini" type="primary">
+    搜索
+</button>
+    <view wx:for="{{ans}}">
+    <view>{{item.title}}</view>
+    </view>
+<scroll-view class="c-minheight wx-scroll-view_6Bnkj2" data-c_e_id="wx_scroll_view_fcc22f86" lower-threshold="50" scroll-y="True" style="overflow-x: hidden; overflow-y: auto; " upper-threshold="50">
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator_46b77b4d" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view_41e6dc0a">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image_3f067087" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/6023b1683eeca0d5bbde05281a6f1ae7_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/6023b1683eeca0d5bbde05281a6f1ae7_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view_f95254a1">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_text_00e25920">驴得水</text>
+                <text class="c-block wx-image_movielist_item_score allstar45" data-c_e_id="wx_text_53bda5e3">8.4</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text_63f36d55">导演: 周申 / 刘露</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text_3b979059">主演: 任素汐 / 大力 / 刘帅良 / 裴魁山</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator3363ca79" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view76970df8">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image843d77f9" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_viewd2dc9c60">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_textce25c5c8">但丁密码 Inferno</text>
+                <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_text7e7d5b56">6.5</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_textc5e1e50a">导演: 朗·霍华德</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text71752a17">主演: 汤姆·汉克斯 / 菲丽希缇·琼斯 / 本·福斯特 / 奥玛·赛 / 伊尔凡·可汗</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator9fc9c813" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_viewac94b05c">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image188d9581" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/6e4aa2f49039046f225d4cb994fe9755_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/6e4aa2f49039046f225d4cb994fe9755_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view7df43ae3">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_text3d499f48">脑残粉 Fan</text>
+                <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_text75ace6d6">6.9</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text1863b7db">导演: 玛尼什·莎玛</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_textf48615d6">主演: 沙鲁克·汗 / 伊利亚娜·狄克鲁兹 / 瓦妮·卡普尔</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigatorfe3390b9" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view6e32327c">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_imageccfa8fc1" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/377bddc2d7e6a050d4e9e9a410bc7702_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/377bddc2d7e6a050d4e9e9a410bc7702_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_viewd1a348db">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_text58c7daa4">我的圣途</text>
+                <text class="c-block wx-image_movielist_item_score" data-c_e_id="wx_texta72c6ccd">5.0</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text82b0ffbe">导演: 张蠡</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text81dcf416">主演: 诺布钍呷 / 陶多多 / 穆怀虎 / 曲木古火·秋风</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigatora4c73a0d" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view9b6e8a29">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image162d851f" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/cbd0d4b69f34c4dd9e31a8cd337069b3_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/cbd0d4b69f34c4dd9e31a8cd337069b3_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view241cf5a8">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_textc9465e53">奇异博士 Doctor Strange</text>
+                <text class="c-block wx-image_movielist_item_score allstar30" data-c_e_id="wx_text51ea4dec">8.0</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text1fb53c04">导演: 斯科特·德瑞克森</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text2e93f101">主演: 本尼迪克特·康伯巴奇 / 蒂尔达·斯文顿 / 麦斯·米科尔森</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigatorea4a5188" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_viewa4b5095e">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image21378950" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/cba63688c7f72d733f06d93ecda00c76_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/cba63688c7f72d733f06d93ecda00c76_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view1099b8e7">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_texte20ddc65">捉迷藏</text>
+                <text class="c-block wx-image_movielist_item_score allstar40" data-c_e_id="wx_text28bb55e6">4.0</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text316ccabd">导演: 刘杰</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_textef5916c6">主演: 霍建华 / 秦海璐 / 万茜 / 春夏 / 董子健</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigatora3e38753" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view1dff33dd">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image5e412dae" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/1b91424fa68a43cff060bb46c49081c5_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/1b91424fa68a43cff060bb46c49081c5_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_viewf079d000">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_texte31d7b13">一句顶一万句</text>
+                <text class="c-block wx-image_movielist_item_score allstar40" data-c_e_id="wx_text4fbd20b3">4.0</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_textebc7f58f">导演: 刘雨霖</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_texta9c50324">主演: 毛孩 / 李倩 / 刘蓓 / 范伟 / 李诺诺</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator63d04bef" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_viewed89b883">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_imageb03b7d6c" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view538ab8b7">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_text46fc9d93">盛先生的花儿</text>
+                <text class="c-block wx-image_movielist_item_score allstar00" data-c_e_id="wx_textc345481d">未上映</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text78961105">导演: 朱员成</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text2c1b52f9">主演: 颜丙燕 / 王德顺 / 艾丽娅 / 王晴 / 李乃文</text>
+            </view>
+        </view>
+    </navigator>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator1ef6bbc4" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_viewb2ef8e2d">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image356666e4" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/8a4e0162b281dac7f377517bbaf0bba2_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/8a4e0162b281dac7f377517bbaf0bba2_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_viewc16f70cf">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_texte80c2a64">蜡笔小新：梦境世界大突击</text>
+                <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_texta56567e2">7.3</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text111a25bd">导演: 高橋渉</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text960d15e1">主演: 矢岛晶子 / 楢桥美纪 / 藤原启治 / 兴梠里美</text>
+            </view>
+        </view>
+    </navigator>
+</scroll-view>
