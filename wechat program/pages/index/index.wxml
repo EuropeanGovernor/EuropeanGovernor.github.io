@@ -1,0 +1,94 @@
+<view class="c-minheight wx-view_section" data-c_e_id="wx_view_b7a5fbb8">
+    <view class="c-minheight wx-view_setion_header" data-c_e_id="wx_view_905c8c44">
+        <navigator class="wx-navigator_more" data-c_e_id="wx_navigator_83e986a4" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+            <text class="c-block wx-text_more" data-c_e_id="wx_text_e060965e">更多 ＞</text>
+        </navigator>
+        <text class="c-block wx-text_setion_title" data-c_e_id="wx_text_147fa0f4">评分最高</text>
+    </view>
+    <swiper class="wx-swiper_XOtA2c" data-c_e_id="wx_swiper_c8356c24" indicator-dots="True" lower-threshold="50">
+        <swiper-item class="c-full wx-swiper-item" data-c_e_id="wx_swiper_item_165450ab">
+            <navigator class="wx-navigator_item" data-c_e_id="wx_navigator_6a93740a" hover-class="navigator-hover" url="../detial/detial">
+                <text class="c-block wx-text_sliteitem_title" data-c_e_id="wx_text_a2baa098">但丁密码</text>
+            </navigator>
+        </swiper-item>
+        <swiper-item class="c-full wx-swiper-item" data-c_e_id="wx_swiper_item_f47174ac">
+            <navigator class="wx-navigator_item item2" data-c_e_id="wx_navigatore0d7f117" hover-class="navigator-hover" url="../detial/detial">
+                <text class="c-block wx-text_sliteitem_title" data-c_e_id="wx_text7b765521">脑残粉</text>
+            </navigator>
+        </swiper-item>
+        <swiper-item class="c-full wx-swiper-item" data-c_e_id="wx_swiper_item_d1a28f4f">
+            <navigator class="wx-navigator_item item3" data-c_e_id="wx_navigator7bef1753" hover-class="navigator-hover" url="../detial/detial">
+                <text class="c-block wx-text_sliteitem_title" data-c_e_id="wx_textdc7eb34d">驴得水</text>
+            </navigator>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="c-minheight wx-view_section section_movies" data-c_e_id="wx_viewd0d1e7ab">
+    <view class="c-minheight wx-view_setion_header" data-c_e_id="wx_view17c6c7d8">
+        <text class="c-block wx-text_setion_title" data-c_e_id="wx_text658c17cc">TOP10</text>
+    </view>
+    <scroll-view class="c-minheight wx-scroll-view_LmB3Jc" data-c_e_id="wx_scroll_view_e56516f5" lower-threshold="50" scroll-x="True" style="overflow-x: auto; overflow-y: hidden; " upper-threshold="50">
+        <view class="c-minheight wx-view_c3VPoR" data-c_e_id="wx_view_6e47884d">
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigator_3c9ed006" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_image_23806bb8" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/377bddc2d7e6a050d4e9e9a410bc7702_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/377bddc2d7e6a050d4e9e9a410bc7702_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_text_3324d8ba">剧情</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text_803782ae">383人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigator3747eac7" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_image520b94dd" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/cbd0d4b69f34c4dd9e31a8cd337069b3_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/cbd0d4b69f34c4dd9e31a8cd337069b3_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_textc4be1b2d">科幻</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text10edcd31">20176人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigatorbcf61f0b" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_imagea82fafaf" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/cba63688c7f72d733f06d93ecda00c76_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/cba63688c7f72d733f06d93ecda00c76_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_text9245a7ae">动作</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text4b5966d6">3163人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigatorcdbe6e90" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_image70e2240a" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/1b91424fa68a43cff060bb46c49081c5_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/1b91424fa68a43cff060bb46c49081c5_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_texte3e0d19b">惊悚</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text296ae583">2430人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigatorce492c39" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_image8b9bc5dc" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/8a4e0162b281dac7f377517bbaf0bba2_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/8a4e0162b281dac7f377517bbaf0bba2_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_text5cd32fc9">动画</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_textf98a1e2c">1060人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigator5faa1768" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_image098c4264" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_text189c7c43">恐怖</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text0638d13c">695人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigator12b46023" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_imaged04de124" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_textfbca7f30">爱情</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_textf826d51d">695人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigatorb29ccea5" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_imagee487fefe" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_text24ce6c85">历史</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text1e56344b">695人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigator92e84209" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_imagec6eac982" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_text61090405">战争</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text10b57caa">695人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigator7ebfebc6" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_image67dbb275" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_texte8cd80cb">奇幻</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_textc5283d15">695人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigator135bbe72" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_image692bc9c1" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_textd48f2503">犯罪</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text6d0f8f7f">695人想看</text>
+            </navigator>
+            <navigator class="wx-navigator_movieitem" data-c_e_id="wx_navigatorbe1d37b3" hover-class="navigator-hover" open-type="switchTab" open_type="switchTab" url="../list/list">
+                <image class="wx-image_movieitem_cover" data-c_e_id="wx_imageea2090ed" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/963a16da37213d037d11720e89345ecd_origin.jpg); "/>
+                <text class="c-block wx-image_movieitem_title" data-c_e_id="wx_text791c9698">悬疑</text>
+                <text class="c-block wx-image_movieitem_num" data-c_e_id="wx_text5177ef3d">695人想看</text>
+            </navigator>
+        </view>
+    </scroll-view>
+</view>
