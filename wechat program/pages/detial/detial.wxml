@@ -1,0 +1,44 @@
+<view class="c-minheight wx-view_movie_top" data-c_e_id="wx_view_d4d10454">
+    <image class="wx-image_movie_cover" data-c_e_id="wx_image_3531ce9f" src="//qty83k.creatby.com/materials/origin/6023b1683eeca0d5bbde05281a6f1ae7_origin.jpg"/>
+</view>
+<view class="c-minheight wx-view_movie_info" data-c_e_id="wx_view_22939a03">
+    <view class="c-minheight wx-view_movie_score" data-c_e_id="wx_view_3d6933f0"><text class="c-block wx-text_score_value" data-c_e_id="wx_text_20ab13fe">8.4</text><text class="c-block wx-text_score_stars" data-c_e_id="wx_text_d07763e8"></text><text class="c-block wx-text_score_uv" data-c_e_id="wx_text_b439aa5b"> 34776人</text>
+    </view>
+    <text class="c-block wx-text_title" data-c_e_id="wx_text_55c207ca">驴得水<br/>
+    </text>
+    <text class="c-block wx-text_description" data-c_e_id="wx_text_46bc700d">2016 / 中国大陆 / 剧情 / 喜剧
+    </text>
+    <text class="c-block wx-text_description" data-c_e_id="wx_text01771f14">上映时间：2016-10-28 (中国大陆)
+    </text>
+    <text class="c-block wx-text_description" data-c_e_id="wx_textf1b12ef8">片长: 111分钟
+    </text>
+    <text class="c-block wx-text_description" data-c_e_id="wx_texta0bfdb78">豆瓣链接：
+    </text>
+</view>
+<view class="c-minheight wx-view_section section_actors" data-c_e_id="wx_view_2e395da0">
+    <text class="c-block wx-text_description" data-c_e_id="wx_text31fa8a67">电影推荐
+    </text>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator44c7eb49" hover-class="navigator-hover" url="../detial/detial"/>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator17903f68" hover-class="navigator-hover" url="../detial/detial"/>
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator3363ca79" hover-class="navigator-hover" url="../detial/detial"/>
+</view>
+<navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigatora667029c" hover-class="navigator-hover" url="../detial/detial">
+    <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view8d90c771"><image class="wx-image_movielist_item_cover" data-c_e_id="wx_image7f740563" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg); "/><view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view7cbb204d"> <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_textc942de06">  但丁密码 Inferno </text> <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_text10840272">  6.5 </text> <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_textf2996a03">  导演: 朗·霍华德 </text> <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text0c31107a">  主演: 汤姆·汉克斯 / 菲丽希缇·琼斯 / 本·福斯特 / 奥玛·赛 / 伊尔凡·可汗 </text></view>
+    </view>
+</navigator>
+<navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator9c32eef9" hover-class="navigator-hover" url="../detial/detial">
+    <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_viewb66f0a8d"><image class="wx-image_movielist_item_cover" data-c_e_id="wx_image05e2847b" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg); "/><view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_viewa4baad8c"> <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_textb76aeb39">  但丁密码 Inferno </text> <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_texta7241501">  6.5 </text> <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_texta8f0ab03">  导演: 朗·霍华德 </text> <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_texta392ca19">  主演: 汤姆·汉克斯 / 菲丽希缇·琼斯 / 本·福斯特 / 奥玛·赛 / 伊尔凡·可汗 </text></view>
+    </view>
+</navigator>
+<navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator5cc5c26a" hover-class="navigator-hover" url="../detial/detial">
+    <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_viewb8944eef"><image class="wx-image_movielist_item_cover" data-c_e_id="wx_image16fd8466" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg); "/><view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view065099bc"> <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_text2bdd1700">  但丁密码 Inferno </text> <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_text7de782b5">  6.5 </text> <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_textfe065623">  导演: 朗·霍华德 </text> <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_textaf05c159">  主演: 汤姆·汉克斯 / 菲丽希缇·琼斯 / 本·福斯特 / 奥玛·赛 / 伊尔凡·可汗 </text></view>
+    </view>
+</navigator>
+<navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigatorc514751a" hover-class="navigator-hover" url="../detial/detial">
+    <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view3656d1a2"><image class="wx-image_movielist_item_cover" data-c_e_id="wx_imageaf4efde5" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg); "/><view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view0e2006bc"> <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_text6a59f244">  但丁密码 Inferno </text> <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_text2f9b11ce">  6.5 </text> <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text901fc6aa">  导演: 朗·霍华德 </text> <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_textae88b8d7">  主演: 汤姆·汉克斯 / 菲丽希缇·琼斯 / 本·福斯特 / 奥玛·赛 / 伊尔凡·可汗 </text></view>
+    </view>
+</navigator>
+<navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigatorc5a13ff2" hover-class="navigator-hover" url="../detial/detial">
+    <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view76970df8"><image class="wx-image_movielist_item_cover" data-c_e_id="wx_image843d77f9" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/2176097762836e36649753dc3b1a436c_origin.jpg); "/><view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_viewd2dc9c60"> <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_textce25c5c8">  但丁密码 Inferno </text> <text class="c-block wx-image_movielist_item_score allstar35" data-c_e_id="wx_text7e7d5b56">  6.5 </text> <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_textc5e1e50a">  导演: 朗·霍华德 </text> <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text71752a17">  主演: 汤姆·汉克斯 / 菲丽希缇·琼斯 / 本·福斯特 / 奥玛·赛 / 伊尔凡·可汗 </text></view>
+    </view>
+</navigator>
