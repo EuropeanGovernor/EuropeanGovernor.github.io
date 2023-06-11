@@ -1,0 +1,17 @@
+<input bindinput ="inputfind" class="c-block c-fullwidth wx-input_DldPWb" data-c_e_id="wx_input_27f79b1f" name="input1" placeholder="请输入电影信息                            " type="text"/>
+<button class="wx-button_yRWV2B" data-c_e_id="wx_button_03ca732e" hover-class="button-hover" size="mini" type="primary" bindtap ="search">
+    搜索
+</button>
+<scroll-view wx:for="{{ans}}" class="c-minheight wx-scroll-view_6Bnkj2" data-c_e_id="wx_scroll_view_fcc22f86" lower-threshold="50" scroll-y="True" style="overflow-x: hidden; overflow-y: auto; " upper-threshold="50">
+    <navigator class="wx-navigator_movielist_item" data-c_e_id="wx_navigator_46b77b4d" hover-class="navigator-hover" url="../detial/detial">
+        <view class="c-minheight wx-view_movilelist_item" data-c_e_id="wx_view_41e6dc0a">
+            <image class="wx-image_movielist_item_cover" data-c_e_id="wx_image_3f067087" mode="scaleToFill" src="//qty83k.creatby.com/materials/origin/6023b1683eeca0d5bbde05281a6f1ae7_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(//qty83k.creatby.com/materials/origin/6023b1683eeca0d5bbde05281a6f1ae7_origin.jpg); "/>
+            <view class="c-minheight wx-view_6zMKSh" data-c_e_id="wx_view_f95254a1">
+                <text class="c-block wx-image_movielist_item_title" data-c_e_id="wx_text_00e25920">{{item.title}}</text>
+                <text class="c-block wx-image_movielist_item_score allstar45" data-c_e_id="wx_text_53bda5e3">{{item.rating}}</text>
+                <text class="c-block wx-image_movielist_item_director" data-c_e_id="wx_text_63f36d55">导演:{{item.director}}</text>
+                <text class="c-block wx-image_movielist_item_actors" data-c_e_id="wx_text_3b979059">主演:{{item.actor}}</text>
+            </view>
+        </view>
+    </navigator>
+</scroll-view>
