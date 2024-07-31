@@ -4,13 +4,31 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2024/07/31/%E6%B0%B4%E7%94%B5%E8%B4%B9/"/>
-    <url>/2024/07/31/%E6%B0%B4%E7%94%B5%E8%B4%B9/</url>
+    <title>微调Qwen-7B</title>
+    <link href="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/"/>
+    <url>/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/</url>
     
-    <content type="html"><![CDATA[<h1 id="水电费"><a href="#水电费" class="headerlink" title="水电费"></a>水电费</h1><p>啊大哥啊</p><p>​<img src="/assets/image-20240731105713-8qxesqw.png" alt="image">​</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="任务背景"><a href="#任务背景" class="headerlink" title="任务背景"></a>任务背景</h1><p><img src="/%E5%BE%AE%E8%B0%83Qwen-7B/GenRetr.drawio.png" alt="生成QA数据集流程"></p><h1 id="方法介绍"><a href="#方法介绍" class="headerlink" title="方法介绍"></a>方法介绍</h1><h1 id="实际效果"><a href="#实际效果" class="headerlink" title="实际效果"></a>实际效果</h1>]]></content>
     
     
+    <categories>
+      
+      <category>技术日志</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>BIGAI</tag>
+      
+      <tag>大模型</tag>
+      
+      <tag>实习</tag>
+      
+      <tag>数据生成</tag>
+      
+    </tags>
     
   </entry>
   
