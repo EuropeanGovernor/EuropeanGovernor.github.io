@@ -4,16 +4,16 @@
   
   
   <entry>
-    <title>微调Qwen-7B</title>
+    <title>BIGAI2—微调Qwen-7B</title>
     <link href="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/"/>
     <url>/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/</url>
     
-    <content type="html"><![CDATA[<h1 id="任务背景"><a href="#任务背景" class="headerlink" title="任务背景"></a>任务背景</h1><p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GenRetr.drawio.png" alt="生成QA数据集流程"></p><h1 id="方法介绍"><a href="#方法介绍" class="headerlink" title="方法介绍"></a>方法介绍</h1><h1 id="实际效果"><a href="#实际效果" class="headerlink" title="实际效果"></a>实际效果</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在生成QA时</p><p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GenRetr.drawio.png" alt="生成QA数据集流程"></p><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>主流的微调方法有LoRA和PEFT，其中PEFT又包含若干种方法。我在网上找到了一个时间线，可以很好地展示这一点。</p><p><img src="https://oscimg.oschina.net/oscnet/9ac87619-bf4f-41d6-9c94-d7a8cb030acb.png" alt="主流微调方法的发展"></p><h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1>]]></content>
     
     
     <categories>
       
-      <category>技术日志</category>
+      <category>技术</category>
       
     </categories>
     
