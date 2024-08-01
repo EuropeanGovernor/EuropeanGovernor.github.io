@@ -19,22 +19,22 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景在生成QA时，我们希望生成的数据具有$\textcolor{red}{一定的复杂度}$，并且具有$\textcolor{red}{生活化}$的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：  很显然这种数据">
+    <meta name="description" content="背景在生成QA时，我们希望生成的数据具有&#x3D;&#x3D;一定的复杂度&#x3D;&#x3D;，并且具有&#x3D;&#x3D;生活化&#x3D;&#x3D;的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BIGAI2—微调Qwen-7B">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="背景在生成QA时，我们希望生成的数据具有$\textcolor{red}{一定的复杂度}$，并且具有$\textcolor{red}{生活化}$的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：  很显然这种数据">
+<meta property="og:description" content="背景在生成QA时，我们希望生成的数据具有&#x3D;&#x3D;一定的复杂度&#x3D;&#x3D;，并且具有&#x3D;&#x3D;生活化&#x3D;&#x3D;的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Base.png">
-<meta property="og:image" content="https://europeangovernor.github.io/Improve.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Improve.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/%E6%B5%81%E7%A8%8B.png">
 <meta property="og:image" content="https://oscimg.oschina.net/oscnet/9ac87619-bf4f-41d6-9c94-d7a8cb030acb.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/P-tuning.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/%E6%95%B0%E6%8D%AE.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Prompt.png">
 <meta property="article:published_time" content="2024-07-31T03:24:39.000Z">
-<meta property="article:modified_time" content="2024-08-01T05:10:03.947Z">
+<meta property="article:modified_time" content="2024-08-01T05:17:19.469Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="BIGAI">
 <meta property="article:tag" content="大模型">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          516 字
+          524 字
         
       </span>
     
@@ -289,16 +289,16 @@
                 
                 <meta name="referrer" content="no-referrer">
 
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在生成QA时，我们希望生成的数据具有$\textcolor{red}{一定的复杂度}$，并且具有$\textcolor{red}{生活化}$的特点。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在生成QA时，我们希望生成的数据具有&#x3D;&#x3D;一定的复杂度&#x3D;&#x3D;，并且具有&#x3D;&#x3D;生活化&#x3D;&#x3D;的特点。</p>
 <p>最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：</p>
 <p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Base.png" srcset="/img/loading.gif" lazyload alt="Demo:直接通过知识图谱生成的QA"></p>
-<p>很显然这种数据不具有$\textcolor{red}{多样性}$，也不满足我们的要求。我们认为在若干定语修饰后的QA可以极大地丰富数据多样性：</p>
+<p>很显然这种数据不具有&#x3D;&#x3D;多样性&#x3D;&#x3D;，也不满足我们的要求。我们认为在若干定语修饰后的QA可以极大地丰富数据多样性：</p>
 <ul>
 <li>地毯左面紧挨的儿童椅和行李箱旁的双人床哪个更大？</li>
 <li>空调下面的挂画和墙壁右边的衣服哪个数量更多？</li>
 </ul>
-<p>本质上，我们希望对原有数据增加一定的定语——$\textcolor{red}{将程式化的短语转变为流畅丰富的句子}$，效果如下图：</p>
-<p><img src="/Improve.png" srcset="/img/loading.gif" lazyload alt="Improve"></p>
+<p>本质上，我们希望对原有数据增加一定的定语——&#x3D;&#x3D;将程式化的短语转变为流畅丰富的句子&#x3D;&#x3D;，效果如下图：</p>
+<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Improve.png" srcset="/img/loading.gif" lazyload alt="Improve"></p>
 <p>生成大批量数据离不开大模型的帮助。出于对计算资源以及生成效率的考虑，我们没有选择API或是参数量更大的模型，而是在本地部署Qwen-7B，并期待通过微调可以让其适应该下游任务，如下图框出部分：</p>
 <p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="生成QA数据集流程"></p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="原理浅析"><a href="#原理浅析" class="headerlink" title="原理浅析"></a>原理浅析</h2><p>除了SFT之外，人们采用更少计算资源进行微调的方法称为PEFT，其中又包含若干种方法。</p>
