@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>百度:基于大模型的广告检索（复赛）</title>
+    <link href="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2%EF%BC%88%E5%A4%8D%E8%B5%9B%EF%BC%89/"/>
+    <url>/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2%EF%BC%88%E5%A4%8D%E8%B5%9B%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>百度</tag>
+      
+      <tag>大模型</tag>
+      
+      <tag>搜广推</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BIGAI2—微调Qwen-7B生成1-Hop描述</title>
     <link href="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/"/>
     <url>/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/</url>
@@ -20,9 +49,9 @@
     
     <tags>
       
-      <tag>BIGAI</tag>
-      
       <tag>大模型</tag>
+      
+      <tag>BIGAI</tag>
       
       <tag>实习</tag>
       
