@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>百度:基于大模型的广告检索（复赛）</title>
+    <title>百度-基于大模型的广告检索（复赛）</title>
     <link href="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2%EF%BC%88%E5%A4%8D%E8%B5%9B%EF%BC%89/"/>
     <url>/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2%EF%BC%88%E5%A4%8D%E8%B5%9B%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h1>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h1><h1 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h1><p>数据集中有88wDoc，因为论文中提到直接索引效果较好，因此取落地页连续的短语作为Doc；特别地，观察到Doc长度分布不均，因此在生成Doc时设定为长度越长、采样次数越多。最终得到880wDoc，在第一阶段进行索引学习时4000steps已趋于收敛，遂暂停。</p><p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2%EF%BC%88%E5%A4%8D%E8%B5%9B%EF%BC%89/%E7%AE%80%E5%8D%95Doc.png" alt="简单构建Doc"></p><p>对于Query，按Click进行增强，从500w得到1200w数据。在上一步得到的权重上训练，效果还可以。</p><h1 id="尝试一：Semantic-DocID"><a href="#尝试一：Semantic-DocID" class="headerlink" title="尝试一：Semantic DocID"></a>尝试一：Semantic DocID</h1><p>官方所给的数据集中ID是没有规律的，不同的广告内容ID可能邻近，相似的广告ID可能很远，因此这对生成式模型而言，像是在做一个“多分类”的任务。在这篇<a href="https://arxiv.org/abs/2309.13335">Model-enhanced Vector Index </a>论文中提到利用Residual  Quantization进行层次聚类效果可能会好，于是考虑用模型对广告内容进行Embedding，但因为本地没有显卡用，并且在AIstudio又不能用Pytorch，因此采用<a href="https://paddlenlp.readthedocs.io/zh/latest/model_zoo/transformers/ERNIE/contents.html">Ernie-3.0-mini</a>。</p><h2 id="Q1：Embedding文件太大"><a href="#Q1：Embedding文件太大" class="headerlink" title="Q1：Embedding文件太大"></a>Q1：Embedding文件太大</h2><p>即使采用mini，在对约29000个句子（3%）进行Embedding之后，我的json文件就已经达到了220MB</p><p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2%EF%BC%88%E5%A4%8D%E8%B5%9B%EF%BC%89/mini.png" alt="image-20240805162932085"></p><p>文件存储格式如下</p><p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2%EF%BC%88%E5%A4%8D%E8%B5%9B%EF%BC%89/json.png" alt="image-20240805163410471"></p><h1 id="尝试二：词袋"><a href="#尝试二：词袋" class="headerlink" title="尝试二：词袋"></a>尝试二：词袋</h1>]]></content>
     
     
     <categories>
@@ -20,9 +20,9 @@
     
     <tags>
       
-      <tag>百度</tag>
-      
       <tag>大模型</tag>
+      
+      <tag>百度</tag>
       
       <tag>搜广推</tag>
       
@@ -49,9 +49,9 @@
     
     <tags>
       
-      <tag>大模型</tag>
-      
       <tag>BIGAI</tag>
+      
+      <tag>大模型</tag>
       
       <tag>实习</tag>
       
