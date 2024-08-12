@@ -61,7 +61,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"europeangovernor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"europeangovernor.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"M8tF0hSpXBjPb1t7olJIcEvW-gzGzoHsz","app_key":"q6dHhptPSBhZnLA83DHD5mlKs","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -71,6 +71,19 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
 
 
   
@@ -274,9 +287,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/BIGAI/">#BIGAI</a>
-            
               <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
+            
+              <a href="/tags/BIGAI/">#BIGAI</a>
             
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90/">#数据生成</a>
             
@@ -300,7 +313,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/" target="_self">
         <div>
-          数据分析Baseline数据集中有88wDoc，因为论文中提到直接索引效果较好，因此取落地页连续的短语作为Doc；特别地，观察到Doc长度分布不均，因此在生成Doc时设定为长度越长、采样次数越多。最终得到880wDoc，在第一阶段进行索引学习时4000steps已趋于收敛，遂暂停。  对于Query，按Click进行增强，从500w得到1200w数据。在上一步得到的权重上训练，效果还可以。 尝
+          数据分析以及初赛方法Query、落地页、核心词长度分布   广告ID分布在发现Query中的ID远少于广告ID数量后，我想统计ID的分布。最开始采用柱状图，但由于数据量过大，最后绘制出的图像不直观。因此，我向Kimi问到了一种估计分布密度的方法KDE，这是一种非参数估计方法，相对于参数估计（如：最大似然估计）不需要对数据的分布有先验的认识： 12345678910111213141516171
         </div>
       </a>
 
@@ -404,13 +417,13 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/BIGAI/">#BIGAI</a>
-            
-              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">#大模型</a>
-            
               <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
             
+              <a href="/tags/BIGAI/">#BIGAI</a>
+            
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90/">#数据生成</a>
+            
+              <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">#大模型</a>
             
           </div>
         
@@ -470,6 +483,32 @@
     </div>
   
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
   
 </div>
 
@@ -519,6 +558,8 @@
 
 
 
+
+  <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
