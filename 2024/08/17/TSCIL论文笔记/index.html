@@ -30,9 +30,10 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/memory.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2024-08-17T05:37:34.000Z">
-<meta property="article:modified_time" content="2024-08-19T03:08:36.759Z">
+<meta property="article:modified_time" content="2024-08-19T05:16:43.448Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -243,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          283 字
+          506 字
         
       </span>
     
@@ -254,7 +255,7 @@
         
         
         
-          3 分钟
+          5 分钟
         
       </span>
     
@@ -345,9 +346,22 @@
 <h2 id="时间序列类增量学习的基准">3. 时间序列类增量学习的基准</h2>
 <h3 id="实验方法-2">3.1 实验方法</h3>
 <h4 id="正则化">3.1.1 正则化</h4>
+<p>基于正则化的方法（LwF、MAS、<span class="math inline">\(DT^2W\)</span>）只在UCI-HAR和UWave等任务较少的简单数据集中表现出明显的优势</p>
+<h4 id="归一化bn-vs-ln">3.1.2 归一化：BN vs LN</h4>
+<p>在大多数情况下使用LN的效果要比BN更好</p>
 <figure>
 <img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png" srcset="/img/loading.gif" lazyload alt="Norm"><figcaption aria-hidden="true">Norm</figcaption>
 </figure>
+<h4 id="rehearsal-baseder-vs-gr">3.1.3 Rehearsal-based：ER vs GR</h4>
+<p>GR在简单数据上较好，甚至好过ER，复杂数据上表现不佳；可能是因为难以生成复杂数据，以及无法控制生成的类别</p>
+<h4 id="meomory-budget在bn和ln上的差异">3.1.4 Meomory budget在BN和LN上的差异</h4>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/memory.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>基于ER的方法通常性能会随着Memory budget的增大而提高，到达一定程度会趋于饱和</li>
+<li>在内存足够时，BN在除ASER的方法都与Offline有很大差异，因为随着任务数量增加<span class="math inline">\(B_{M}\)</span>中旧样本比例会减少；LN则接近Offline</li>
+</ul>
+<h4 id="分类器的选择">3.1.5 分类器的选择</h4>
+<p>分类器选择取决于方法与数据集，在ER上的区别并不明显</p>
 <h1 id="二本文设计">二、本文设计</h1>
 <p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/流程.png" srcset="/img/loading.gif" lazyload></p>
 
