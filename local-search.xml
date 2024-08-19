@@ -8,7 +8,7 @@
     <link href="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
     <url>/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="〇、阅读论文"><a href="#〇、阅读论文" class="headerlink" title="〇、阅读论文"></a>〇、阅读论文</h1><ol><li><a href="https://arxiv.org/abs/1904.07734">增量学习的三种场景及方法：Three scenarios for continual learning</a></li><li><a href="https://arxiv.org/abs/2112.08654">预训练模型图像类增量学习：Learning to Prompt for Continual Learning</a></li><li>[时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluation](Class-incremental Learning for Time Series:Benchmark and Evaluation)</li><li><a href="https://arxiv.org/abs/2204.04799">DualPrompt: Complementary Prompting for Rehearsal-free Continual Learning</a></li></ol><h1 id="一、相关工作"><a href="#一、相关工作" class="headerlink" title="一、相关工作"></a>一、相关工作</h1><h2 id="1-增量学习的三种场景及方法"><a href="#1-增量学习的三种场景及方法" class="headerlink" title="1. 增量学习的三种场景及方法"></a>1. 增量学习的三种场景及方法</h2><h3 id="1-1-实验方法"><a href="#1-1-实验方法" class="headerlink" title="1.1 实验方法"></a>1.1 实验方法</h3><ol><li>正则化（SI、EWC）</li><li>重放（Replay）<ol><li>用之前模型对当前任务的Input进行标注生成伪数据（LwF）</li><li>生成新数据（DGR、DGR+distill）</li><li>原始数据重现（可能会有隐私或内存问题）</li></ol></li><li>Exemplars（特征提取+最近类均值+重放：iCaRL）</li></ol><h3 id="1-2-实验结果"><a href="#1-2-实验结果" class="headerlink" title="1.2 实验结果"></a>1.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png" alt="实验结果对比：正则化的效果普遍不太行"></p><h2 id="2-预训练模型图像类增量学习"><a href="#2-预训练模型图像类增量学习" class="headerlink" title="2. 预训练模型图像类增量学习"></a>2. 预训练模型图像类增量学习</h2><h3 id="2-1-实验方法"><a href="#2-1-实验方法" class="headerlink" title="2.1 实验方法"></a>2.1 实验方法</h3><ol><li>设Input为$x$，通过$q(x)$进行映射</li><li>计算$q(x)$与KEY的余弦相似度并选择TopN（同一Prompt被选择的次数越多，下次被选择的概率越小）</li><li>将TopN向量，以及进入Embedding层的Input拼接，并放入预训练模型</li></ol><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png" alt="L2P"></p><h3 id="2-2-实验结果"><a href="#2-2-实验结果" class="headerlink" title="2.2 实验结果"></a>2.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png"></p><h2 id="3-时间序列类增量学习的基准"><a href="#3-时间序列类增量学习的基准" class="headerlink" title="3. 时间序列类增量学习的基准"></a>3. 时间序列类增量学习的基准</h2><h3 id="3-1-实验方法"><a href="#3-1-实验方法" class="headerlink" title="3.1 实验方法"></a>3.1 实验方法</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png" alt="Norm"></p><h1 id="二、本文设计"><a href="#二、本文设计" class="headerlink" title="二、本文设计"></a>二、本文设计</h1><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png"></p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="〇、阅读论文"><a href="#〇、阅读论文" class="headerlink" title="〇、阅读论文"></a>〇、阅读论文</h1><ol><li><a href="https://arxiv.org/abs/1904.07734">增量学习的三种场景及方法：Three scenarios for continual learning</a></li><li><a href="https://arxiv.org/abs/2112.08654">预训练模型图像类增量学习：Learning to Prompt for Continual Learning</a></li><li>[时间序列类增量学习的基准 Class-incremental Learning for Time Series:Benchmark and Evaluation](Class-incremental Learning for Time Series:Benchmark and Evaluation)</li><li><a href="https://arxiv.org/abs/2204.04799">DualPrompt: Complementary Prompting for Rehearsal-free Continual Learning</a></li></ol><h1 id="一、相关工作"><a href="#一、相关工作" class="headerlink" title="一、相关工作"></a>一、相关工作</h1><h2 id="1-增量学习的三种场景及方法"><a href="#1-增量学习的三种场景及方法" class="headerlink" title="1. 增量学习的三种场景及方法"></a>1. 增量学习的三种场景及方法</h2><h3 id="1-1-实验方法"><a href="#1-1-实验方法" class="headerlink" title="1.1 实验方法"></a>1.1 实验方法</h3><ol><li>正则化（SI、EWC）</li><li>重放（Replay）<ol><li>用之前模型对当前任务的Input进行标注生成伪数据（LwF）</li><li>生成新数据（DGR、DGR+distill）</li><li>原始数据重现（可能会有隐私或内存问题）</li></ol></li><li>Exemplars（特征提取+最近类均值+重放：iCaRL）</li></ol><h3 id="1-2-实验结果"><a href="#1-2-实验结果" class="headerlink" title="1.2 实验结果"></a>1.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png" alt="实验结果对比：正则化的效果普遍不太行"></p><h2 id="2-预训练模型图像类增量学习"><a href="#2-预训练模型图像类增量学习" class="headerlink" title="2. 预训练模型图像类增量学习"></a>2. 预训练模型图像类增量学习</h2><h3 id="2-1-实验方法"><a href="#2-1-实验方法" class="headerlink" title="2.1 实验方法"></a>2.1 实验方法</h3><ol><li>设Input为$$x$$，通过$$q(x)$$进行映射</li><li>计算$$q(x)$$与KEY的余弦相似度并选择TopN（同一Prompt被选择的次数越多，下次被选择的概率越小）</li><li>将TopN向量，以及进入Embedding层的Input拼接，并放入预训练模型</li></ol><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png" alt="L2P"></p><h3 id="2-2-实验结果"><a href="#2-2-实验结果" class="headerlink" title="2.2 实验结果"></a>2.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png"></p><h2 id="3-时间序列类增量学习的基准"><a href="#3-时间序列类增量学习的基准" class="headerlink" title="3. 时间序列类增量学习的基准"></a>3. 时间序列类增量学习的基准</h2><h3 id="3-1-实验方法"><a href="#3-1-实验方法" class="headerlink" title="3.1 实验方法"></a>3.1 实验方法</h3><h4 id="3-1-1-正则化"><a href="#3-1-1-正则化" class="headerlink" title="3.1.1 正则化"></a>3.1.1 正则化</h4><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png" alt="Norm"></p><h1 id="二、本文设计"><a href="#二、本文设计" class="headerlink" title="二、本文设计"></a>二、本文设计</h1><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png"></p>]]></content>
     
     
     <categories>
@@ -47,9 +47,9 @@
     
     <tags>
       
-      <tag>BIGAI</tag>
-      
       <tag>实习</tag>
+      
+      <tag>BIGAI</tag>
       
       <tag>数据生成</tag>
       
@@ -105,13 +105,13 @@
     
     <tags>
       
-      <tag>BIGAI</tag>
-      
-      <tag>大模型</tag>
-      
       <tag>实习</tag>
       
+      <tag>BIGAI</tag>
+      
       <tag>数据生成</tag>
+      
+      <tag>大模型</tag>
       
     </tags>
     
