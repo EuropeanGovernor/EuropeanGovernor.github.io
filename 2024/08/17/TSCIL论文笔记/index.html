@@ -19,34 +19,29 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据分析以及初赛方法Query、落地页、核心词长度分布   广告ID分布在发现Query中的ID远少于广告ID数量后，我想统计ID的分布。最开始采用柱状图，但由于数据量过大，最后绘制出的图像不直观。因此，我向Kimi问到了一种估计分布密度的方法KDE，这是一种非参数估计方法，相对于参数估计（如：最大似然估计）不需要对数据的分布有先验的认识： 12345678910111213141516171">
+    <meta name="description" content="〇、阅读论文 增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning [时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluation](C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="百度-基于大模型的广告检索">
-<meta property="og:url" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/index.html">
+<meta property="og:title" content="TSCIL论文笔记">
+<meta property="og:url" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="数据分析以及初赛方法Query、落地页、核心词长度分布   广告ID分布在发现Query中的ID远少于广告ID数量后，我想统计ID的分布。最开始采用柱状图，但由于数据量过大，最后绘制出的图像不直观。因此，我向Kimi问到了一种估计分布密度的方法KDE，这是一种非参数估计方法，相对于参数估计（如：最大似然估计）不需要对数据的分布有先验的认识： 12345678910111213141516171">
+<meta property="og:description" content="〇、阅读论文 增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning [时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluation](C">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/lp.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/ct.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/ID%E5%88%86%E5%B8%83.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E7%AE%80%E5%8D%95Doc.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/mini.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/json.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%86%85%E5%AD%98.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%88%86%E8%AF%8D.png">
-<meta property="article:published_time" content="2024-08-02T10:54:22.000Z">
-<meta property="article:modified_time" content="2024-08-18T14:59:33.810Z">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png">
+<meta property="article:published_time" content="2024-08-17T05:37:34.000Z">
+<meta property="article:modified_time" content="2024-08-19T02:26:35.486Z">
 <meta property="article:author" content="Michael Zhang">
-<meta property="article:tag" content="大模型">
-<meta property="article:tag" content="百度">
-<meta property="article:tag" content="搜广推">
+<meta property="article:tag" content="论文">
+<meta property="article:tag" content="类增量学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query.png">
+<meta name="twitter:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png">
   
   
   
-  <title>百度-基于大模型的广告检索 - Bambi的自留地</title>
+  <title>TSCIL论文笔记 - Bambi的自留地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -225,7 +220,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="百度-基于大模型的广告检索"></span>
+            <span id="subtitle" data-typed-text="TSCIL论文笔记"></span>
           
         </div>
 
@@ -236,8 +231,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-02 18:54" pubdate>
-          2024年8月2日 晚上
+        <time datetime="2024-08-17 13:37" pubdate>
+          2024年8月17日 下午
         </time>
       </span>
     
@@ -248,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          703 字
+          264 字
         
       </span>
     
@@ -259,7 +254,7 @@
         
         
         
-          6 分钟
+          3 分钟
         
       </span>
     
@@ -305,39 +300,39 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">百度-基于大模型的广告检索</h1>
+            <h1 id="seo-header">TSCIL论文笔记</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
 
-<h1 id="数据分析以及初赛方法"><a href="#数据分析以及初赛方法" class="headerlink" title="数据分析以及初赛方法"></a>数据分析以及初赛方法</h1><h2 id="Query、落地页、核心词长度分布"><a href="#Query、落地页、核心词长度分布" class="headerlink" title="Query、落地页、核心词长度分布"></a>Query、落地页、核心词长度分布</h2><p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query.png" srcset="/img/loading.gif" lazyload alt="query"></p>
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/lp.png" srcset="/img/loading.gif" lazyload alt="lp"></p>
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/ct.png" srcset="/img/loading.gif" lazyload alt="ct"></p>
-<h2 id="广告ID分布"><a href="#广告ID分布" class="headerlink" title="广告ID分布"></a>广告ID分布</h2><p>在发现Query中的ID远少于广告ID数量后，我想统计ID的分布。最开始采用柱状图，但由于数据量过大，最后绘制出的图像不直观。因此，我向Kimi问到了一种估计分布密度的方法<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39910711/article/details/107307509">KDE</a>，这是一种非参数估计方法，相对于参数估计（如：最大似然估计）不需要对数据的分布有先验的认识：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> gaussian_kde<br><br>json file =<span class="hljs-string">&#x27;/home/zym/桌面/FEIJIANG/Doc/Doc_train_ultra.json&#x27;</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(json file,<span class="hljs-string">&#x27;r&#x27;</span>,encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<span class="hljs-keyword">as</span> file:<br>    js =[json.loads(line)<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file]<br>    <br>tgt_values=[ _[<span class="hljs-string">&#x27;tgt&#x27;</span>]<span class="hljs-keyword">for</span> <span class="hljs-keyword">in</span> js]<br>tgt_array=np.array(tgt_values,dtype=np.float64)<br><br><span class="hljs-comment"># 将列表转换为NumPy数组</span><br>tgt_array = np.array(tgt_values, dtype=np.float64)<br><br><span class="hljs-comment"># 计算核密度估计，使用高斯核</span><br>kde = gaussian_kde(tgt_array)<br><br><span class="hljs-comment"># 绘制平滑的曲线</span><br>x = np.linspace(np.<span class="hljs-built_in">min</span>(tgt_array), np.<span class="hljs-built_in">max</span>(tgt_array), <span class="hljs-number">1000</span>)<br>y = kde(x)<br></code></pre></td></tr></table></figure>
-
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/ID%E5%88%86%E5%B8%83.png" srcset="/img/loading.gif" lazyload alt="初赛数据的广告ID分布"></p>
-<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><p>在论文中</p>
-<h1 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h1><p>数据集中有88wDoc，因为论文中提到直接索引效果较好，因此取落地页连续的短语作为Doc；特别地，观察到Doc长度分布不均，因此在生成Doc时设定为长度越长、采样次数越多。最终得到880wDoc，在第一阶段进行索引学习时4000steps已趋于收敛，遂暂停。</p>
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E7%AE%80%E5%8D%95Doc.png" srcset="/img/loading.gif" lazyload alt="简单构建Doc"></p>
-<p>对于Query，按Click进行增强，从500w得到1200w数据。在上一步得到的权重上训练，效果还可以。</p>
-<h1 id="尝试一：Semantic-DocID"><a href="#尝试一：Semantic-DocID" class="headerlink" title="尝试一：Semantic DocID"></a>尝试一：Semantic DocID</h1><p>官方所给的数据集中ID是没有规律的，不同的广告内容ID可能邻近，相似的广告ID可能很远，因此这对生成式模型而言，像是在做一个“多分类”的任务。在这篇<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2309.13335">Model-enhanced Vector Index </a>论文中提到利用Residual  Quantization进行层次聚类效果可能会好，于是考虑用模型对广告内容进行Embedding，但因为本地没有显卡用，并且在AIstudio又不能用Pytorch，因此采用<a target="_blank" rel="noopener" href="https://paddlenlp.readthedocs.io/zh/latest/model_zoo/transformers/ERNIE/contents.html">Ernie-3.0-mini</a>。</p>
-<h2 id="Q1：Embedding文件太大"><a href="#Q1：Embedding文件太大" class="headerlink" title="Q1：Embedding文件太大"></a>Q1：Embedding文件太大</h2><p>即使采用mini，在对约29000个句子（3%）进行Embedding之后，我的json文件就已经达到了220MB</p>
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/mini.png" srcset="/img/loading.gif" lazyload></p>
-<p>文件存储格式如下</p>
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/json.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="Q2：内存过大"><a href="#Q2：内存过大" class="headerlink" title="Q2：内存过大"></a>Q2：内存过大</h2><p>因为词袋方法耗时更长，占用内存更大，后来又再次尝试使用Embedding。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/home/aistudio/embed.json&quot;</span>,<span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    data=[json.loads(line)<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f]<br></code></pre></td></tr></table></figure>
-
-<p>居然在读取的时候内存就满了。</p>
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%86%85%E5%AD%98.png" srcset="/img/loading.gif" lazyload alt="内存满了"></p>
-<h1 id="尝试二：词袋"><a href="#尝试二：词袋" class="headerlink" title="尝试二：词袋"></a>尝试二：词袋</h1><p>这里使用Paddle里的Taskflow进行分词。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./embed.json&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> f:<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(res)+<span class="hljs-number">1</span>)):<br>        seg = Taskflow(<span class="hljs-string">&quot;word segmentation&quot;</span>)temp = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">filter</span>(<span class="hljs-keyword">lambda</span> x:x!=,<span class="hljs-string">&#x27;,seg(res[str(i)])))</span><br><span class="hljs-string">        # 使用counter计算每个分词出现的次数</span><br><span class="hljs-string">        word count= counter(temp)</span><br><span class="hljs-string">        #按照出现次数进行升序排序</span><br><span class="hljs-string">        sorted word count = dict(sorted(word count.items(), key=lambda item: item[1]))</span><br><span class="hljs-string">        json.dump(&#123;&quot;tgt&quot;:i,&quot;bow&quot;: sorted word count&#125;,f,ensure ascii=False)</span><br></code></pre></td></tr></table></figure>
-
-<p>最终分词结果文件很大，没有进一步处理。</p>
-<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%88%86%E8%AF%8D.png" srcset="/img/loading.gif" lazyload alt="分词结果"></p>
+<h1 id="〇、阅读论文"><a href="#〇、阅读论文" class="headerlink" title="〇、阅读论文"></a>〇、阅读论文</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1904.07734">增量学习的三种场景及方法：Three scenarios for continual learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2112.08654">预训练模型图像类增量学习：Learning to Prompt for Continual Learning</a></li>
+<li>[时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluation](Class-incremental Learning for Time Series:Benchmark and Evaluation)</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2204.04799">DualPrompt: Complementary Prompting for Rehearsal-free Continual Learning</a></li>
+</ol>
+<h1 id="一、相关工作"><a href="#一、相关工作" class="headerlink" title="一、相关工作"></a>一、相关工作</h1><h2 id="1-增量学习的三种场景及方法"><a href="#1-增量学习的三种场景及方法" class="headerlink" title="1. 增量学习的三种场景及方法"></a>1. 增量学习的三种场景及方法</h2><h3 id="1-1-实验方法"><a href="#1-1-实验方法" class="headerlink" title="1.1 实验方法"></a>1.1 实验方法</h3><ol>
+<li>正则化（SI、EWC）</li>
+<li>重放（Replay）<ol>
+<li>用之前模型对当前任务的Input进行标注生成伪数据（LwF）</li>
+<li>生成新数据（DGR、DGR+distill）</li>
+<li>原始数据重现（可能会有隐私或内存问题）</li>
+</ol>
+</li>
+<li>Exemplars（特征提取+最近类均值+重放：iCaRL）</li>
+</ol>
+<h3 id="1-2-实验结果"><a href="#1-2-实验结果" class="headerlink" title="1.2 实验结果"></a>1.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="实验结果对比：正则化的效果普遍不太行"></p>
+<h2 id="2-预训练模型图像类增量学习"><a href="#2-预训练模型图像类增量学习" class="headerlink" title="2. 预训练模型图像类增量学习"></a>2. 预训练模型图像类增量学习</h2><h3 id="2-1-实验方法"><a href="#2-1-实验方法" class="headerlink" title="2.1 实验方法"></a>2.1 实验方法</h3><ol>
+<li>设Input为$x$，通过$q(x)$进行映射</li>
+<li>计算$q(x)$与KEY的余弦相似度并选择TopN（同一Prompt被选择的次数越多，下次被选择的概率越小）</li>
+<li>将TopN向量，以及进入Embedding层的Input拼接，并放入预训练模型</li>
+</ol>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png" srcset="/img/loading.gif" lazyload alt="L2P"></p>
+<h3 id="2-2-实验结果"><a href="#2-2-实验结果" class="headerlink" title="2.2 实验结果"></a>2.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-时间序列类增量学习的基准"><a href="#3-时间序列类增量学习的基准" class="headerlink" title="3. 时间序列类增量学习的基准"></a>3. 时间序列类增量学习的基准</h2><h3 id="3-1-实验方法"><a href="#3-1-实验方法" class="headerlink" title="3.1 实验方法"></a>3.1 实验方法</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png" srcset="/img/loading.gif" lazyload alt="Norm"></p>
+<h1 id="二、本文设计"><a href="#二、本文设计" class="headerlink" title="二、本文设计"></a>二、本文设计</h1><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -371,11 +366,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="print-no-link">#大模型</a>
+        <a href="/tags/%E8%AE%BA%E6%96%87/" class="print-no-link">#论文</a>
       
-        <a href="/tags/%E7%99%BE%E5%BA%A6/" class="print-no-link">#百度</a>
-      
-        <a href="/tags/%E6%90%9C%E5%B9%BF%E6%8E%A8/" class="print-no-link">#搜广推</a>
+        <a href="/tags/%E7%B1%BB%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/" class="print-no-link">#类增量学习</a>
       
     </div>
   
@@ -387,8 +380,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>百度-基于大模型的广告检索</div>
-      <div>https://europeangovernor.github.io/2024/08/02/百度-基于大模型的广告检索/</div>
+      <div>TSCIL论文笔记</div>
+      <div>https://europeangovernor.github.io/2024/08/17/TSCIL论文笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -400,7 +393,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月2日</div>
+          <div>2024年8月17日</div>
         </div>
       
       
@@ -432,18 +425,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/06/%E5%9F%BA%E4%BA%8ELangchain%E6%9E%84%E5%BB%BA%E7%94%A8%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90Agent/" title="BIGAI1-基于Langchain构建用于数据生成Agent">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">BIGAI1-基于Langchain构建用于数据生成Agent</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/" title="BIGAI2—微调Qwen-7B生成1-Hop描述">
-                        <span class="hidden-mobile">BIGAI2—微调Qwen-7B生成1-Hop描述</span>
+                      <a href="/2024/08/06/%E5%9F%BA%E4%BA%8ELangchain%E6%9E%84%E5%BB%BA%E7%94%A8%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90Agent/" title="BIGAI1-基于Langchain构建用于数据生成Agent">
+                        <span class="hidden-mobile">BIGAI1-基于Langchain构建用于数据生成Agent</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
