@@ -19,12 +19,12 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="〇、阅读论文 增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning [时间序列类增量学习的基准 Class-incremental Learning for Time Series:Benchmark and Evaluation](C">
+    <meta name="description" content="〇、阅读论文  增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning 时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluatio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TSCIL论文笔记">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="〇、阅读论文 增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning [时间序列类增量学习的基准 Class-incremental Learning for Time Series:Benchmark and Evaluation](C">
+<meta property="og:description" content="〇、阅读论文  增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning 时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluatio">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2024-08-17T05:37:34.000Z">
-<meta property="article:modified_time" content="2024-08-19T02:43:48.192Z">
+<meta property="article:modified_time" content="2024-08-19T02:53:35.991Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          269 字
+          283 字
         
       </span>
     
@@ -306,33 +306,50 @@
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
-
-<h1 id="〇、阅读论文"><a href="#〇、阅读论文" class="headerlink" title="〇、阅读论文"></a>〇、阅读论文</h1><ol>
+<h1 id="阅读论文">〇、阅读论文</h1>
+<ol type="1">
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1904.07734">增量学习的三种场景及方法：Three scenarios for continual learning</a></li>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2112.08654">预训练模型图像类增量学习：Learning to Prompt for Continual Learning</a></li>
-<li>[时间序列类增量学习的基准 Class-incremental Learning for Time Series:Benchmark and Evaluation](Class-incremental Learning for Time Series:Benchmark and Evaluation)</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2402.12035">时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluation</a></li>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2204.04799">DualPrompt: Complementary Prompting for Rehearsal-free Continual Learning</a></li>
 </ol>
-<h1 id="一、相关工作"><a href="#一、相关工作" class="headerlink" title="一、相关工作"></a>一、相关工作</h1><h2 id="1-增量学习的三种场景及方法"><a href="#1-增量学习的三种场景及方法" class="headerlink" title="1. 增量学习的三种场景及方法"></a>1. 增量学习的三种场景及方法</h2><h3 id="1-1-实验方法"><a href="#1-1-实验方法" class="headerlink" title="1.1 实验方法"></a>1.1 实验方法</h3><ol>
+<h1 id="一相关工作">一、相关工作</h1>
+<h2 id="增量学习的三种场景及方法">1. 增量学习的三种场景及方法</h2>
+<h3 id="实验方法">1.1 实验方法</h3>
+<ol type="1">
 <li>正则化（SI、EWC）</li>
-<li>重放（Replay）<ol>
+<li>重放（Replay）
+<ol type="1">
 <li>用之前模型对当前任务的Input进行标注生成伪数据（LwF）</li>
 <li>生成新数据（DGR、DGR+distill）</li>
 <li>原始数据重现（可能会有隐私或内存问题）</li>
-</ol>
-</li>
+</ol></li>
 <li>Exemplars（特征提取+最近类均值+重放：iCaRL）</li>
 </ol>
-<h3 id="1-2-实验结果"><a href="#1-2-实验结果" class="headerlink" title="1.2 实验结果"></a>1.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="实验结果对比：正则化的效果普遍不太行"></p>
-<h2 id="2-预训练模型图像类增量学习"><a href="#2-预训练模型图像类增量学习" class="headerlink" title="2. 预训练模型图像类增量学习"></a>2. 预训练模型图像类增量学习</h2><h3 id="2-1-实验方法"><a href="#2-1-实验方法" class="headerlink" title="2.1 实验方法"></a>2.1 实验方法</h3><ol>
-<li>设Input为$$x$$，通过$$q(x)$$进行映射</li>
-<li>计算$$q(x)$$与KEY的余弦相似度并选择TopN（同一Prompt被选择的次数越多，下次被选择的概率越小）</li>
+<h3 id="实验结果">1.2 实验结果</h3>
+<figure>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST结果.png" srcset="/img/loading.gif" lazyload alt="实验结果对比：正则化的效果普遍不太行"><figcaption aria-hidden="true">实验结果对比：正则化的效果普遍不太行</figcaption>
+</figure>
+<h2 id="预训练模型图像类增量学习">2. 预训练模型图像类增量学习</h2>
+<h3 id="实验方法-1">2.1 实验方法</h3>
+<ol type="1">
+<li>设Input为<span class="math display">\[x\]</span>，通过<span class="math display">\[q(x)\]</span>进行映射</li>
+<li>计算<span class="math display">\[q(x)\]</span>与KEY的余弦相似度并选择TopN（同一Prompt被选择的次数越多，下次被选择的概率越小）</li>
 <li>将TopN向量，以及进入Embedding层的Input拼接，并放入预训练模型</li>
 </ol>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png" srcset="/img/loading.gif" lazyload alt="L2P"></p>
-<h3 id="2-2-实验结果"><a href="#2-2-实验结果" class="headerlink" title="2.2 实验结果"></a>2.2 实验结果</h3><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="3-时间序列类增量学习的基准"><a href="#3-时间序列类增量学习的基准" class="headerlink" title="3. 时间序列类增量学习的基准"></a>3. 时间序列类增量学习的基准</h2><h3 id="3-1-实验方法"><a href="#3-1-实验方法" class="headerlink" title="3.1 实验方法"></a>3.1 实验方法</h3><h4 id="3-1-1-正则化"><a href="#3-1-1-正则化" class="headerlink" title="3.1.1 正则化"></a>3.1.1 正则化</h4><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png" srcset="/img/loading.gif" lazyload alt="Norm"></p>
-<h1 id="二、本文设计"><a href="#二、本文设计" class="headerlink" title="二、本文设计"></a>二、本文设计</h1><p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
+<figure>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png" srcset="/img/loading.gif" lazyload alt="L2P"><figcaption aria-hidden="true">L2P</figcaption>
+</figure>
+<h3 id="实验结果-1">2.2 实验结果</h3>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="时间序列类增量学习的基准">3. 时间序列类增量学习的基准</h2>
+<h3 id="实验方法-2">3.1 实验方法</h3>
+<h4 id="正则化">3.1.1 正则化</h4>
+<figure>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png" srcset="/img/loading.gif" lazyload alt="Norm"><figcaption aria-hidden="true">Norm</figcaption>
+</figure>
+<h1 id="二本文设计">二、本文设计</h1>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/流程.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>

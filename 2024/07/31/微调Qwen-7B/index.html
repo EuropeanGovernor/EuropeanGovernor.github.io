@@ -19,12 +19,12 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景在生成QA时，我们希望生成的数据具有一定的复杂度，并且具有生活化的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：  很显然这种数据不具有多样性，也不满足我们的要求。我们认为在若干定语修饰后的QA可以极大地丰">
+    <meta name="description" content="背景 在生成QA时，我们希望生成的数据具有一定的复杂度，并且具有生活化的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：  Demo:直接通过知识图谱生成的QA  很显然这种数据不具有多样性，也不满足">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BIGAI2—微调Qwen-7B生成1-Hop描述">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="背景在生成QA时，我们希望生成的数据具有一定的复杂度，并且具有生活化的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：  很显然这种数据不具有多样性，也不满足我们的要求。我们认为在若干定语修饰后的QA可以极大地丰">
+<meta property="og:description" content="背景 在生成QA时，我们希望生成的数据具有一定的复杂度，并且具有生活化的特点。 最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：  Demo:直接通过知识图谱生成的QA  很显然这种数据不具有多样性，也不满足">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Base.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Improve.png">
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          681 字
+          751 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -315,37 +315,66 @@
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
-
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在生成QA时，我们希望生成的数据具有<mark>一定的复杂度</mark>，并且具有<mark>生活化</mark>的特点。</p>
+<h1 id="背景">背景</h1>
+<p>在生成QA时，我们希望生成的数据具有<mark>一定的复杂度</mark>，并且具有<mark>生活化</mark>的特点。</p>
 <p>最基本的一个想法是：当我们需要某个子图（Region Graph）中的物体信息，便直接从已有信息Info中查找，并送入GPT生成QA；然而，基于这种方法所生成的QA十分的简单。我利用GPT-4简单生成了一个Demo，如下图：</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Base.png" srcset="/img/loading.gif" lazyload alt="Demo:直接通过知识图谱生成的QA"></p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Base.png" srcset="/img/loading.gif" lazyload alt="Demo:直接通过知识图谱生成的QA"><figcaption aria-hidden="true">Demo:直接通过知识图谱生成的QA</figcaption>
+</figure>
 <p>很显然这种数据不具有<mark>多样性</mark>，也不满足我们的要求。我们认为在若干定语修饰后的QA可以极大地丰富数据多样性：</p>
 <ul>
 <li>地毯左面紧挨的儿童椅和行李箱旁的双人床哪个更大？</li>
 <li>空调下面的挂画和墙壁右边的衣服哪个数量更多？</li>
 </ul>
 <p>本质上，我们希望对原有数据增加一定的定语——<mark>将程式化的短语转变为流畅丰富的句子</mark>，效果如下图：</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Improve.png" srcset="/img/loading.gif" lazyload alt="1-Hop描述（右）可以丰富QA内容"></p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Improve.png" srcset="/img/loading.gif" lazyload alt="1-Hop描述（右）可以丰富QA内容"><figcaption aria-hidden="true">1-Hop描述（右）可以丰富QA内容</figcaption>
+</figure>
 <p>生成大批量数据离不开大模型的帮助。出于对计算资源以及生成效率的考虑，我们没有选择API或是参数量更大的模型，而是在本地部署Qwen-7B，并期待通过微调可以让其生成我们希望的1-Hop描述，如下图框出部分：</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="生成QA数据集流程"></p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="原理浅析"><a href="#原理浅析" class="headerlink" title="原理浅析"></a>原理浅析</h2><p>除了SFT之外，人们采用更少计算资源进行微调的方法称为PEFT，其中又包含若干种方法。</p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/流程.png" srcset="/img/loading.gif" lazyload alt="生成QA数据集流程"><figcaption aria-hidden="true">生成QA数据集流程</figcaption>
+</figure>
+<h1 id="方法">方法</h1>
+<h2 id="原理浅析">原理浅析</h2>
+<p>除了SFT之外，人们采用更少计算资源进行微调的方法称为PEFT，其中又包含若干种方法。</p>
 <p>我在网上找到的一个时间轴，可以很好地展示发展历程，如下图：</p>
-<p><img src="https://oscimg.oschina.net/oscnet/9ac87619-bf4f-41d6-9c94-d7a8cb030acb.png" srcset="/img/loading.gif" lazyload alt="主流微调方法的发展"></p>
+<figure>
+<img src="https://oscimg.oschina.net/oscnet/9ac87619-bf4f-41d6-9c94-d7a8cb030acb.png" srcset="/img/loading.gif" lazyload alt="主流微调方法的发展"><figcaption aria-hidden="true">主流微调方法的发展</figcaption>
+</figure>
 <p>因为显卡资源的限制，我们采用P-tuning来进行微调，从而生成1-Hop描述，<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.10385">论文原文</a>。</p>
 <p>与Prefix-tuning直接给Prompt增加前缀不同，P-tuning在Prompt中随意加入Embedding后的Virtual Token，如下图：</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/P-tuning.png" srcset="/img/loading.gif" lazyload alt="P-tuning结构示意图"></p>
-<h2 id="训练数据"><a href="#训练数据" class="headerlink" title="训练数据"></a>训练数据</h2><p>考虑到时间成本以及Token成本，我们决定在Info中选取<mark>部分数据</mark>，将这一部分数据和利用GPT-4生成的1-Hop描述拼接在一起，形成了微调用的训练数据集。</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/%E6%95%B0%E6%8D%AE.png" srcset="/img/loading.gif" lazyload alt="准备微调数据"></p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/P-tuning.png" srcset="/img/loading.gif" lazyload alt="P-tuning结构示意图"><figcaption aria-hidden="true">P-tuning结构示意图</figcaption>
+</figure>
+<h2 id="训练数据">训练数据</h2>
+<p>考虑到时间成本以及Token成本，我们决定在Info中选取<mark>部分数据</mark>，将这一部分数据和利用GPT-4生成的1-Hop描述拼接在一起，形成了微调用的训练数据集。</p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/数据.png" srcset="/img/loading.gif" lazyload alt="准备微调数据"><figcaption aria-hidden="true">准备微调数据</figcaption>
+</figure>
 <p>通过将人工制作的模板（如下图）与Info中的信息作为Prompt，我们利用GPT-4进行生成；生成的内容需要进一步通过正则表达式的处理，最终成为1-Hop描述。</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GPT1.png" srcset="/img/loading.gif" lazyload alt="模板1"></p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GPT2.png" srcset="/img/loading.gif" lazyload alt="模板2"></p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GPT3.png" srcset="/img/loading.gif" lazyload alt="模板3"></p>
-<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><p>Qwen-7B接收到的Prompt由另一套模板以及Info中的信息组成，如下图：</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Prompt.png" srcset="/img/loading.gif" lazyload alt="询问功能的模板"></p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GPT1.png" srcset="/img/loading.gif" lazyload alt="模板1"><figcaption aria-hidden="true">模板1</figcaption>
+</figure>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GPT2.png" srcset="/img/loading.gif" lazyload alt="模板2"><figcaption aria-hidden="true">模板2</figcaption>
+</figure>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/GPT3.png" srcset="/img/loading.gif" lazyload alt="模板3"><figcaption aria-hidden="true">模板3</figcaption>
+</figure>
+<h2 id="训练过程">训练过程</h2>
+<p>Qwen-7B接收到的Prompt由另一套模板以及Info中的信息组成，如下图：</p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/Prompt.png" srcset="/img/loading.gif" lazyload alt="询问功能的模板"><figcaption aria-hidden="true">询问功能的模板</figcaption>
+</figure>
 <p>代码需要放到HGX集群上跑，但是需要排队很久。之前微调的时候loss从14下降到8左右。</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/HGX.png" srcset="/img/loading.gif" lazyload alt="GPU集群"></p>
-<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>整个对Info进行增强生成1-Hop描述的过程很慢，最终也没有将整个map的3000个视角（1000个场景*3个视角）遍历完。</p>
-<p><img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="结果"></p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/HGX.png" srcset="/img/loading.gif" lazyload alt="GPU集群"><figcaption aria-hidden="true">GPU集群</figcaption>
+</figure>
+<h1 id="结果">结果</h1>
+<p>整个对Info进行增强生成1-Hop描述的过程很慢，最终也没有将整个map的3000个视角（1000个场景*3个视角）遍历完。</p>
+<figure>
+<img src="/2024/07/31/%E5%BE%AE%E8%B0%83Qwen-7B/结果.png" srcset="/img/loading.gif" lazyload alt="结果"><figcaption aria-hidden="true">结果</figcaption>
+</figure>
 
                 
               </div>
