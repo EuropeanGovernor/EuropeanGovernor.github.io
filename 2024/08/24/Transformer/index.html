@@ -19,22 +19,23 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="148.排序链表 1234567891011121314151617181920class Solution:    def sortList(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:        if not head:return None        p&#x3D;head        node&#x3D;[]">
+    <meta name="description" content="1、结构 2、特点  支持并行计算，提高推理速度👍 捕捉长距离依赖关系👍 计算成本高👎 对序列长度敏感👎">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 8-19">
-<meta property="og:url" content="https://europeangovernor.github.io/2024/08/24/LeetCode%208-19/index.html">
+<meta property="og:title" content="Transformer">
+<meta property="og:url" content="https://europeangovernor.github.io/2024/08/24/Transformer/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="148.排序链表 1234567891011121314151617181920class Solution:    def sortList(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:        if not head:return None        p&#x3D;head        node&#x3D;[]">
+<meta property="og:description" content="1、结构 2、特点  支持并行计算，提高推理速度👍 捕捉长距离依赖关系👍 计算成本高👎 对序列长度敏感👎">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-24T03:34:54.000Z">
-<meta property="article:modified_time" content="2024-08-24T03:38:39.721Z">
+<meta property="article:published_time" content="2024-08-24T05:55:59.000Z">
+<meta property="article:modified_time" content="2024-08-26T02:54:43.785Z">
 <meta property="article:author" content="Michael Zhang">
-<meta property="article:tag" content="力扣">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="Transformer">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>LeetCode 8-19 - Bambi的自留地</title>
+  <title>Transformer - Bambi的自留地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LeetCode 8-19"></span>
+            <span id="subtitle" data-typed-text="Transformer"></span>
           
         </div>
 
@@ -224,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-24 11:34" pubdate>
-          2024年8月24日 中午
+        <time datetime="2024-08-24 13:55" pubdate>
+          2024年8月24日 下午
         </time>
       </span>
     
@@ -236,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          63 字
+          39 字
         
       </span>
     
@@ -293,15 +294,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LeetCode 8-19</h1>
+            <h1 id="seo-header">Transformer</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
-<h1 id="排序链表">148.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-list/?envType=study-plan-v2&amp;envId=top-100-liked">排序链表</a></h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sortList</span>(<span class="hljs-params">self, head: <span class="hljs-type">Optional</span>[ListNode]</span>) -&gt; <span class="hljs-type">Optional</span>[ListNode]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> head:<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br>        p=head<br>        node=[]<br>        <span class="hljs-keyword">while</span> p:<br>            node.append([p,p.val])<br>            p=p.<span class="hljs-built_in">next</span><br>        <br>        node.sort(key=<span class="hljs-keyword">lambda</span> x:x[<span class="hljs-number">1</span>])<br>        <span class="hljs-built_in">print</span>(node)<br><br>        p=node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(node)):<br>            p.<span class="hljs-built_in">next</span>=node[_][<span class="hljs-number">0</span>]<br>            p=p.<span class="hljs-built_in">next</span><br><br>        <span class="hljs-keyword">return</span> node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br><br></code></pre></td></tr></table></figure>
-<p>最开始这么写，说我内存超了</p>
+<h1 id="结构">1、结构</h1>
+<h1 id="特点">2、特点</h1>
+<ol type="1">
+<li>支持并行计算，提高推理速度👍</li>
+<li>捕捉长距离依赖关系👍</li>
+<li>计算成本高👎</li>
+<li>对序列长度敏感👎</li>
+</ol>
 
                 
               </div>
@@ -335,7 +341,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8A%9B%E6%89%A3/" class="print-no-link">#力扣</a>
+        <a href="/tags/%E9%9D%A2%E7%BB%8F/" class="print-no-link">#面经</a>
+      
+        <a href="/tags/Transformer/" class="print-no-link">#Transformer</a>
       
     </div>
   
@@ -347,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LeetCode 8-19</div>
-      <div>https://europeangovernor.github.io/2024/08/24/LeetCode 8-19/</div>
+      <div>Transformer</div>
+      <div>https://europeangovernor.github.io/2024/08/24/Transformer/</div>
     </div>
     <div class="license-meta">
       
@@ -392,12 +400,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" title="深度学习基础">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">深度学习基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" title="TSCIL论文笔记">
-                        <span class="hidden-mobile">TSCIL论文笔记</span>
+                      <a href="/2024/08/24/%E9%93%BE%E8%A1%A8/" title="链表">
+                        <span class="hidden-mobile">链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

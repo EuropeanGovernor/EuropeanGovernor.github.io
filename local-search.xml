@@ -4,11 +4,94 @@
   
   
   <entry>
-    <title>LeetCode 8-19</title>
-    <link href="/2024/08/24/LeetCode%208-19/"/>
-    <url>/2024/08/24/LeetCode%208-19/</url>
+    <title>深度学习基础</title>
+    <link href="/2024/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    <url>/2024/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="排序链表">148.<a href="https://leetcode.cn/problems/sort-list/?envType=study-plan-v2&amp;envId=top-100-liked">排序链表</a></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sortList</span>(<span class="hljs-params">self, head: <span class="hljs-type">Optional</span>[ListNode]</span>) -&gt; <span class="hljs-type">Optional</span>[ListNode]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> head:<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br>        p=head<br>        node=[]<br>        <span class="hljs-keyword">while</span> p:<br>            node.append([p,p.val])<br>            p=p.<span class="hljs-built_in">next</span><br>        <br>        node.sort(key=<span class="hljs-keyword">lambda</span> x:x[<span class="hljs-number">1</span>])<br>        <span class="hljs-built_in">print</span>(node)<br><br>        p=node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(node)):<br>            p.<span class="hljs-built_in">next</span>=node[_][<span class="hljs-number">0</span>]<br>            p=p.<span class="hljs-built_in">next</span><br><br>        <span class="hljs-keyword">return</span> node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br><br></code></pre></td></tr></table></figure><p>最开始这么写，说我内存超了</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="激活函数">1、激活函数</h1><ol type="1"><li><p><code>sigmoid</code>：<span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span></p><ul><li><p><span class="math inline">\(\rm max\{\sigma&#39;(x)\}=0.25&lt;1\)</span>，容易出现梯度消失</p></li><li><p>输出均值不为0，导致收敛变慢</p><p>​ <a href="https://cloud.tencent.com/developer/article/1829621">非零均值？激活函数也太硬核了</a></p><p>​ <a href="https://liam.page/2018/04/17/zero-centered-active-function/">谈谈激活函数以0为中心 的问题</a></p></li></ul></li><li><p><code>ReLU</code></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面经</tag>
+      
+      <tag>激活函数</tag>
+      
+      <tag>优化器</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Transformer</title>
+    <link href="/2024/08/24/Transformer/"/>
+    <url>/2024/08/24/Transformer/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="结构">1、结构</h1><h1 id="特点">2、特点</h1><ol type="1"><li>支持并行计算，提高推理速度👍</li><li>捕捉长距离依赖关系👍</li><li>计算成本高👎</li><li>对序列长度敏感👎</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面经</tag>
+      
+      <tag>Transformer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>链表</title>
+    <link href="/2024/08/24/%E9%93%BE%E8%A1%A8/"/>
+    <url>/2024/08/24/%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="链表删除头结点">1、链表删除头结点</h1><ul><li>设置虚拟头结点</li><li>将原来链表的头指针向后移动</li></ul><ol type="1"><li><p><a href="https://leetcode.cn/problems/remove-linked-list-elements/">203. Remove Linked List Elements</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 虚拟头节点法</span><br><span class="hljs-comment"># Definition for singly-linked list.</span><br><span class="hljs-comment"># class ListNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, next=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.next = next</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">removeElements</span>(<span class="hljs-params">self, head: <span class="hljs-type">Optional</span>[ListNode], val: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">Optional</span>[ListNode]:<br>        <span class="hljs-comment"># 创建虚拟头部节点以简化删除过程</span><br>        dummy_head = ListNode(<span class="hljs-built_in">next</span> = head)<br>        <br>        <span class="hljs-comment"># 遍历列表并删除值为val的节点</span><br>        current = dummy_head<br>        <span class="hljs-keyword">while</span> current.<span class="hljs-built_in">next</span>:<br>            <span class="hljs-keyword">if</span> current.<span class="hljs-built_in">next</span>.val == val:<br>                current.<span class="hljs-built_in">next</span> = current.<span class="hljs-built_in">next</span>.<span class="hljs-built_in">next</span><br>            <span class="hljs-keyword">else</span>:<br>                current = current.<span class="hljs-built_in">next</span><br>        <br>        <span class="hljs-keyword">return</span> dummy_head.<span class="hljs-built_in">next</span><br></code></pre></td></tr></table></figure></li></ol><h1 id="反转链表">2、反转链表</h1><figure><img src="https://code-thinking.cdn.bcebos.com/gifs/206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.gif" alt="反转链表"><figcaption aria-hidden="true">反转链表</figcaption></figure><ol type="1"><li><p><a href="https://leetcode.cn/problems/reverse-linked-list/">206. Reverse Linked List</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 双指针法</span><br><span class="hljs-comment"># Definition for singly-linked list.</span><br><span class="hljs-comment"># class ListNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, next=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.next = next</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverseList</span>(<span class="hljs-params">self, head: ListNode</span>) -&gt; ListNode:<br>        cur = head   <br>        pre = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">while</span> cur:<br>            temp = cur.<span class="hljs-built_in">next</span> <span class="hljs-comment"># 保存一下 cur的下一个节点，因为接下来要改变cur-&gt;next</span><br>            cur.<span class="hljs-built_in">next</span> = pre <span class="hljs-comment">#反转</span><br>            <span class="hljs-comment">#更新pre、cur指针</span><br>            pre = cur<br>            cur = temp<br>        <span class="hljs-keyword">return</span> pre<br></code></pre></td></tr></table></figure></li></ol><h1 id="快慢指针删除链表倒数第n个节点">3、快慢指针删除链表倒数第n个节点</h1><ol type="1"><li><p><a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">19. Remove Nth Node From End of List</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span><br><span class="hljs-comment"># class ListNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, next=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.next = next</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">removeNthFromEnd</span>(<span class="hljs-params">self, head: ListNode, n: <span class="hljs-built_in">int</span></span>) -&gt; ListNode:<br>        <span class="hljs-comment"># 创建一个虚拟节点，并将其下一个指针设置为链表的头部</span><br>        dummy_head = ListNode(<span class="hljs-number">0</span>, head)<br>        <br>        <span class="hljs-comment"># 创建两个指针，慢指针和快指针，并将它们初始化为虚拟节点</span><br>        slow = fast = dummy_head<br>        <br>        <span class="hljs-comment"># 快指针比慢指针快 n+1 步</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n+<span class="hljs-number">1</span>):<br>            fast = fast.<span class="hljs-built_in">next</span><br>        <br>        <span class="hljs-comment"># 移动两个指针，直到快速指针到达链表的末尾</span><br>        <span class="hljs-keyword">while</span> fast:<br>            slow = slow.<span class="hljs-built_in">next</span><br>            fast = fast.<span class="hljs-built_in">next</span><br>        <br>        <span class="hljs-comment"># 通过更新第 (n-1) 个节点的 next 指针删除第 n 个节点</span><br>        slow.<span class="hljs-built_in">next</span> = slow.<span class="hljs-built_in">next</span>.<span class="hljs-built_in">next</span><br>        <br>        <span class="hljs-keyword">return</span> dummy_head.<span class="hljs-built_in">next</span><br></code></pre></td></tr></table></figure></li></ol><h1 id="环形链表">4、环形链表</h1><ol type="1"><li><p><a href="https://leetcode.cn/problems/linked-list-cycle-ii/">142. Linked List Cycle II</a></p><p>这个题目首先要利用快慢指针（步长分别为1、2）求出一个圈的长度是多少，然后利用删除链表中倒数第n个节点中的思想再次使用快慢指针（一个指针领先头指针一个圈的长度）求出入圈节点；下图为另一种做法：上</p><figure><img src="https://code-thinking.cdn.bcebos.com/gifs/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II%EF%BC%88%E6%B1%82%E5%85%A5%E5%8F%A3%EF%BC%89.gif" alt="另一种做法"><figcaption aria-hidden="true">另一种做法</figcaption></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode 8-19</title>
+    <link href="/2024/08/24/%E9%93%BE%E8%A1%A8/24LeetCode%200819/"/>
+    <url>/2024/08/24/%E9%93%BE%E8%A1%A8/24LeetCode%200819/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="排序链表">148.<a href="https://leetcode.cn/problems/sort-list/?envType=study-plan-v2&amp;envId=top-100-liked">排序链表</a></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sortList</span>(<span class="hljs-params">self, head: <span class="hljs-type">Optional</span>[ListNode]</span>) -&gt; <span class="hljs-type">Optional</span>[ListNode]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> head:<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br>        p=head<br>        node=[]<br>        <span class="hljs-keyword">while</span> p:<br>            node.append([p,p.val])<br>            p=p.<span class="hljs-built_in">next</span><br>        <br>        node.sort(key=<span class="hljs-keyword">lambda</span> x:x[<span class="hljs-number">1</span>])<br>        <span class="hljs-built_in">print</span>(node)<br><br>        p=node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(node)):<br>            p.<span class="hljs-built_in">next</span>=node[_][<span class="hljs-number">0</span>]<br>            p=p.<span class="hljs-built_in">next</span><br><br>        <span class="hljs-keyword">return</span> node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br><br></code></pre></td></tr></table></figure><p>最开始这么写，说我内存超了，后来才注意到空间复杂度是有要求的</p>]]></content>
     
     
     <categories>
@@ -74,9 +157,9 @@
     
     <tags>
       
-      <tag>实习</tag>
-      
       <tag>BIGAI</tag>
+      
+      <tag>实习</tag>
       
       <tag>数据生成</tag>
       
@@ -103,9 +186,9 @@
     
     <tags>
       
-      <tag>百度</tag>
-      
       <tag>大模型</tag>
+      
+      <tag>百度</tag>
       
       <tag>搜广推</tag>
       
@@ -132,15 +215,15 @@
     
     <tags>
       
-      <tag>实习</tag>
+      <tag>微调</tag>
       
       <tag>BIGAI</tag>
       
-      <tag>数据生成</tag>
-      
-      <tag>微调</tag>
-      
       <tag>大模型</tag>
+      
+      <tag>实习</tag>
+      
+      <tag>数据生成</tag>
       
       <tag>P-tuning</tag>
       
