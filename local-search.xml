@@ -4,11 +4,38 @@
   
   
   <entry>
-    <title>深度学习基础</title>
-    <link href="/2024/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
-    <url>/2024/08/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</url>
+    <title>归一化</title>
+    <link href="/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/"/>
+    <url>/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/</url>
     
-    <content type="html"><![CDATA[<h1 id="激活函数">1、激活函数</h1><ol type="1"><li><p><code>sigmoid</code>：<span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span></p><ul><li><p><span class="math inline">\(\rm max\{\sigma&#39;(x)\}=0.25&lt;1\)</span>，容易出现梯度消失</p></li><li><p>输出均值不为0，导致收敛变慢</p><p>​ <a href="https://cloud.tencent.com/developer/article/1829621">非零均值？激活函数也太硬核了</a></p><p>​ <a href="https://liam.page/2018/04/17/zero-centered-active-function/">谈谈激活函数以0为中心 的问题</a></p></li></ul></li><li><p><code>ReLU</code></p></li></ol>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer">]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面经</tag>
+      
+      <tag>归一化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>激活函数</title>
+    <link href="/2024/08/26/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/"/>
+    <url>/2024/08/26/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="激活函数">1、激活函数</h1><ol type="1"><li><p><code>sigmoid</code>：<span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span></p><ul><li><p><span class="math inline">\(\rm max\{\sigma&#39;(x)\}=0.25&lt;1\)</span>，容易出现梯度消失</p></li><li><p>输出均值不为0，导致收敛变慢</p><p>​ <a href="https://cloud.tencent.com/developer/article/1829621">非零均值？激活函数也太硬核了</a></p><p>​ <a href="https://liam.page/2018/04/17/zero-centered-active-function/">谈谈激活函数以0为中心 的问题</a></p></li></ul></li><li><p><code>ReLU</code></p></li></ol>]]></content>
     
     
     <categories>
@@ -23,8 +50,6 @@
       <tag>面经</tag>
       
       <tag>激活函数</tag>
-      
-      <tag>优化器</tag>
       
     </tags>
     
@@ -157,9 +182,9 @@
     
     <tags>
       
-      <tag>BIGAI</tag>
-      
       <tag>实习</tag>
+      
+      <tag>BIGAI</tag>
       
       <tag>数据生成</tag>
       
@@ -186,9 +211,9 @@
     
     <tags>
       
-      <tag>大模型</tag>
-      
       <tag>百度</tag>
+      
+      <tag>大模型</tag>
       
       <tag>搜广推</tag>
       
@@ -217,13 +242,13 @@
       
       <tag>微调</tag>
       
-      <tag>BIGAI</tag>
-      
-      <tag>大模型</tag>
-      
       <tag>实习</tag>
       
+      <tag>BIGAI</tag>
+      
       <tag>数据生成</tag>
+      
+      <tag>大模型</tag>
       
       <tag>P-tuning</tag>
       
