@@ -36,10 +36,11 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%8A%A5%E9%94%99.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E8%B7%AF%E5%BE%84.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E5%86%BB%E7%BB%93.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/loss.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2024-08-17T05:37:34.000Z">
-<meta property="article:modified_time" content="2024-08-27T03:25:01.838Z">
+<meta property="article:modified_time" content="2024-08-29T03:22:05.480Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -251,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.4k 字
         
       </span>
     
@@ -412,7 +413,7 @@
 </ul>
 <h4 id="分类器的选择">3.1.5 分类器的选择</h4>
 <p>分类器选择取决于方法与数据集，在ER上的区别并不明显</p>
-<h2 id="双提示互补增量学习">4. 双提示互补增量学习</h2>
+<h2 id="双提示增量学习">4. 双提示增量学习</h2>
 <h1 id="二l2p">二、L2P</h1>
 <h2 id="踩坑">1. 踩坑</h2>
 <p>在服务器上部署之后，Github上提到没有CIFAR-100的话，在<code>datasets.py</code>更改如下字段：</p>
@@ -438,9 +439,10 @@
 <figure>
 <img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/结构.png" srcset="/img/loading.gif" lazyload alt="代码结构"><figcaption aria-hidden="true">代码结构</figcaption>
 </figure>
-<p>关于为什么要出现<code>original_model</code>和<code>model</code></p>
+<p>关于为什么要出现<code>original_model</code>和<code>model</code>，是因为作者在这里做了消融实验，微调了model中的部分参数。不过从结果来看，并没有比原始论文的要好。</p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/冻结.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="运行结果">2.2 运行结果</h3>
-<p>注意到Loss出现了负值</p>
+<p>注意到Loss出现了负值，是因为采用的多元交叉熵损失函数。</p>
 <p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/loss.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="三本文设计">三、本文设计</h1>
 <p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/流程.png" srcset="/img/loading.gif" lazyload></p>
