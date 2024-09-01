@@ -166,31 +166,6 @@
   
   
   <entry>
-    <title>LeetCode 8-19</title>
-    <link href="/2024/08/24/%E9%93%BE%E8%A1%A8/24LeetCode%200819/"/>
-    <url>/2024/08/24/%E9%93%BE%E8%A1%A8/24LeetCode%200819/</url>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="排序链表">148.<a href="https://leetcode.cn/problems/sort-list/?envType=study-plan-v2&amp;envId=top-100-liked">排序链表</a></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sortList</span>(<span class="hljs-params">self, head: <span class="hljs-type">Optional</span>[ListNode]</span>) -&gt; <span class="hljs-type">Optional</span>[ListNode]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> head:<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br>        p=head<br>        node=[]<br>        <span class="hljs-keyword">while</span> p:<br>            node.append([p,p.val])<br>            p=p.<span class="hljs-built_in">next</span><br>        <br>        node.sort(key=<span class="hljs-keyword">lambda</span> x:x[<span class="hljs-number">1</span>])<br>        <span class="hljs-built_in">print</span>(node)<br><br>        p=node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(node)):<br>            p.<span class="hljs-built_in">next</span>=node[_][<span class="hljs-number">0</span>]<br>            p=p.<span class="hljs-built_in">next</span><br><br>        <span class="hljs-keyword">return</span> node[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br><br></code></pre></td></tr></table></figure><p>最开始这么写，说我内存超了，后来才注意到空间复杂度是有要求的</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>技术</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>力扣</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>TSCIL论文笔记</title>
     <link href="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
     <url>/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</url>
