@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/loss.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2024-08-17T05:37:34.000Z">
-<meta property="article:modified_time" content="2024-09-01T16:28:50.013Z">
+<meta property="article:modified_time" content="2024-09-01T16:47:07.530Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
         
-          16 分钟
+          17 分钟
         
       </span>
     
@@ -441,8 +441,9 @@
 <h3 id="模型结构">5.2 模型结构</h3>
 <p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment.png" srcset="/img/loading.gif" lazyload></p>
 <ol type="1">
-<li>将时间序列数据分为patch，映射到D维向量</li>
-<li>预训练任务：预测MASK</li>
+<li>将时间序列数据分为不重叠的固定长度序列patches（减少内存占用和计算复杂度），映射到D维向量</li>
+<li>在预训练期间，通过使用特殊的掩码嵌入[MASK]来替换 patches嵌入，目标是学习 patches 嵌入</li>
+<li>这些嵌入可以使用轻量级的重建头，而不是与编码器相同大小的解码器，来重建输入时间序列。以便在保持编码器的大部分参数和高级特征不变的同时，对有限数量的可训练参数进行任务特定的微调，从而进行必要的架构修改。</li>
 </ol>
 <h3 id="实验结果-3">5.3 实验结果</h3>
 <p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment_res1.png" srcset="/img/loading.gif" lazyload></p>
