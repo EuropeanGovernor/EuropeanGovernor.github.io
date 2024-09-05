@@ -22,42 +22,42 @@
     <meta name="description" content="〇、阅读论文  增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning 时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluatio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TSCIL论文笔记·I">
-<meta property="og:url" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
 <meta property="og:description" content="〇、阅读论文  增量学习的三种场景及方法：Three scenarios for continual learning 预训练模型图像类增量学习：Learning to Prompt for Continual Learning 时间序列类增量学习的基准：Class-incremental Learning for Time Series:Benchmark and Evaluatio">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/memory.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/dual.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/dual_res.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/pile.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment_radar.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment_res1.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment_res2.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E5%8D%B7%E7%A7%AF.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E7%9B%B8%E4%BC%BC%E7%B1%BB%E5%88%AB.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/con_cifar100.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/con_imagenet.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%95%99%E7%A8%8B.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%BA%90%E7%A0%811.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%8A%A5%E9%94%99.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E8%B7%AF%E5%BE%84.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E5%86%BB%E7%BB%93.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/loss.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/MNIST%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/L2P.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/CIFAR.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/Norm.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/memory.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/dual.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/dual_res.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/pile.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment_radar.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment_res1.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment_res2.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E5%8D%B7%E7%A7%AF.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E7%9B%B8%E4%BC%BC%E7%B1%BB%E5%88%AB.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/con_cifar100.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/con_imagenet.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E6%95%99%E7%A8%8B.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E6%BA%90%E7%A0%811.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E6%8A%A5%E9%94%99.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E8%B7%AF%E5%BE%84.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E5%86%BB%E7%BB%93.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/loss.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2024-08-17T05:37:34.000Z">
-<meta property="article:modified_time" content="2024-09-04T09:13:11.234Z">
+<meta property="article:modified_time" content="2024-09-05T02:33:39.849Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
 <meta property="article:tag" content="微调">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST%E7%BB%93%E6%9E%9C.png">
+<meta name="twitter:image" content="https://europeangovernor.github.io/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/MNIST%E7%BB%93%E6%9E%9C.png">
   
   
   
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
         
-          22 分钟
+          17 分钟
         
       </span>
     
@@ -350,7 +350,7 @@
 </ol>
 <h3 id="实验结果">1.2 实验结果</h3>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/MNIST结果.png" srcset="/img/loading.gif" lazyload alt="实验结果对比：正则化的效果普遍不太行"><figcaption aria-hidden="true">实验结果对比：正则化的效果普遍不太行</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/MNIST结果.png" srcset="/img/loading.gif" lazyload alt="实验结果对比：正则化的效果普遍不太行"><figcaption aria-hidden="true">实验结果对比：正则化的效果普遍不太行</figcaption>
 </figure>
 <h2 id="预训练模型图像类增量学习">2. 预训练模型图像类增量学习</h2>
 <h3 id="实验方法-1">2.1 实验方法</h3>
@@ -360,7 +360,7 @@
 <li>将TopN向量，以及进入Embedding层的Input拼接，并放入预训练模型</li>
 </ol>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/L2P.png" srcset="/img/loading.gif" lazyload alt="L2P"><figcaption aria-hidden="true">L2P</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/L2P.png" srcset="/img/loading.gif" lazyload alt="L2P"><figcaption aria-hidden="true">L2P</figcaption>
 </figure>
 <h4 id="vit">2.1.1 ViT</h4>
 <p>在细读论文时需要一些ViT的知识，于是找到了这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/MengYa_Dream/article/details/126600748">ViT的cls token作用</a></p>
@@ -404,7 +404,7 @@
 \mathop{\rm min} \limits_{P,K,\phi} \mathcal{L}(g_{\phi}(f^{avg}_r (x_p)), y) + \lambda\sum\limits_{K_x}  \gamma (q(x), k_{s_i} ),\quad s.t. K_x在2.1.3中已经得到
 \]</span></p>
 <h3 id="实验结果-1">2.2 实验结果</h3>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/CIFAR.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/CIFAR.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="时间序列类增量学习的基准">3. 时间序列类增量学习的基准</h2>
 <h3 id="实验方法-2">3.1 实验方法</h3>
 <h4 id="正则化">3.1.1 正则化</h4>
@@ -412,12 +412,12 @@
 <h4 id="归一化bn-vs-ln">3.1.2 归一化：BN vs LN</h4>
 <p>在大多数情况下使用LN的效果要比BN更好</p>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Norm.png" srcset="/img/loading.gif" lazyload alt="Norm"><figcaption aria-hidden="true">Norm</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/Norm.png" srcset="/img/loading.gif" lazyload alt="Norm"><figcaption aria-hidden="true">Norm</figcaption>
 </figure>
 <h4 id="rehearsal-baseder-vs-gr">3.1.3 Rehearsal-based：ER vs GR</h4>
 <p>GR在简单数据上较好，甚至好过ER，复杂数据上表现不佳；可能是因为难以生成复杂数据，以及无法控制生成的类别</p>
 <h4 id="meomory-budget在bn和ln上的差异">3.1.4 Meomory budget在BN和LN上的差异</h4>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/memory.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/memory.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>基于ER的方法通常性能会随着Memory budget的增大而提高，到达一定程度会趋于饱和</li>
 <li>在内存足够时，BN在除ASER的方法都与Offline有很大差异，因为随着任务数量增加<span class="math inline">\(B_{M}\)</span>中旧样本比例会减少；LN则接近Offline</li>
@@ -426,7 +426,7 @@
 <p>分类器选择取决于方法与数据集，在ER上的区别并不明显</p>
 <h2 id="双提示增量学习">4. 双提示增量学习</h2>
 <h3 id="实验方法-3">4.1 实验方法</h3>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/dual.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/dual.png" srcset="/img/loading.gif" lazyload></p>
 <ol type="1">
 <li>G-Prompt（唯一，学习任务的一般性）和E-Prompt（每个任务对应一个，学习任务的特殊性）</li>
 <li>利用Prefix-Tuning（效果相比Prompt-Tuning更好，且未改变输入维度）将<span class="math inline">\(p\)</span>分解成<span class="math inline">\(p_{K},p_{V}\in \mathbb R^{L_{p}/2\times D}\)</span>，并且加到多头自注意力层中：<span class="math inline">\(f^{\rm Pre-T}_{\rm prompt}(p,h)={\rm MSA}(h_{Q},[p_{k};h_{K}],[p_{v};h_{V}])\)</span></li>
@@ -434,25 +434,25 @@
 <li>推理时，Input通过Query function映射并选择最相似的E-Prompt</li>
 </ol>
 <h3 id="实验结果-2">4.2 实验结果</h3>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/dual_res.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/dual_res.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="时间序列大模型">5. 时间序列大模型</h2>
-<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/pile.png" srcset="/img/loading.gif" lazyload></div><div class="group-image-wrap"><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment_radar.png" srcset="/img/loading.gif" lazyload></div></div></div>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/pile.png" srcset="/img/loading.gif" lazyload></div><div class="group-image-wrap"><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment_radar.png" srcset="/img/loading.gif" lazyload></div></div></div>
 <h3 id="time-series-pile">5.1 Time-series Pile</h3>
 <h3 id="模型结构">5.2 模型结构</h3>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment.png" srcset="/img/loading.gif" lazyload></p>
 <ol type="1">
 <li>将时间序列数据分为不重叠的固定长度序列patches（减少内存占用和计算复杂度），映射到D维向量</li>
 <li>在预训练期间，通过使用特殊的掩码嵌入[MASK]来替换 patches嵌入，目标是学习 patches 嵌入</li>
 <li>这些嵌入可以使用轻量级的重建头，而不是与编码器相同大小的解码器，来重建输入时间序列。以便在保持编码器的大部分参数和高级特征不变的同时，对有限数量的可训练参数进行任务特定的微调，从而进行必要的架构修改。</li>
 </ol>
 <h3 id="实验结果-3">5.3 实验结果</h3>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment_res1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment_res1.png" srcset="/img/loading.gif" lazyload></p>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/moment_res2.png" srcset="/img/loading.gif" lazyload alt="零样本泛化能力"><figcaption aria-hidden="true">零样本泛化能力</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/moment_res2.png" srcset="/img/loading.gif" lazyload alt="零样本泛化能力"><figcaption aria-hidden="true">零样本泛化能力</figcaption>
 </figure>
 <h2 id="卷积提示">6. 卷积提示</h2>
 <h3 id="实验方法-4">6.1 实验方法</h3>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/卷积.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/卷积.png" srcset="/img/loading.gif" lazyload></p>
 <ol type="1">
 <li>GPT-3给出每个任务中类别的visual features，利用BERT进行word embedding</li>
 <li>根据当前任务<span class="math inline">\(t\)</span>和之前任务中类别的visual features计算相似度，取最大相似度的平均值为<span class="math inline">\(sim_{t}\)</span></li>
@@ -461,27 +461,27 @@
 <li>对于每一层、每一个头有一套Shared Embedding（唯一）和一套Prompt Generator（M个，对应于Prompt Keys；训练时之前任务对应的Generator会被冻结）；对于<span class="math inline">\(G^K_{h,l,m}\)</span>、<span class="math inline">\(G^V_{h,l,m}\)</span>分别与<span class="math inline">\(SE^{K}_{l,h}\)</span>，<span class="math inline">\(SE^{V}_{l,h}\)</span>进行卷积后，和<span class="math inline">\(s_{i}\)</span>相乘求和，将结果concat到下一层：<span class="math inline">\(P_{l+1}^{K}=\sum\limits_{m=1}^{M}s_{l,m}PC^{K}_{l,h,m}\)</span>，<span class="math inline">\(P_{l+1}^{V}=\sum\limits_{m=1}^{M}s_{l,m}PC^{V}_{l,h,m}\)</span></li>
 </ol>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/相似类别.png" srcset="/img/loading.gif" lazyload alt="根据visual features计算相似度"><figcaption aria-hidden="true">根据visual features计算相似度</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/相似类别.png" srcset="/img/loading.gif" lazyload alt="根据visual features计算相似度"><figcaption aria-hidden="true">根据visual features计算相似度</figcaption>
 </figure>
 <h3 id="实验结果-4">6.2 实验结果</h3>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/con_cifar100.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/con_imagenet.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/con_cifar100.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/con_imagenet.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="二l2p">二、L2P</h1>
 <h2 id="踩坑">1. 踩坑</h2>
 <p>在服务器上部署之后，Github上提到没有CIFAR-100的话，在<code>datasets.py</code>更改如下字段：</p>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/教程.png" srcset="/img/loading.gif" lazyload alt="Github上的教程"><figcaption aria-hidden="true">Github上的教程</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/教程.png" srcset="/img/loading.gif" lazyload alt="Github上的教程"><figcaption aria-hidden="true">Github上的教程</figcaption>
 </figure>
 <p>但其实不用改的，本来就是<code>True</code></p>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/源码1.png" srcset="/img/loading.gif" lazyload alt="datasets.py"><figcaption aria-hidden="true">datasets.py</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/源码1.png" srcset="/img/loading.gif" lazyload alt="datasets.py"><figcaption aria-hidden="true">datasets.py</figcaption>
 </figure>
 <p>不过在运行的时候会报这个错：</p>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/报错.png" srcset="/img/loading.gif" lazyload alt="报错说没有cifar100_12p这个路径"><figcaption aria-hidden="true">报错说没有cifar100_12p这个路径</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/报错.png" srcset="/img/loading.gif" lazyload alt="报错说没有cifar100_12p这个路径"><figcaption aria-hidden="true">报错说没有cifar100_12p这个路径</figcaption>
 </figure>
 <p>后来找到了一个脚本文件<code>train_cifar100_l2p.sh</code>执行，但本地并没有<code>local_datasets</code>路径：</p>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/路径.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/路径.png" srcset="/img/loading.gif" lazyload></p>
 <p>这个报错上面提到，这个数据集是在<code>torchvision</code>里面<code>cifar.py</code>下载的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">[rank0]:   File <span class="hljs-string">&quot;/home/eee/zym/l2p-pytorch/datasets.py&quot;</span>, line <span class="hljs-number">107</span>, <span class="hljs-keyword">in</span> get_dataset<br>[rank0]:   dataset_train = datasets.CIFAR100(args.data_path, train=<span class="hljs-literal">True</span>, download=<span class="hljs-literal">True</span>, transform=transform_train)<br>[rank0]:   File <span class="hljs-string">&quot;/home/eee/anaconda3/envs/zym/lib/python3.8/site-packages/torchvision/datasets/cifar.py&quot;</span>, line <span class="hljs-number">66</span>, <span class="hljs-keyword">in</span> __init__<br>[rank0]:     <span class="hljs-variable language_">self</span>.download()<br></code></pre></td></tr></table></figure>
 <p>新建了<code>local_datasets</code>后运行脚本文件，还是报错；最后发现脚本路径写的有问题，改成下面即可：</p>
@@ -489,17 +489,15 @@
 <h2 id="分析">2. 分析</h2>
 <h3 id="代码结构">2.1 代码结构</h3>
 <figure>
-<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/结构.png" srcset="/img/loading.gif" lazyload alt="代码结构"><figcaption aria-hidden="true">代码结构</figcaption>
+<img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/结构.png" srcset="/img/loading.gif" lazyload alt="代码结构"><figcaption aria-hidden="true">代码结构</figcaption>
 </figure>
 <p>关于为什么要出现<code>original_model</code>和<code>model</code>，是因为作者在这里做了消融实验，微调了model中的部分参数。不过从结果来看，并没有比原始论文的要好。</p>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/冻结.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/冻结.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="运行结果">2.2 运行结果</h3>
 <p>注意到Loss出现了负值，是因为采用的多元交叉熵损失函数。</p>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/loss.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="三moment">三、MOMENT</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br>sys.path.append(<span class="hljs-string">&quot;/home/eee/zym/&quot;</span>)<br>sys.path.append(<span class="hljs-string">&quot;/home/eee/zym/TSCIL/&quot;</span>)<br>sys.path.append(<span class="hljs-string">&quot;/home/eee/zym/TSCIL/utils/&quot;</span>)<br><br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> torch <span class="hljs-keyword">import</span> nn<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt <br><span class="hljs-keyword">from</span> momentfm <span class="hljs-keyword">import</span> MOMENTPipeline<br><span class="hljs-keyword">from</span> torch.optim <span class="hljs-keyword">import</span> lr_scheduler<br><span class="hljs-keyword">from</span> EarlyStop <span class="hljs-keyword">import</span> EarlyStopping<br><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader,Dataset<br><span class="hljs-keyword">from</span> stream <span class="hljs-keyword">import</span> IncrementalTaskStream,get_cls_order<br>device = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>)<br>DATA=<span class="hljs-string">&quot;wisdm&quot;</span><br><span class="hljs-comment"># [&#x27;har&#x27;, &#x27;uwave&#x27;, &#x27;dailysports&#x27;, &#x27;grabmyo&#x27;, &#x27;wisdm&#x27;,&#x27;ninapro&#x27;, &#x27;sines&#x27;]</span><br><span class="hljs-comment"># ============================初始化MOMENT============================</span><br>model = MOMENTPipeline.from_pretrained(<br>    <span class="hljs-string">&quot;AutonLab/MOMENT-1-large&quot;</span>, <br>    model_kwargs=&#123;<br>        <span class="hljs-string">&#x27;task_name&#x27;</span>: <span class="hljs-string">&#x27;classification&#x27;</span>,<br>        <span class="hljs-string">&#x27;n_channels&#x27;</span>: <span class="hljs-number">3</span>,<br>        <span class="hljs-string">&#x27;num_class&#x27;</span>: <span class="hljs-number">18</span>,<br>        <span class="hljs-string">&#x27;freeze_encoder&#x27;</span>: <span class="hljs-literal">True</span>, <span class="hljs-comment"># Freeze the patch embedding layer</span><br>        <span class="hljs-string">&#x27;freeze_embedder&#x27;</span>: <span class="hljs-literal">True</span>, <span class="hljs-comment"># Freeze the transformer encoder</span><br>        <span class="hljs-string">&#x27;freeze_head&#x27;</span>: <span class="hljs-literal">False</span>, <span class="hljs-comment"># The linear forecasting head must be trained</span><br>    &#125;, <br>   )<br>model.init()<br>model.to(device)<br><br><span class="hljs-comment"># ============================获取数据集============================</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDataset</span>(<span class="hljs-title class_ inherited__">Dataset</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, data, targets</span>):<br>        <span class="hljs-variable language_">self</span>.data = data<br>        <span class="hljs-variable language_">self</span>.targets = targets<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.data)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self, idx</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.data[idx], <span class="hljs-variable language_">self</span>.targets[idx]<br><br>cls_order = get_cls_order(DATA, <span class="hljs-literal">False</span>)<br>task_stream = IncrementalTaskStream(data=DATA, scenario=<span class="hljs-string">&#x27;class&#x27;</span>, cls_order=cls_order,split=<span class="hljs-string">&#x27;all&#x27;</span>)<br>(x_train, y_train), (x_val, y_val), (x_test, y_test) = task_stream.setup_offline()<br>x_train,x_val,x_test=np.transpose(x_train,(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)),np.transpose(x_val,(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)),np.transpose(x_test,(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>))<br><br>train_dataloader = DataLoader(MyDataset(x_train,y_train), batch_size=<span class="hljs-number">64</span>, num_workers=<span class="hljs-number">4</span>,pin_memory=<span class="hljs-literal">True</span>,shuffle=<span class="hljs-literal">True</span>)<br>val_dataloader = DataLoader(MyDataset(x_val,y_val), batch_size=<span class="hljs-number">64</span>, num_workers=<span class="hljs-number">4</span>,pin_memory=<span class="hljs-literal">True</span>,shuffle=<span class="hljs-literal">True</span>)<br>test_dataloader = DataLoader(MyDataset(x_test,y_test), batch_size=<span class="hljs-number">64</span>, num_workers=<span class="hljs-number">4</span>,pin_memory=<span class="hljs-literal">True</span>,shuffle=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># ============================超参数设置============================</span><br>criterion = nn.CrossEntropyLoss()<br>optimizer = torch.optim.Adam(model.parameters(), lr=<span class="hljs-number">1e-3</span>)<br>scheduler=lr_scheduler.StepLR(optimizer, step_size=<span class="hljs-number">1</span>, gamma=<span class="hljs-number">0.95</span>)<br><br><br>EPOCH = <span class="hljs-number">100</span><br>patience=<span class="hljs-number">20</span><br>Acc,Loss,ValidLoss=[],[],[]<br><br><span class="hljs-comment"># ============================画图函数============================</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Draw</span>(<span class="hljs-params">X,Y,Z</span>):<br>    plt.plot(X,Y,linestyle=<span class="hljs-string">&#x27;--&#x27;</span>,label=<span class="hljs-string">&#x27;loss&#x27;</span>)<br>    plt.plot(X,Z,label=<span class="hljs-string">&quot;acc&quot;</span>)<br>    plt.legend()<br>    plt.savefig(<span class="hljs-string">f&#x27;./<span class="hljs-subst">&#123;DATA&#125;</span>_res.png&#x27;</span>) <br><br><br><br><span class="hljs-comment"># ===============================定义测试函数=========================</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">epoch,mode</span>):<br>    <span class="hljs-keyword">if</span> mode==<span class="hljs-string">&#x27;test&#x27;</span>:dataloader=test_dataloader<br>    <span class="hljs-keyword">elif</span> mode==<span class="hljs-string">&quot;val&quot;</span>:dataloader=val_dataloader<br><br>    model.<span class="hljs-built_in">eval</span>()<br>    correct,total,Validloss=<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span><br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        <span class="hljs-keyword">for</span> data,label <span class="hljs-keyword">in</span> dataloader:<br>            output = model(data.to(torch.<span class="hljs-built_in">float</span>).to(device))<br>            Validloss+= criterion(output.logits, label.to(device))<br>            _, predicted = torch.<span class="hljs-built_in">max</span>(output.logits, dim=<span class="hljs-number">1</span>) <br>            total += label.size(<span class="hljs-number">0</span>)  <span class="hljs-comment"># 张量之间的比较运算</span><br>            correct += (predicted == label.to(device)).<span class="hljs-built_in">sum</span>().item()<br>        acc = correct / total<br>        ValidLoss.append(Validloss/<span class="hljs-built_in">len</span>(dataloader))<br>        <span class="hljs-keyword">if</span> mode==<span class="hljs-string">&#x27;val&#x27;</span>:<br>            Acc.append(acc)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;[%d / %d]: 验证集准确率: %.1f %% &#x27;</span> % (epoch+<span class="hljs-number">1</span>, EPOCH, <span class="hljs-number">100</span> * acc))  <span class="hljs-comment"># 求测试的准确率，正确数/总数</span><br>        <span class="hljs-keyword">else</span>:<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;测试集准确率: %.1f %% &#x27;</span> % (<span class="hljs-number">100</span> * acc))<br>    <br><br><br><span class="hljs-comment"># ===============================训练=========================</span><br>early_stopping = EarlyStopping(patience=patience, verbose=<span class="hljs-literal">True</span>)<br><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(EPOCH):<br>    model.train()<br>    EpochLoss=<span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> data,label <span class="hljs-keyword">in</span> train_dataloader:<br><br>        <span class="hljs-comment"># forward [batch_size, n_channels, forecast_horizon]</span><br>        output = model(data.to(torch.<span class="hljs-built_in">float</span>).to(device))<br><br>        <span class="hljs-comment"># backward</span><br>        loss = criterion(output.logits, label.to(device))<br>        optimizer.zero_grad()<br>        loss.backward()<br>        optimizer.step()<br>        <br>        EpochLoss+=loss.item()<br>    Loss.append(EpochLoss/<span class="hljs-built_in">len</span>(train_dataloader))<br>    scheduler.step()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;学习率:<span class="hljs-subst">&#123;scheduler.get_last_lr()[<span class="hljs-number">0</span>]:<span class="hljs-number">.5</span>f&#125;</span>&quot;</span>)<br>    test(_,<span class="hljs-string">&#x27;val&#x27;</span>)<br><br>    early_stopping(ValidLoss[-<span class="hljs-number">1</span>], model)<br>    <span class="hljs-keyword">if</span> early_stopping.early_stop:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Early stopping&quot;</span>)<br>        <span class="hljs-keyword">break</span><br><br>test(<span class="hljs-literal">None</span>,<span class="hljs-string">&#x27;test&#x27;</span>)<br>Draw([_+<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(Loss))],Loss,Acc)<br>torch.save(model,<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;DATA&#125;</span>_ckpt.pt&#x27;</span>)<br></code></pre></td></tr></table></figure>
-<h1 id="四初步设计">四、初步设计</h1>
-<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/流程.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/loss.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三初步设计">三、初步设计</h1>
+<p><img src="/2024/08/17/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7I/流程.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -550,7 +548,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>TSCIL论文笔记·I</div>
-      <div>https://europeangovernor.github.io/2024/08/17/TSCIL论文笔记/</div>
+      <div>https://europeangovernor.github.io/2024/08/17/TSCIL论文笔记·I/</div>
     </div>
     <div class="license-meta">
       
