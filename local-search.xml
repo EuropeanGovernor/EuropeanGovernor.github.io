@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>参数高效微调</title>
+    <link href="/2024/09/07/%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83/"/>
+    <url>/2024/09/07/%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>TSCIL论文笔记·II</title>
     <link href="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/"/>
     <url>/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/</url>
@@ -147,7 +160,7 @@
     <link href="/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/"/>
     <url>/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="batchnorm">1、BatchNorm</h1><h1 id="layernorm">2、LayerNorm</h1><p>针对一个样本所有特征计算均值和方差，然后对样本进行归一化</p><p>减少内部协变量偏移（Internal Covariate Shift）： 内部协变量偏移是指在深度神经网络的训练过程中，每一层输入的分布会发生变化，导致网络的训练变得困难。层归一化通过对每一层的输入进行归一化处理，可以减少内部协变量偏移，使得每一层的输入分布更加稳定。 <strong>稳定梯度</strong>： 层归一化有助于保持每一层输出的均值和方差稳定，从而使得梯度的传播更加稳定。这有助于减少梯度消失或梯度爆炸的问题，提高梯度在网络中的流动性，加快训练速度。[^ 1]</p><h1 id="instancenorm">3、InstanceNorm</h1><h1 id="rmsnorm">4、RMSNorm</h1><h1 id="参考">参考</h1><p>[^ 1]: <a href="https://www.cnblogs.com/shine-lee/p/11989612.html">Batch Normalization详解</a></p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="batchnorm">1、BatchNorm</h1><h1 id="layernorm">2、LayerNorm</h1><p>针对一个样本所有特征计算均值和方差，然后对样本进行归一化</p><p>减少内部协变量偏移（Internal Covariate Shift）： 内部协变量偏移是指在深度神经网络的训练过程中，每一层输入的分布会发生变化，导致网络的训练变得困难。层归一化通过对每一层的输入进行归一化处理，可以减少内部协变量偏移，使得每一层的输入分布更加稳定。 <strong>稳定梯度</strong>： 层归一化有助于保持每一层输出的均值和方差稳定，从而使得梯度的传播更加稳定。这有助于减少梯度消失或梯度爆炸的问题，提高梯度在网络中的流动性，加快训练速度。<sup><a href="#ref1">1</a></sup></p><h1 id="instancenorm">3、InstanceNorm</h1><h1 id="rmsnorm">4、RMSNorm</h1><h1 id="参考">参考</h1><ol type="1"><li><span name="ref1"><a href="https://www.cnblogs.com/shine-lee/p/11989612.html">Batch Normalization详解</a></span></li></ol>]]></content>
     
     
     <categories>
