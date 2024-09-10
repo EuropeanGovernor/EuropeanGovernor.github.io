@@ -31,13 +31,14 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/Adapt.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/APER%E6%B6%88%E8%9E%8D.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/APER%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/EASE.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/uwave.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/har.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/sports.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/grabmyo.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/wisdm.png">
 <meta property="article:published_time" content="2024-09-04T09:16:47.000Z">
-<meta property="article:modified_time" content="2024-09-07T06:00:52.122Z">
+<meta property="article:modified_time" content="2024-09-10T08:47:02.821Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -249,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          2k 字
         
       </span>
     
@@ -260,7 +261,7 @@
         
         
         
-          9 分钟
+          17 分钟
         
       </span>
     
@@ -326,9 +327,13 @@
 <p><strong>9月4日~9月6日</strong></p>
 <ol type="1">
 <li>冻结Transformer参数，只利用MOMENT的分类器在Benchmark上进行训练与测试，在3个简单数据集上效果很好（见2.2）</li>
-<li>利用T-SNE进行降维，没有得到有启发的信息；随后尝试调参（Batchsize、Lr）、解冻Transformer参数来观察<code>GrabMyo</code>上的效果</li>
+<li>利用t-SNE进行降维，没有得到有启发的信息；随后尝试调参（Batchsize、Lr）、解冻Transformer参数来观察<code>GrabMyo</code>上的效果</li>
 <li>阅读综述及相关论文</li>
-<li>改小训练集，重新训练<code>Grabmyo</code></li>
+<li>改小训练集，重新训练<code>Grabmyo</code>，效果都不是太好</li>
+</ol>
+<p><strong>9月9日~9月13日</strong></p>
+<ol type="1">
+<li>阅读EASE</li>
 </ol>
 <h1 id="一相关工作">一、相关工作</h1>
 <ol type="1">
@@ -336,18 +341,19 @@
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2403.14735">Foundation Models for Time Series Analysis: A Tutorial and Survey</a></li>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2401.16386">Continual Learning with Pre-Trained Models: A Survey</a></li>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.07338">SimpleCIL &amp; APER：Revisiting Class-Incremental Learning with Pre-Trained Models: Generalizability and Adaptivity are All You Need</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2403.12030">APER的升级：Expandable Subspace Ensemble for Pre-Trained Model-Based Class-Incremental Learning</a></li>
 </ol>
-<h2 id="simplecil-aper">4、SimpleCIL &amp; APER</h2>
+<h2 id="simplecil-aper">1.4 SimpleCIL &amp; APER</h2>
 <figure>
 <img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/APER.png" srcset="/img/loading.gif" lazyload alt="APER框架"><figcaption aria-hidden="true">APER框架</figcaption>
 </figure>
-<h3 id="表示">4.1 表示</h3>
+<h3 id="表示">1.4.1 表示</h3>
 <ul>
 <li>训练任务：<span class="math inline">\(\{\mathcal D^1,\mathcal D^2,\cdots,\mathcal D^b\}\)</span></li>
 <li>Prototype：<span class="math inline">\({\rm p_i}=\frac{1}{K}\sum\limits_{j=1}^{|\mathcal D^b|}\mathbb I(y_j=i)\phi(x_j)，K=\sum\limits_{j=1}^{|\mathcal D^b|}\mathbb I(y_j=i)，\mathbb I(\cdot)\)</span>为示性函数</li>
 <li>分类器：<span class="math inline">\(f(x)=W^T\phi(x)，\phi(\cdot)\)</span>为embedding函数，<span class="math inline">\(W\in\mathbb R^{d\times |y_b|}\)</span>是分类头</li>
 </ul>
-<h3 id="算法">4.2 算法</h3>
+<h3 id="算法">1.4.2 算法</h3>
 <p><img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/APER算法.png" srcset="/img/loading.gif" lazyload></p>
 <ol type="1">
 <li><p>PTM添加parameter-efficient module后在<span class="math inline">\(\mathcal D^1\)</span>上微调得到AdaPTM</p>
@@ -362,10 +368,10 @@
 </blockquote></li>
 </ul></li>
 <li><p>将PTM和AdaPTM的embedding层冻结（只训练分了里头和AdaModule里的参数）</p></li>
-<li><p>对于每一个任务，计算其数据的Prototype并替代分类头的权重</p></li>
+<li><p>对于每一个任务，计算其数据的Prototype并替代分类头的权重：<span class="math inline">\({\rm p_i}=\frac{1}{K}\sum\limits_{j=1}^{|\mathcal D^b|}\mathbb I(y_j=i)[\phi^{*}(x_j),\phi(x_j)]\)</span></p></li>
 <li><p>通过计算余弦相似度来获得分类结果</p></li>
 </ol>
-<h3 id="adapt方法aper框架图的中右部分">4.3 Adapt方法（APER框架图的中、右部分）</h3>
+<h3 id="adapt方法aper框架图的中右部分">1.4.3 Adapt方法（APER框架图的中、右部分）</h3>
 <ul>
 <li>Visual Prompt Tuning（VPT）：适合于ViT
 <ul>
@@ -376,9 +382,66 @@
 <li>Adapter：<span class="math inline">\({\rm MLP}(x_l)+{\rm RELU}(x_{l}W_{down})W_{up}\)</span></li>
 <li>Batch Normalization Tuning：适合于CNN-based模型</li>
 </ul>
-<h3 id="实验结果">4.4 实验结果</h3>
+<h3 id="实验结果">1.4.4 实验结果</h3>
 <p><img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/APER消融.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/APER结果.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="aper的升级ease">1.5 APER的升级：EASE</h2>
+<h3 id="简介">1.5.1 简介</h3>
+<ul>
+<li>前人工作的缺陷：对于L2P而言，其中一个缺点是Prompt会随着更新而遗忘先前的知识</li>
+<li>本篇工作的改进：“拓展子空间“将先前子空间（Subspace，可理解为某任务所映射到的空间）的Prototype映射到本任务的子空间，从而减少遗忘
+<ul>
+<li>个人理解：SimpleCIL利用PTM作为编码器，从而获得Prototype向量，然而该编码器未必有很好的效果；本篇工作通过在Transformer中加入Adapter层实现参数高效微调，从而优化编码效果，得到更好的Prototype向量；最终分类的原理通SimpleCIL，都是对Prototype计算余弦相似度。</li>
+</ul></li>
+</ul>
+<h3 id="模型">1.5.2 模型</h3>
+<p><img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/EASE.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>定义任务：<span class="math inline">\(\{\mathcal D^1,\mathcal D^2,\cdots,\mathcal D^B\}\)</span>，共有B个任务，每个任务可能包含多个类别，不同任务中的类别不同</p></li>
+<li><p>Adapter层：加在PTM内Transformer的MLP旁，记为<span class="math inline">\(\mathcal A\)</span>，每一个任务都初始化一个Adapter层，即一个<mark>子空间</mark>（Subspace）。具体形式：<span class="math inline">\(x_o=\sigma(x_iW_{down})W_{up}+{\rm MLP}(X_i)，\sigma(\cdot)\)</span>为非线性激活函数，将使用Adapter层的embedding函数记为<span class="math inline">\(\phi(x;\mathcal A)\)</span></p></li>
+<li><p>定义子空间<span class="math inline">\(b\)</span>（也可以说任务b对应的子空间）中第<span class="math inline">\(i\)</span>类的Prototype：<span class="math inline">\(p_{i,b}=\frac{1}{N}\sum\limits_{j=1}^{|\mathcal D^b|}\mathbb I(y_j=i)\phi(x_j;\mathcal A_b)\)</span>，N为第i类的样本数量</p></li>
+<li><p>定义某样本的embedding：<span class="math inline">\(\Phi(x)=[\phi (x;\mathcal A_1),\cdots,\phi (x;\mathcal A_b)]\in \mathbb R^{bd}\)</span>，即样本<span class="math inline">\(x\)</span>在所有子空间的embedding拼接</p></li>
+<li><p>定义类别<span class="math inline">\(i\)</span>的分类器：<span class="math inline">\(\mathcal P_i=[p_{i,1},p_{i,2},\cdots,p_{i,b}]\in \mathbb R^{bd}\)</span>，即类别<span class="math inline">\(i\)</span>在所有子空间的Prototype向量的拼接</p></li>
+<li><p>定义任务b的Prototype：<span class="math inline">\({\rm P}_{1,1}={\rm Concat}[p_{1,1};\cdots p_{|y_1|,1}] \in \mathbb R^{|y_1|\times d}\)</span>，下标中的前一个‘1’代表第几个任务，后一个‘1’代表第几个子空间；即第一个任务在第一个子空间的Prototype可以用第一个任务中所有样本在第一个子空间的Prototype拼接来表示</p>
+<ul>
+<li>同理我们可以得到<span class="math inline">\({\rm P}_{2,1}={\rm Concat}[p_{2,1};\cdots p_{|y_2|,1}] \in \mathbb R^{|y_2|\times d}\)</span>和<span class="math inline">\({\rm P}_{2,2}={\rm Concat}[p_{2,2};\cdots p_{|y_2|,2}] \in \mathbb R^{|y_2|\times d}\)</span>。但是我们不能<mark>直接</mark>得到第一个任务在第二个子空间的Prototype，作者认为是Prototype和embedding间维度的不一致。（这个我没想明白，我觉得一个合理的原因是没有保留第一任务的样本，从而无法计算）</li>
+<li>因此，作者提出了Semantic Guided Prototype Complement，即基于<span class="math inline">\({\rm P}_{o,o},{\rm P}_{n,o},{\rm P}_{n,n}\)</span>估计<span class="math inline">\({\rm P}_{o,n}\)</span>，其中前两个向量被称作共现空间（co-occurence space）,前一个角标的<span class="math inline">\(o,n\)</span>分别代表<mark>旧类别、新类别</mark>，后一个代表旧子空间、新子空间</li>
+</ul></li>
+<li><p>定义相似度（可以类比为两向量的点积）： 
+  $$
+  {\rm Sim}_{i,j}=\frac{ {\rm P}_{o,o}[i]}{ {\Vert {\rm P}_{o,o} \Vert}_2}\frac{ {\rm P}_{n,o}[j]}{  {\Vert {\rm P}_{n,o} \Vert}_2}
+  $$
+  </p></li>
+<li><p>进一步归一化，可以理解为<span class="math inline">\(i\)</span>对<span class="math inline">\(j\)</span>的相似度（<mark>原文的分母下标用的是<span class="math inline">\(j\)</span>，这里改成了<span class="math inline">\(k\)</span></mark>）： 
+  $$
+  {\rm Sim}_{i,j}=\frac{e^{{\rm Sim}_{i,j}}}{\sum \limits_k e^{{\rm Sim}_{i,k}} }
+  $$
+  </p></li>
+<li><p>最终有（可以理解为<span class="math inline">\({\rm P}_{o,o}[i]\)</span>和<span class="math inline">\({\rm P}_{n,o}[j]\)</span>之间的关系在<span class="math inline">\({\rm P}_{o,n}[i]\)</span>和<span class="math inline">\({\rm P}_{n,n}[j]\)</span>间也适用：</p>
+
+  $$
+  {\rm P}_{o,n}[i]=\sum \limits_j {\rm  Sim}_{i,j}\times {\rm P}_{n,n}[j]
+  $$
+  </li>
+<li><p>补全矩阵有：</p>
+
+  $$
+  \begin{bmatrix}  
+    \rm P_{1,1}& \rm P_{1,2}& \cdots  & \rm P_{1,B} \\  
+    \rm P_{2,1}& \rm P_{2,2}& \cdots  & \rm P_{2,B} \\  
+    \vdots & \vdots & \ddots & \vdots \\  
+    \rm P_{B,1}& \rm P_{B,2}& \cdots  & \rm P_{B,B}  
+  \end{bmatrix}
+  $$
+  </li>
+<li><p>计算任务b中输入的embedding：</p>
+
+  $$
+  \left[\mathbf{P}_{b, 1}, \mathbf{P}_{b, 2}, \cdots, \mathbf{P}_{b, B}\right]^{\top} \Phi(\mathbf{x})=\sum_{i} \mathbf{P}_{b, i}^{\top} \phi\left(\mathbf{x} ; \mathcal{A}_{i}\right)
+  $$
+
+​	</li>
+</ul>
 <h1 id="二moment">二、MOMENT</h1>
 <h2 id="测试代码">2.1 测试代码</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br>sys.path.append(<span class="hljs-string">&quot;/home/eee/zym/&quot;</span>)<br>sys.path.append(<span class="hljs-string">&quot;/home/eee/zym/TSCIL/&quot;</span>)<br>sys.path.append(<span class="hljs-string">&quot;/home/eee/zym/TSCIL/utils/&quot;</span>)<br><br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> torch <span class="hljs-keyword">import</span> nn<br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt <br><span class="hljs-keyword">from</span> momentfm <span class="hljs-keyword">import</span> MOMENTPipeline<br><span class="hljs-keyword">from</span> torch.optim <span class="hljs-keyword">import</span> lr_scheduler<br><span class="hljs-keyword">from</span> EarlyStop <span class="hljs-keyword">import</span> EarlyStopping<br><span class="hljs-keyword">from</span> torch.utils.data <span class="hljs-keyword">import</span> DataLoader,Dataset<br><span class="hljs-keyword">from</span> stream <span class="hljs-keyword">import</span> IncrementalTaskStream,get_cls_order<br>device = torch.device(<span class="hljs-string">&quot;cuda&quot;</span> <span class="hljs-keyword">if</span> torch.cuda.is_available() <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;cpu&quot;</span>)<br>DATA=<span class="hljs-string">&quot;wisdm&quot;</span><br><span class="hljs-comment"># [&#x27;har&#x27;, &#x27;uwave&#x27;, &#x27;dailysports&#x27;, &#x27;grabmyo&#x27;, &#x27;wisdm&#x27;,&#x27;ninapro&#x27;, &#x27;sines&#x27;]</span><br><span class="hljs-comment"># ============================初始化MOMENT============================</span><br>model = MOMENTPipeline.from_pretrained(<br>    <span class="hljs-string">&quot;AutonLab/MOMENT-1-large&quot;</span>, <br>    model_kwargs=&#123;<br>        <span class="hljs-string">&#x27;task_name&#x27;</span>: <span class="hljs-string">&#x27;classification&#x27;</span>,<br>        <span class="hljs-string">&#x27;n_channels&#x27;</span>: <span class="hljs-number">3</span>,<br>        <span class="hljs-string">&#x27;num_class&#x27;</span>: <span class="hljs-number">18</span>,<br>        <span class="hljs-string">&#x27;freeze_encoder&#x27;</span>: <span class="hljs-literal">True</span>, <span class="hljs-comment"># Freeze the patch embedding layer</span><br>        <span class="hljs-string">&#x27;freeze_embedder&#x27;</span>: <span class="hljs-literal">True</span>, <span class="hljs-comment"># Freeze the transformer encoder</span><br>        <span class="hljs-string">&#x27;freeze_head&#x27;</span>: <span class="hljs-literal">False</span>, <span class="hljs-comment"># The linear forecasting head must be trained</span><br>    &#125;, <br>   )<br>model.init()<br>model.to(device)<br><br><span class="hljs-comment"># ============================获取数据集============================</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDataset</span>(<span class="hljs-title class_ inherited__">Dataset</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, data, targets</span>):<br>        <span class="hljs-variable language_">self</span>.data = data<br>        <span class="hljs-variable language_">self</span>.targets = targets<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__len__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.data)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self, idx</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.data[idx], <span class="hljs-variable language_">self</span>.targets[idx]<br><br>cls_order = get_cls_order(DATA, <span class="hljs-literal">False</span>)<br>task_stream = IncrementalTaskStream(data=DATA, scenario=<span class="hljs-string">&#x27;class&#x27;</span>, cls_order=cls_order,split=<span class="hljs-string">&#x27;all&#x27;</span>)<br>(x_train, y_train), (x_val, y_val), (x_test, y_test) = task_stream.setup_offline()<br>x_train,x_val,x_test=np.transpose(x_train,(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)),np.transpose(x_val,(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)),np.transpose(x_test,(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>))<br><br>train_dataloader = DataLoader(MyDataset(x_train,y_train), batch_size=<span class="hljs-number">64</span>, num_workers=<span class="hljs-number">4</span>,pin_memory=<span class="hljs-literal">True</span>,shuffle=<span class="hljs-literal">True</span>)<br>val_dataloader = DataLoader(MyDataset(x_val,y_val), batch_size=<span class="hljs-number">64</span>, num_workers=<span class="hljs-number">4</span>,pin_memory=<span class="hljs-literal">True</span>,shuffle=<span class="hljs-literal">True</span>)<br>test_dataloader = DataLoader(MyDataset(x_test,y_test), batch_size=<span class="hljs-number">64</span>, num_workers=<span class="hljs-number">4</span>,pin_memory=<span class="hljs-literal">True</span>,shuffle=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># ============================超参数设置============================</span><br>criterion = nn.CrossEntropyLoss()<br>optimizer = torch.optim.Adam(model.parameters(), lr=<span class="hljs-number">1e-3</span>)<br>scheduler=lr_scheduler.StepLR(optimizer, step_size=<span class="hljs-number">1</span>, gamma=<span class="hljs-number">0.95</span>)<br><br><br>EPOCH = <span class="hljs-number">100</span><br>patience=<span class="hljs-number">20</span><br>Acc,Loss,ValidLoss=[],[],[]<br><br><span class="hljs-comment"># ============================画图函数============================</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Draw</span>(<span class="hljs-params">X,Y,Z</span>):<br>    plt.plot(X,Y,linestyle=<span class="hljs-string">&#x27;--&#x27;</span>,label=<span class="hljs-string">&#x27;loss&#x27;</span>)<br>    plt.plot(X,Z,label=<span class="hljs-string">&quot;acc&quot;</span>)<br>    plt.legend()<br>    plt.savefig(<span class="hljs-string">f&#x27;./<span class="hljs-subst">&#123;DATA&#125;</span>_res.png&#x27;</span>) <br><br><br><br><span class="hljs-comment"># ===============================定义测试函数=========================</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">epoch,mode</span>):<br>    <span class="hljs-keyword">if</span> mode==<span class="hljs-string">&#x27;test&#x27;</span>:dataloader=test_dataloader<br>    <span class="hljs-keyword">elif</span> mode==<span class="hljs-string">&quot;val&quot;</span>:dataloader=val_dataloader<br><br>    model.<span class="hljs-built_in">eval</span>()<br>    correct,total,Validloss=<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span><br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        <span class="hljs-keyword">for</span> data,label <span class="hljs-keyword">in</span> dataloader:<br>            output = model(data.to(torch.<span class="hljs-built_in">float</span>).to(device))<br>            Validloss+= criterion(output.logits, label.to(device))<br>            _, predicted = torch.<span class="hljs-built_in">max</span>(output.logits, dim=<span class="hljs-number">1</span>) <br>            total += label.size(<span class="hljs-number">0</span>)  <span class="hljs-comment"># 张量之间的比较运算</span><br>            correct += (predicted == label.to(device)).<span class="hljs-built_in">sum</span>().item()<br>        acc = correct / total<br>        ValidLoss.append(Validloss/<span class="hljs-built_in">len</span>(dataloader))<br>        <span class="hljs-keyword">if</span> mode==<span class="hljs-string">&#x27;val&#x27;</span>:<br>            Acc.append(acc)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;[%d / %d]: 验证集准确率: %.1f %% &#x27;</span> % (epoch+<span class="hljs-number">1</span>, EPOCH, <span class="hljs-number">100</span> * acc)) <br>        <span class="hljs-keyword">else</span>:<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;测试集准确率: %.1f %% &#x27;</span> % (<span class="hljs-number">100</span> * acc))<br>    <br><br><br><span class="hljs-comment"># ===============================训练=========================</span><br>early_stopping = EarlyStopping(patience=patience, verbose=<span class="hljs-literal">True</span>)<br><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(EPOCH):<br>    model.train()<br>    EpochLoss=<span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> data,label <span class="hljs-keyword">in</span> train_dataloader:<br><br>        <span class="hljs-comment"># forward [batch_size, n_channels, forecast_horizon]</span><br>        output = model(data.to(torch.<span class="hljs-built_in">float</span>).to(device))<br><br>        <span class="hljs-comment"># backward</span><br>        loss = criterion(output.logits, label.to(device))<br>        optimizer.zero_grad()<br>        loss.backward()<br>        optimizer.step()<br>        <br>        EpochLoss+=loss.item()<br>    Loss.append(EpochLoss/<span class="hljs-built_in">len</span>(train_dataloader))<br>    scheduler.step()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;学习率:<span class="hljs-subst">&#123;scheduler.get_last_lr()[<span class="hljs-number">0</span>]:<span class="hljs-number">.5</span>f&#125;</span>&quot;</span>)<br>    test(_,<span class="hljs-string">&#x27;val&#x27;</span>)<br><br>    early_stopping(ValidLoss[-<span class="hljs-number">1</span>], model)<br>    <span class="hljs-keyword">if</span> early_stopping.early_stop:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Early stopping&quot;</span>)<br>        <span class="hljs-keyword">break</span><br><br>test(<span class="hljs-literal">None</span>,<span class="hljs-string">&#x27;test&#x27;</span>)<br>Draw([_+<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(Loss))],Loss,Acc)<br>torch.save(model,<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;DATA&#125;</span>_ckpt.pt&#x27;</span>)<br></code></pre></td></tr></table></figure>
@@ -429,7 +492,31 @@
 <td style="text-align: center;">concat（20%）/all</td>
 <td style="text-align: center;">64</td>
 <td style="text-align: center;">1e-3（0.95）</td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">6.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">concat（20%）/all</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">3e-4（0.95）</td>
+<td style="text-align: center;">10.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">concat（20%）/cls</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">3e-4（0.95）</td>
+<td style="text-align: center;">10.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">concat（20%）/cls</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">1e-4（0.95）</td>
+<td style="text-align: center;">11.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">concat（20%）/cls</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">3e-5（0.95）</td>
+<td style="text-align: center;">11.2</td>
 </tr>
 </tbody>
 </table>
