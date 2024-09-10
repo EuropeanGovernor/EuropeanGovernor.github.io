@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/grabmyo.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/wisdm.png">
 <meta property="article:published_time" content="2024-09-04T09:16:47.000Z">
-<meta property="article:modified_time" content="2024-09-10T08:47:02.821Z">
+<meta property="article:modified_time" content="2024-09-10T08:49:21.781Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -411,19 +411,24 @@
   $$
   {\rm Sim}_{i,j}=\frac{ {\rm P}_{o,o}[i]}{ {\Vert {\rm P}_{o,o} \Vert}_2}\frac{ {\rm P}_{n,o}[j]}{  {\Vert {\rm P}_{n,o} \Vert}_2}
   $$
-  </p></li>
+  </p>
+<ul>
 <li><p>进一步归一化，可以理解为<span class="math inline">\(i\)</span>对<span class="math inline">\(j\)</span>的相似度（<mark>原文的分母下标用的是<span class="math inline">\(j\)</span>，这里改成了<span class="math inline">\(k\)</span></mark>）： 
+
   $$
   {\rm Sim}_{i,j}=\frac{e^{{\rm Sim}_{i,j}}}{\sum \limits_k e^{{\rm Sim}_{i,k}} }
   $$
-  </p></li>
+  ​		</p></li>
 <li><p>最终有（可以理解为<span class="math inline">\({\rm P}_{o,o}[i]\)</span>和<span class="math inline">\({\rm P}_{n,o}[j]\)</span>之间的关系在<span class="math inline">\({\rm P}_{o,n}[i]\)</span>和<span class="math inline">\({\rm P}_{n,n}[j]\)</span>间也适用：</p>
+
 
   $$
   {\rm P}_{o,n}[i]=\sum \limits_j {\rm  Sim}_{i,j}\times {\rm P}_{n,n}[j]
   $$
-  </li>
+
+  ​		</li>
 <li><p>补全矩阵有：</p>
+
 
   $$
   \begin{bmatrix}  
@@ -433,14 +438,17 @@
     \rm P_{B,1}& \rm P_{B,2}& \cdots  & \rm P_{B,B}  
   \end{bmatrix}
   $$
-  </li>
+
+  ​		</li>
 <li><p>计算任务b中输入的embedding：</p>
+
 
   $$
   \left[\mathbf{P}_{b, 1}, \mathbf{P}_{b, 2}, \cdots, \mathbf{P}_{b, B}\right]^{\top} \Phi(\mathbf{x})=\sum_{i} \mathbf{P}_{b, i}^{\top} \phi\left(\mathbf{x} ; \mathcal{A}_{i}\right)
   $$
 
-​	</li>
+​			</li>
+</ul></li>
 </ul>
 <h1 id="二moment">二、MOMENT</h1>
 <h2 id="测试代码">2.1 测试代码</h2>
