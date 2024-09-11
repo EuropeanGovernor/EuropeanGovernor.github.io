@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/grabmyo.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/wisdm.png">
 <meta property="article:published_time" content="2024-09-04T09:16:47.000Z">
-<meta property="article:modified_time" content="2024-09-10T08:49:21.781Z">
+<meta property="article:modified_time" content="2024-09-10T09:11:41.187Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.1k 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          17 分钟
+          18 分钟
         
       </span>
     
@@ -440,14 +440,22 @@
   $$
 
   ​		</li>
-<li><p>计算任务b中输入的embedding：</p>
-
+</ul></li>
+<li><p>计算任务b中输入<span class="math inline">\(x\)</span>在第<span class="math inline">\(i\)</span>个Adapter层的embedding与任务b在子空间<span class="math inline">\(i\)</span>的Prototype的乘积：</p>
 
   $$
   \left[\mathbf{P}_{b, 1}, \mathbf{P}_{b, 2}, \cdots, \mathbf{P}_{b, B}\right]^{\top} \Phi(\mathbf{x})=\sum_{i} \mathbf{P}_{b, i}^{\top} \phi\left(\mathbf{x} ; \mathcal{A}_{i}\right)
   $$
+  
+<ul>
+<li><p>但因为任务b最主要学习的特征存放在第<span class="math inline">\(b\)</span>个Adapter层，因此进行加权：</p>
 
-​			</li>
+
+  $$
+  \mathbf{P}_{b, b}^{\top} \phi\left(\mathbf{x} ; \mathcal{A}_{b}\right)+\alpha \sum_{i \neq b} \mathbf{P}_{b, i}^{\top} \phi\left(\mathbf{x} ; \mathcal{A}_{i}\right)
+  $$
+
+​		      </li>
 </ul></li>
 </ul>
 <h1 id="二moment">二、MOMENT</h1>
