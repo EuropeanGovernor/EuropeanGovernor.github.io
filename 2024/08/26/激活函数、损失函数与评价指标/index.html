@@ -19,26 +19,26 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、Auto-encoder vs Auto-regressive 从预训练模型的角度上来看，两者的模型结构可能是一样的，不同的是预训练的方式  自编码模型：预训练时可以看到上下文信息，指BERT等；广义来讲是自编码器（AE），包含VAE 自回归模型：预训练时只能看到上文或者下文，指GPT、ELMO等；广义来讲就是利用过去观测值预测未来值的模型，也包含RNN、LSTM  参考">
+    <meta name="description" content="1、激活函数  sigmoid：\(\sigma(x)&#x3D;\frac{1}{1+e^{-x}}\)  \(\rm max\{\sigma&#39;(x)\}&#x3D;0.25&lt;1\)，容易出现梯度消失 输出均值不为0，导致收敛变慢 ​ 非零均值？激活函数也太硬核了 ​ 谈谈激活函数以0为中心 的问题  ReLU Tanh：\({\rm tanh(x)}&#x3D;\frac{e^x-e^">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大模型架构、KV Cache、Scaling Law与涌现">
-<meta property="og:url" content="https://europeangovernor.github.io/2024/09/02/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:title" content="激活函数、损失函数与评价指标">
+<meta property="og:url" content="https://europeangovernor.github.io/2024/08/26/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E3%80%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%8E%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="1、Auto-encoder vs Auto-regressive 从预训练模型的角度上来看，两者的模型结构可能是一样的，不同的是预训练的方式  自编码模型：预训练时可以看到上下文信息，指BERT等；广义来讲是自编码器（AE），包含VAE 自回归模型：预训练时只能看到上文或者下文，指GPT、ELMO等；广义来讲就是利用过去观测值预测未来值的模型，也包含RNN、LSTM  参考">
+<meta property="og:description" content="1、激活函数  sigmoid：\(\sigma(x)&#x3D;\frac{1}{1+e^{-x}}\)  \(\rm max\{\sigma&#39;(x)\}&#x3D;0.25&lt;1\)，容易出现梯度消失 输出均值不为0，导致收敛变慢 ​ 非零均值？激活函数也太硬核了 ​ 谈谈激活函数以0为中心 的问题  ReLU Tanh：\({\rm tanh(x)}&#x3D;\frac{e^x-e^">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8aba45c21032e2d07fd783070ad8483a.png">
-<meta property="article:published_time" content="2024-09-02T07:48:05.000Z">
-<meta property="article:modified_time" content="2024-09-17T06:08:46.623Z">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/d7a4b71d1f2393e35df6988fd990c2d9.jpeg">
+<meta property="article:published_time" content="2024-08-26T02:55:56.000Z">
+<meta property="article:modified_time" content="2024-09-18T14:17:19.705Z">
 <meta property="article:author" content="Michael Zhang">
-<meta property="article:tag" content="大模型">
-<meta property="article:tag" content="编码器">
-<meta property="article:tag" content="解码器">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="激活函数">
+<meta property="article:tag" content="损失函数">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/8aba45c21032e2d07fd783070ad8483a.png">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/d7a4b71d1f2393e35df6988fd990c2d9.jpeg">
   
   
   
-  <title>大模型架构、KV Cache、Scaling Law与涌现 - Bambi的自留地</title>
+  <title>激活函数、损失函数与评价指标 - Bambi的自留地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="大模型架构、KV Cache、Scaling Law与涌现"></span>
+            <span id="subtitle" data-typed-text="激活函数、损失函数与评价指标"></span>
           
         </div>
 
@@ -228,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-02 15:48" pubdate>
-          2024年9月2日 下午
+        <time datetime="2024-08-26 10:55" pubdate>
+          2024年8月26日 上午
         </time>
       </span>
     
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          294 字
+          266 字
         
       </span>
     
@@ -297,42 +297,52 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">大模型架构、KV Cache、Scaling Law与涌现</h1>
+            <h1 id="seo-header">激活函数、损失函数与评价指标</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
-<h1 id="auto-encoder-vs-auto-regressive">1、Auto-encoder vs Auto-regressive</h1>
-<p>从预训练模型的角度上来看，两者的模型结构可能是一样的，不同的是预训练的方式</p>
-<ul>
-<li>自编码模型：预训练时可以看到上下文信息，指BERT等；广义来讲是自编码器（AE），包含VAE</li>
-<li>自回归模型：预训练时只能看到上文或者下文，指GPT、ELMO等；广义来讲就是利用过去观测值预测未来值的模型，也包含RNN、LSTM</li>
-</ul>
-<p><strong>参考</strong></p>
+<h1 id="激活函数">1、激活函数</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43301333/article/details/128141716?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170848482516800222831072%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=170848482516800222831072&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-1-128141716-null-null.nonecase&amp;utm_term=encoder&amp;spm=1018.2226.3001.4450">Transformer Encoder-Decoer 结构回顾</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/AudreyXu/p/17197943.html">自回归和自编码有什么区别？</a></li>
+<li><p><code>sigmoid</code>：<span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(\rm max\{\sigma&#39;(x)\}=0.25&lt;1\)</span>，容易出现梯度消失</p></li>
+<li><p>输出均值不为0，导致收敛变慢</p>
+<p>​ <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1829621">非零均值？激活函数也太硬核了</a></p>
+<p>​ <a target="_blank" rel="noopener" href="https://liam.page/2018/04/17/zero-centered-active-function/">谈谈激活函数以0为中心 的问题</a></p></li>
+</ul></li>
+<li><p><code>ReLU</code></p></li>
+<li><p><code>Tanh</code>：<span class="math inline">\({\rm tanh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}\)</span></p>
+<ul>
+<li>容易出现梯度消失</li>
+<li>zero-centered，比<code>sigmoid</code>收敛速度快</li>
+</ul></li>
 </ol>
-<h1 id="大模型架构">2、大模型架构</h1>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/8aba45c21032e2d07fd783070ad8483a.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="损失函数">2、损失函数</h1>
+<h1 id="评价指标">3、评价指标</h1>
+<h2 id="混淆矩阵-confusion-matrix">3.1 混淆矩阵 Confusion Matrix</h2>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d7a4b71d1f2393e35df6988fd990c2d9.jpeg" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>Encoder-Decoder（T5）</li>
-<li>Decoder Only（GPT）：在各种下游任务上zero-shot泛化性能最好，few-shot（上下文学习）泛化能力更强
-<ul>
-<li>预训练任务：Next Token Prediction（任务更难，在数据足够多时，模型学习通用表征的上限更高）</li>
-</ul></li>
-<li>Encoder Only（BERT）：预训练任务只包含分类和预测，不擅长生成任务
-<ul>
-<li>预训练任务：MLM（预测mask），NSP（句子二分类）</li>
-</ul></li>
-<li>Prefix LM（GLM）</li>
+<li><p>精确率 Accuracy：评估模型总体，当数据分布不均衡时失效 <span class="math display">\[
+{\rm Acc=\frac{TP+TF}{TP+TF+FT+FP}}
+\]</span></p></li>
+<li><p>F1分数 F1-score：评估模型总体，适合数据分布不均衡时，是正确率和召回率的调和平均数 <span class="math display">\[
+{\rm F1=2\cdot\frac{Precision\times Recall}{Precision+Recall}}
+\]</span></p></li>
+<li><p>准确率 Precision：模型识别为正类的样本中，真正为正类的样本有多少 <span class="math display">\[
+{\rm Precision=\frac{TP}{TP+FP}}
+\]</span></p></li>
+<li><p>召回率 Recall/灵敏度 Sensitivity：正类的样本中，被识别出来的有多少 <span class="math display">\[
+{\rm Recall=\frac{TP}{TP+FN}}
+\]</span></p></li>
+<li><p>特异度 Specificity： <span class="math display">\[
+{\rm Specificity=\frac{TN}{FP+TN}}
+\]</span></p></li>
 </ul>
-<p><strong>参考</strong></p>
-<ol type="1">
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/588325646/answer/2940298964">为什么现在的LLM都是Decoder only的架构？ - 苏剑林的回答 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/588325646/answer/3357252612">为什么现在的LLM都是Decoder only的架构？ - Sam多吃青菜的回答 - 知乎</a></li>
-</ol>
+<h2 id="auc-roc">3.2 AUC-ROC</h2>
+<h1 id="参考">4、参考</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/seagal890/article/details/105059498">[机器学习笔记] 混淆矩阵（Confusion Matrix）</a></p>
 
                 
               </div>
@@ -366,11 +376,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="print-no-link">#大模型</a>
+        <a href="/tags/%E9%9D%A2%E7%BB%8F/" class="print-no-link">#面经</a>
       
-        <a href="/tags/%E7%BC%96%E7%A0%81%E5%99%A8/" class="print-no-link">#编码器</a>
+        <a href="/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" class="print-no-link">#激活函数</a>
       
-        <a href="/tags/%E8%A7%A3%E7%A0%81%E5%99%A8/" class="print-no-link">#解码器</a>
+        <a href="/tags/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" class="print-no-link">#损失函数</a>
       
     </div>
   
@@ -382,8 +392,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>大模型架构、KV Cache、Scaling Law与涌现</div>
-      <div>https://europeangovernor.github.io/2024/09/02/大模型架构/</div>
+      <div>激活函数、损失函数与评价指标</div>
+      <div>https://europeangovernor.github.io/2024/08/26/激活函数、损失函数与评价指标/</div>
     </div>
     <div class="license-meta">
       
@@ -395,7 +405,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月2日</div>
+          <div>2024年8月26日</div>
         </div>
       
       
@@ -427,9 +437,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/04/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="哈希表">
+                      <a href="/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/" title="归一化">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">哈希表</span>
+                        <span class="hidden-mobile">归一化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -437,8 +447,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/29/Pytorch%E5%8A%A0%E9%80%9F%E8%AE%AD%E7%BB%83/" title="Pytorch加速训练MNIST">
-                        <span class="hidden-mobile">Pytorch加速训练MNIST</span>
+                      <a href="/2024/08/24/Transformer/" title="Transformer">
+                        <span class="hidden-mobile">Transformer</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -526,6 +536,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -744,6 +760,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

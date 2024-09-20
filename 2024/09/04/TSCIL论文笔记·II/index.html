@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/grabmyo.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/wisdm.png">
 <meta property="article:published_time" content="2024-09-04T09:16:47.000Z">
-<meta property="article:modified_time" content="2024-09-14T12:15:31.457Z">
+<meta property="article:modified_time" content="2024-09-19T11:53:09.898Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="类增量学习">
@@ -471,13 +471,13 @@
 <ul>
 <li><p>前人工作的缺陷：对于NCM（即利用CP）而言，类与类之间存在一定的相关性，的相关系数会很高</p>
 <figure>
-<img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/缺陷.png" srcset="/img/loading.gif" lazyload alt="左图为不同类间相似度与真实相似度，右图为皮尔逊相关系数"><figcaption aria-hidden="true">左图为不同类间相似度与真实相似度，右图为皮尔逊相关系数</figcaption>
+<img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/缺陷.png" srcset="/img/loading.gif" lazyload alt="左图为CP和feature vector的相似度，右图为皮尔逊相关系数"><figcaption aria-hidden="true">左图为CP和feature vector的相似度，右图为皮尔逊相关系数</figcaption>
 </figure></li>
 <li><p>本篇工作的改进：基于随机投影矩阵和Gram Matrix增加类与类之间的可分性</p>
 <ul>
 <li>高斯分布假设数据具有各向同性，而直接从预训练模型提取的特征可能不符合高斯分布</li>
 <li>随着随机投影的维度增加，输出更接近高斯分布，并且向量之间的内积会更大</li>
-<li>通过随机投影使其近似高斯分布后，使用LDA</li>
+<li>借助Gram实现类似LDA的算法，增加类与类之间的可分性</li>
 </ul></li>
 <li><p>本篇工作的问题：与传统方法比，随机投影矩阵参数开销很大；公式的运用需要强大的预训练模型编码器</p></li>
 </ul>
@@ -516,9 +516,11 @@ y_{\text {test }}=\underset{y^{\prime} \in\{1, \ldots, K\}}{\rm argmax }s_{y^{\p
 <li><p>预测结果Revised，其中<span class="math inline">\({\rm \mathbf{I}}\)</span>为单位矩阵，该项<span class="math inline">\(\lambda{\rm \mathbf{I}}\)</span>借助岭回归中正则化的思想，用来防止过拟合： <span class="math display">\[
 s_y = \phi({\rm f_{test}}^{\rm T}W)(\mathbf{G} + λ\mathbf{I})^{−1}c_y
 \]</span></p></li>
-<li><p>记公式的后半部分为<span class="math inline">\({\rm W_o}=(\mathbf{G} + λ\mathbf{I})^{−1}{\rm \mathbf{C}}\)</span>，则<span class="math inline">\({\rm y_{pred} = h_{test}W_o}\)</span></p></li>
 </ul></li>
 </ol>
+<ul>
+<li>记公式的后半部分为<span class="math inline">\({\rm W_o}=(\mathbf{G} + λ\mathbf{I})^{−1}{\rm \mathbf{C}}\)</span>，则<span class="math inline">\({\rm y_{pred} = h_{test}W_o}\)</span></li>
+</ul>
 <h3 id="结果">1.6.3 结果</h3>
 <p><img src="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/RanPAC结果.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="二moment">二、MOMENT</h1>

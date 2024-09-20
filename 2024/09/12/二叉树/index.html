@@ -19,17 +19,17 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="迭代简单理解就是可以通过循环来解决（for、while）， 而递归则是通过重复调用自身来解决问题；递归的时候隐式地维护了一个栈，而迭代的时候需要显式地将这个栈模拟出来 1、二叉树迭代遍历  144. Binary Tree Preorder Traversal 前序遍历每次先处理中间节点，先将根节点放入栈中，然后将右孩子、左孩子依次加入，这样出栈的时候才是中左右的顺序。  94.">
+    <meta name="description" content="迭代简单理解就是可以通过循环来解决（for、while）， 而递归则是通过重复调用自身来解决问题；递归的时候隐式地维护了一个栈，而迭代的时候需要显式地将这个栈模拟出来 1、二叉树的迭代遍历  144. Binary Tree Preorder Traversal 前序遍历每次先处理中间节点，先将根节点放入栈中，然后将右孩子、左孩子依次加入，这样出栈的时候才是中左右的顺序。  94.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/09/12/%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="迭代简单理解就是可以通过循环来解决（for、while）， 而递归则是通过重复调用自身来解决问题；递归的时候隐式地维护了一个栈，而迭代的时候需要显式地将这个栈模拟出来 1、二叉树迭代遍历  144. Binary Tree Preorder Traversal 前序遍历每次先处理中间节点，先将根节点放入栈中，然后将右孩子、左孩子依次加入，这样出栈的时候才是中左右的顺序。  94.">
+<meta property="og:description" content="迭代简单理解就是可以通过循环来解决（for、while）， 而递归则是通过重复调用自身来解决问题；递归的时候隐式地维护了一个栈，而迭代的时候需要显式地将这个栈模拟出来 1、二叉树的迭代遍历  144. Binary Tree Preorder Traversal 前序遍历每次先处理中间节点，先将根节点放入栈中，然后将右孩子、左孩子依次加入，这样出栈的时候才是中左右的顺序。  94.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://code-thinking.cdn.bcebos.com/gifs/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%EF%BC%88%E8%BF%AD%E4%BB%A3%E6%B3%95%EF%BC%89.gif">
 <meta property="og:image" content="https://code-thinking.cdn.bcebos.com/gifs/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%EF%BC%88%E8%BF%AD%E4%BB%A3%E6%B3%95%EF%BC%89.gif">
 <meta property="article:published_time" content="2024-09-12T03:15:56.000Z">
-<meta property="article:modified_time" content="2024-09-12T04:06:26.497Z">
+<meta property="article:modified_time" content="2024-09-19T02:48:17.673Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="力扣">
 <meta property="article:tag" content="二叉树">
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          225 字
+          647 字
         
       </span>
     
@@ -253,7 +253,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -306,7 +306,7 @@
                 
                 <meta name="referrer" content="no-referrer">
 <p>迭代简单理解就是可以通过循环来解决（for、while）， 而递归则是通过重复调用自身来解决问题；递归的时候隐式地维护了一个栈，而迭代的时候需要显式地将这个栈模拟出来</p>
-<h1 id="二叉树迭代遍历">1、二叉树迭代遍历</h1>
+<h1 id="二叉树的迭代遍历">1、二叉树的迭代遍历</h1>
 <ol type="1">
 <li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/">144. Binary Tree Preorder Traversal</a></p>
 <p>前序遍历每次先处理中间节点，先将根节点放入栈中，然后将右孩子、左孩子依次加入，这样出栈的时候才是中左右的顺序。</p>
@@ -317,7 +317,37 @@
 <li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-postorder-traversal/">145. Binary Tree Postorder Traversal</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 后续遍历的迭代</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">postorderTraversal</span>(<span class="hljs-params">self, root: TreeNode</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">list</span>()<br>        <br>        res = <span class="hljs-built_in">list</span>()<br>        stack = <span class="hljs-built_in">list</span>()<br>        prev = <span class="hljs-literal">None</span><br><br>        <span class="hljs-keyword">while</span> root <span class="hljs-keyword">or</span> stack:<br>            <span class="hljs-keyword">while</span> root:<br>                stack.append(root)<br>                root = root.left<br>            root = stack.pop()<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root.right <span class="hljs-keyword">or</span> root.right == prev:<br>                res.append(root.val)<br>                prev = root<br>                root = <span class="hljs-literal">None</span><br>            <span class="hljs-keyword">else</span>:<br>                stack.append(root)<br>                root = root.right<br>        <br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="二叉树层序遍历">2、二叉树层序遍历</h1>
+<h1 id="二叉树的层序遍历bfs">2、二叉树的层序遍历（BFS）</h1>
+<ul>
+<li><strong>方法</strong>：利用BFS，以下为模板，<mark>可以运用在许多题中</mark></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal/">102. Binary Tree Level Order Traversal</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">levelOrder</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root :<span class="hljs-keyword">return</span> []<br>    stack=[root]<br>    res=[]<br>    <span class="hljs-keyword">while</span>(stack):<br>        queue_len=<span class="hljs-built_in">len</span>(stack)<br>        layer=[]<br>        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(queue_len):<br>            temp=stack.pop(<span class="hljs-number">0</span>)<br>            layer.append(temp.val)<br>            <span class="hljs-keyword">if</span> temp.left:stack.append(temp.left)<br>            <span class="hljs-keyword">if</span> temp.right:stack.append(temp.right)<br>        res.append(layer)<br>    <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
+<h1 id="二叉树的深度与高度">3、二叉树的深度与高度</h1>
+<ul>
+<li>二叉树节点的深度：指从根节点到该节点的最长简单路径边的条数。</li>
+<li>二叉树节点的高度（只能后序遍历）：指从该节点到叶子节点的最长简单路径边的条数。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/balanced-binary-tree/">110. Balanced Binary Tree</a></p>
+<h1 id="bfs-dfs">4、BFS &amp; DFS</h1>
+<ul>
+<li>BFS需要靠队列实现，即迭代</li>
+<li>DFS既可以用递归，也可以用迭代</li>
+</ul>
+<h1 id="前序中序后序遍历dfs">5、前序、中序、后序遍历（DFS）</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106. Construct Binary Tree from Inorder and Postorder Traversal</a></p>
+<p>根据中序、后序递归构建二叉树时，注意到后序遍历结果是按<mark>左子树、右子树、根</mark>排列的，因此递归时先递归右子树，再递归左子树</p>
+<h1 id="二叉搜索树-bst">6、二叉搜索树 BST</h1>
+<ul>
+<li>其左子树中的所有节点的值都小于等于该节点的值，而其右子树中的所有节点的值都大于或等于该节点的值</li>
+<li>中序遍历二叉搜索树得到的关键码序列是一个递增序列</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/validate-binary-search-tree/">98. Validate Binary Search Tree</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-variable language_">self</span>.pre=-<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isValidBST</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:<span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.isValidBST(root.left):<span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">if</span> root.val&lt;=<span class="hljs-variable language_">self</span>.pre:<span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-variable language_">self</span>.pre=root.val<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.isValidBST(root.right)<br></code></pre></td></tr></table></figure>
+<h1 id="二叉树最近公共祖先">7、二叉树最近公共祖先</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/">236. Lowest Common Ancestor of a Binary Tree</a></p>
+<p>可以参考这种解法，非常简洁：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/solutions/240096/236-er-cha-shu-de-zui-jin-gong-gong-zu-xian-hou-xu/">二叉树的最近公共祖先（DFS ，清晰图解）</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lowestCommonAncestor</span>(<span class="hljs-params">self, root: <span class="hljs-string">&#x27;TreeNode&#x27;</span>, p: <span class="hljs-string">&#x27;TreeNode&#x27;</span>, q: <span class="hljs-string">&#x27;TreeNode&#x27;</span></span>) -&gt; <span class="hljs-string">&#x27;TreeNode&#x27;</span>:<br><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root <span class="hljs-keyword">or</span> root==p <span class="hljs-keyword">or</span> root==q:<span class="hljs-keyword">return</span> root<br><br>        left=<span class="hljs-variable language_">self</span>.lowestCommonAncestor(root.left,p,q)<br>        right=<span class="hljs-variable language_">self</span>.lowestCommonAncestor(root.right,p,q)<br><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> left:<span class="hljs-keyword">return</span> right<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> right:<span class="hljs-keyword">return</span> left<br>                <br>        <br>        <span class="hljs-keyword">return</span> root<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -413,6 +443,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/09/18/RNN%E3%80%81GRU%E4%B8%8ELSTM/" title="RNN、GRU与LSTM">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">RNN、GRU与LSTM</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
