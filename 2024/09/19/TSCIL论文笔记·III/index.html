@@ -19,25 +19,31 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="title: TSCIL论文笔记·III    date: 2024-09-19 19:50:43    tags:    - 论文    - 类增量学习    - 增量学习    - 在线学习    - 强化学习    - 微调    categories:    - 技术    typora">
+    <meta name="description" content="〇、时间线 9月19日  阅读有关时间序列在线增量学习的工作  一、相关工作  OneNet: Enhancing Time Series Forecasting Models under Concept Drift by Online Ensembling Learning Fast and Slow for Online Time Series Forecasting">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bambi的自留地">
+<meta property="og:title" content="TSCIL论文笔记·III">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="title: TSCIL论文笔记·III    date: 2024-09-19 19:50:43    tags:    - 论文    - 类增量学习    - 增量学习    - 在线学习    - 强化学习    - 微调    categories:    - 技术    typora">
+<meta property="og:description" content="〇、时间线 9月19日  阅读有关时间序列在线增量学习的工作  一、相关工作  OneNet: Enhancing Time Series Forecasting Models under Concept Drift by Online Ensembling Learning Fast and Slow for Online Time Series Forecasting">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/onenet%E8%A1%A8%E6%A0%BC.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/onenet.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/ocp.png">
-<meta property="article:published_time" content="2024-09-19T11:50:43.251Z">
-<meta property="article:modified_time" content="2024-09-20T05:16:00.999Z">
+<meta property="article:published_time" content="2024-09-19T11:50:43.000Z">
+<meta property="article:modified_time" content="2024-09-20T05:18:59.793Z">
 <meta property="article:author" content="Michael Zhang">
+<meta property="article:tag" content="论文">
+<meta property="article:tag" content="类增量学习">
+<meta property="article:tag" content="微调">
+<meta property="article:tag" content="增量学习">
+<meta property="article:tag" content="在线学习">
+<meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://europeangovernor.github.io/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/onenet%E8%A1%A8%E6%A0%BC.png">
   
   
   
-  <title>Bambi的自留地</title>
+  <title>TSCIL论文笔记·III - Bambi的自留地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +222,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="TSCIL论文笔记·III"></span>
           
         </div>
 
@@ -239,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          640 字
+          594 字
         
       </span>
     
@@ -250,7 +256,7 @@
         
         
         
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -296,68 +302,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">TSCIL论文笔记·III</h1>
             
             
               <div class="markdown-body">
                 
-                <table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>title: TSCIL论文笔记·III</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>date: 2024-09-19 19:50:43</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>tags:</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>- 论文</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>- 类增量学习</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>- 增量学习</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>- 在线学习</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>- 强化学习</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>- 微调</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>categories:</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>- 技术</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>typora-root-url: ./TSCIL论文笔记·III</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>math: true</td>
-</tr>
-</tbody>
-</table>
-<meta name="referrer" content="no-referrer">
+                <meta name="referrer" content="no-referrer">
 <h1 id="时间线">〇、时间线</h1>
 <p><strong>9月19日</strong></p>
 <ol type="1">
@@ -422,6 +372,44 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87/" class="print-no-link">#论文</a>
+      
+        <a href="/tags/%E7%B1%BB%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/" class="print-no-link">#类增量学习</a>
+      
+        <a href="/tags/%E5%BE%AE%E8%B0%83/" class="print-no-link">#微调</a>
+      
+        <a href="/tags/%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/" class="print-no-link">#增量学习</a>
+      
+        <a href="/tags/%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0/" class="print-no-link">#在线学习</a>
+      
+        <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="print-no-link">#强化学习</a>
+      
+    </div>
   
 </div>
 
@@ -431,7 +419,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>TSCIL论文笔记·III</div>
       <div>https://europeangovernor.github.io/2024/09/19/TSCIL论文笔记·III/</div>
     </div>
     <div class="license-meta">
@@ -569,6 +557,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -787,6 +781,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

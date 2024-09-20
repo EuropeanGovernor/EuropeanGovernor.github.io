@@ -4,13 +4,35 @@
   
   
   <entry>
-    <title></title>
+    <title>TSCIL论文笔记·III</title>
     <link href="/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/"/>
     <url>/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/</url>
     
-    <content type="html"><![CDATA[<table><tbody><tr class="odd"><td></td><td>title: TSCIL论文笔记·III</td></tr><tr class="even"><td></td><td>date: 2024-09-19 19:50:43</td></tr><tr class="odd"><td></td><td>tags:</td></tr><tr class="even"><td></td><td>- 论文</td></tr><tr class="odd"><td></td><td>- 类增量学习</td></tr><tr class="even"><td></td><td>- 增量学习</td></tr><tr class="odd"><td></td><td>- 在线学习</td></tr><tr class="even"><td></td><td>- 强化学习</td></tr><tr class="odd"><td></td><td>- 微调</td></tr><tr class="even"><td></td><td>categories:</td></tr><tr class="odd"><td></td><td>- 技术</td></tr><tr class="even"><td></td><td>typora-root-url: ./TSCIL论文笔记·III</td></tr><tr class="odd"><td></td><td>math: true</td></tr></tbody></table><meta name="referrer" content="no-referrer"><h1 id="时间线">〇、时间线</h1><p><strong>9月19日</strong></p><ol type="1"><li>阅读有关时间序列在线增量学习的工作</li></ol><h1 id="一相关工作">一、相关工作</h1><ol type="1"><li><a href="https://arxiv.org/abs/2309.12659">OneNet: Enhancing Time Series Forecasting Models under Concept Drift by Online Ensembling</a></li><li><a href="https://arxiv.org/abs/2202.11672">Learning Fast and Slow for Online Time Series Forecasting</a></li></ol><h2 id="onenet">1、OneNet</h2><h2 id="背景">1.1 背景</h2><ul><li><p>在线学习：对按序到达的数据进行学习，在每一步学习并更新未来数据的最佳预测值</p></li><li><p>遗憾/悔值 Regret &amp; 遗憾界：与离线学习最优损失之差的求和，用于评估在线学习的性能</p></li><li><p>概念漂移 Concept Shift：随着新数据的到来，数据整体的<mark>分布产生了变化</mark></p></li><li><p>指数加权平均 EWA：建模时间序列的一种方法，每个观测值权重是按照指数衰减的方式确定的，<mark>最近的观测值被赋予更高的权重</mark></p><ul><li>Slow Switch Phenomenon：对新到达的数据的Concept Shift会很慢适应</li></ul></li><li><p>指数梯度下降 EGD：借鉴EWA思想的用于在线学习的梯度下降方法，可以得到<mark>更小的遗憾界</mark></p></li><li><p>Cross-Time/Cross-Variable：假设变量独立，仅依赖时间/仅依赖变量（表：<mark>同时处理两种依赖性不能</mark>带来性能提升）</p><ul><li>变量独立性（Cross-Time）对于提高模型在概念漂移情况下的鲁棒性至关重要，Cross-Variable往往会过拟合；但缺乏变量间的信息在变量较少的数据集上效果不佳，如在ETT这些变量较少的数据集上，只考虑时间依赖效果不佳</li></ul><p><img src="/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/onenet表格.png"></p></li></ul><p><strong>参考</strong></p><ol type="1"><li><a href="https://welts.xyz/2022/02/28/online/">在线学习简介</a></li><li><a href="https://blog.csdn.net/weixin_47692652/article/details/128641345">在线学习(online learning)——Chapter 1 What is online learning</a></li><li><a href="https://www.lamda.nju.edu.cn/mlt2023/Slides/chapter_8.pdf">遗憾界</a></li></ol><h2 id="onenet-结构">1.2 OneNet 结构</h2><p><img src="/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/onenet.png"></p><ul><li>f1：Cross-Time预测器</li><li>f2：Cross-Variable预测器</li></ul><h3 id="proposition-1online-convex-programming-boundocp">1.2.1 Proposition 1：Online Convex Programming Bound（OCP）</h3><ul><li>之前工作的问题：EGD在好的表现和缓慢适应新样本的速度中存在trade-off</li><li>本篇工作的改进：将长期信息和短期信息结合，OCP的作用是通过这些信息对两种预测器的权重进行调整</li></ul><figure><img src="/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/ocp.png" alt="OCP的Regret Bound"><figcaption aria-hidden="true">OCP的Regret Bound</figcaption></figure><h3 id="proposition-2k-step-re-initialize-algorithm">1.2.2 Proposition 2：K-step re-initialize algorithm</h3><ul><li>使用EGD更新长时间信息对应的权重w；b对应短时间信息权重；利用强化学习框架RvS从w和短期内专家的表现中学习b</li></ul><h3 id="decoupled-strategies">1.2.3 Decoupled Strategies</h3><ul><li>Cross-Time预测器总比Cross-Variable表现好的时候，前者的权重会趋于1，损失函数对后者的梯度趋于0，从而不被训练。因此对于预测器和OCP的损失函数分别定义为<span class="math inline">\(\mathcal L(\widetilde{y}_1,y)+\mathcal L(\widetilde{y}_2,y)\)</span>和<span class="math inline">\(\mathcal L(w_1*\widetilde{y}_1+w_2*\widetilde{y}_2,y)\)</span></li></ul><h1 id="二">二、</h1>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="时间线">〇、时间线</h1><p><strong>9月19日</strong></p><ol type="1"><li>阅读有关时间序列在线增量学习的工作</li></ol><h1 id="一相关工作">一、相关工作</h1><ol type="1"><li><a href="https://arxiv.org/abs/2309.12659">OneNet: Enhancing Time Series Forecasting Models under Concept Drift by Online Ensembling</a></li><li><a href="https://arxiv.org/abs/2202.11672">Learning Fast and Slow for Online Time Series Forecasting</a></li></ol><h2 id="onenet">1、OneNet</h2><h2 id="背景">1.1 背景</h2><ul><li><p>在线学习：对按序到达的数据进行学习，在每一步学习并更新未来数据的最佳预测值</p></li><li><p>遗憾/悔值 Regret &amp; 遗憾界：与离线学习最优损失之差的求和，用于评估在线学习的性能</p></li><li><p>概念漂移 Concept Shift：随着新数据的到来，数据整体的<mark>分布产生了变化</mark></p></li><li><p>指数加权平均 EWA：建模时间序列的一种方法，每个观测值权重是按照指数衰减的方式确定的，<mark>最近的观测值被赋予更高的权重</mark></p><ul><li>Slow Switch Phenomenon：对新到达的数据的Concept Shift会很慢适应</li></ul></li><li><p>指数梯度下降 EGD：借鉴EWA思想的用于在线学习的梯度下降方法，可以得到<mark>更小的遗憾界</mark></p></li><li><p>Cross-Time/Cross-Variable：假设变量独立，仅依赖时间/仅依赖变量（表：<mark>同时处理两种依赖性不能</mark>带来性能提升）</p><ul><li>变量独立性（Cross-Time）对于提高模型在概念漂移情况下的鲁棒性至关重要，Cross-Variable往往会过拟合；但缺乏变量间的信息在变量较少的数据集上效果不佳，如在ETT这些变量较少的数据集上，只考虑时间依赖效果不佳</li></ul><p><img src="/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/onenet表格.png"></p></li></ul><p><strong>参考</strong></p><ol type="1"><li><a href="https://welts.xyz/2022/02/28/online/">在线学习简介</a></li><li><a href="https://blog.csdn.net/weixin_47692652/article/details/128641345">在线学习(online learning)——Chapter 1 What is online learning</a></li><li><a href="https://www.lamda.nju.edu.cn/mlt2023/Slides/chapter_8.pdf">遗憾界</a></li></ol><h2 id="onenet-结构">1.2 OneNet 结构</h2><p><img src="/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/onenet.png"></p><ul><li>f1：Cross-Time预测器</li><li>f2：Cross-Variable预测器</li></ul><h3 id="proposition-1online-convex-programming-boundocp">1.2.1 Proposition 1：Online Convex Programming Bound（OCP）</h3><ul><li>之前工作的问题：EGD在好的表现和缓慢适应新样本的速度中存在trade-off</li><li>本篇工作的改进：将长期信息和短期信息结合，OCP的作用是通过这些信息对两种预测器的权重进行调整</li></ul><figure><img src="/2024/09/19/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7III/ocp.png" alt="OCP的Regret Bound"><figcaption aria-hidden="true">OCP的Regret Bound</figcaption></figure><h3 id="proposition-2k-step-re-initialize-algorithm">1.2.2 Proposition 2：K-step re-initialize algorithm</h3><ul><li>使用EGD更新长时间信息对应的权重w；b对应短时间信息权重；利用强化学习框架RvS从w和短期内专家的表现中学习b</li></ul><h3 id="decoupled-strategies">1.2.3 Decoupled Strategies</h3><ul><li>Cross-Time预测器总比Cross-Variable表现好的时候，前者的权重会趋于1，损失函数对后者的梯度趋于0，从而不被训练。因此对于预测器和OCP的损失函数分别定义为<span class="math inline">\(\mathcal L(\widetilde{y}_1,y)+\mathcal L(\widetilde{y}_2,y)\)</span>和<span class="math inline">\(\mathcal L(w_1*\widetilde{y}_1+w_2*\widetilde{y}_2,y)\)</span></li></ul><h1 id="二">二、</h1>]]></content>
     
     
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>论文</tag>
+      
+      <tag>类增量学习</tag>
+      
+      <tag>微调</tag>
+      
+      <tag>增量学习</tag>
+      
+      <tag>在线学习</tag>
+      
+      <tag>强化学习</tag>
+      
+    </tags>
     
   </entry>
   
