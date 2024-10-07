@@ -19,30 +19,35 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据分析以及初赛方法 Query、落地页、核心词长度分布  query   lp   ct  广告ID分布 在发现Query中的ID远少于广告ID数量后，我想统计ID的分布。最开始采用柱状图，但由于数据量过大，最后绘制出的图像不直观。因此，我向Kimi问到了一种估计分布密度的方法KDE，这是一种非参数估计方法，相对于参数估计（如：最大似然估计）不需要对数据的分布有先验的">
+    <meta name="description" content="比赛内容 生成式检索  在过去的5到10年间，信息检索领域的利用语言理解的进展，例如将表示学习应用于检索，使用预训练语言模型进行知识迁移，在各种任务上取得了显著的改进。但当前信息检索系统的核心结构上与几十年前的经典系统相比也没有发生太大的变化，主要遵循index-retrieval-rank的模式。这一模式历经时间考验，但在端到端优化、错误传播和大规模文档索引需求方面存在局限性。这些局限">
 <meta property="og:type" content="article">
 <meta property="og:title" content="百度-基于大模型的广告检索">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="数据分析以及初赛方法 Query、落地页、核心词长度分布  query   lp   ct  广告ID分布 在发现Query中的ID远少于广告ID数量后，我想统计ID的分布。最开始采用柱状图，但由于数据量过大，最后绘制出的图像不直观。因此，我向Kimi问到了一种估计分布密度的方法KDE，这是一种非参数估计方法，相对于参数估计（如：最大似然估计）不需要对数据的分布有先验的">
+<meta property="og:description" content="比赛内容 生成式检索  在过去的5到10年间，信息检索领域的利用语言理解的进展，例如将表示学习应用于检索，使用预训练语言模型进行知识迁移，在各种任务上取得了显著的改进。但当前信息检索系统的核心结构上与几十年前的经典系统相比也没有发生太大的变化，主要遵循index-retrieval-rank的模式。这一模式历经时间考验，但在端到端优化、错误传播和大规模文档索引需求方面存在局限性。这些局限">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%AE%98%E7%BD%91%E6%95%B0%E6%8D%AE.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/lp.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/ct.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/ID%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/doc.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query2.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/train.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/infer.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E7%AE%80%E5%8D%95Doc.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/mini.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/json.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%86%85%E5%AD%98.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%88%86%E8%AF%8D.png">
 <meta property="article:published_time" content="2024-08-02T10:54:22.000Z">
-<meta property="article:modified_time" content="2024-08-18T14:59:33.810Z">
+<meta property="article:modified_time" content="2024-10-07T07:13:39.347Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="大模型">
 <meta property="article:tag" content="百度">
 <meta property="article:tag" content="搜广推">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query.png">
+<meta name="twitter:image" content="https://europeangovernor.github.io/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/%E5%AE%98%E7%BD%91%E6%95%B0%E6%8D%AE.png">
   
   
   
@@ -248,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          724 字
+          1.8k 字
         
       </span>
     
@@ -259,7 +264,7 @@
         
         
         
-          7 分钟
+          16 分钟
         
       </span>
     
@@ -311,7 +316,18 @@
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
-<h1 id="数据分析以及初赛方法">数据分析以及初赛方法</h1>
+<h1 id="比赛内容">比赛内容</h1>
+<h2 id="生成式检索">生成式检索</h2>
+<blockquote>
+<p>在过去的5到10年间，信息检索领域的利用语言理解的进展，例如将表示学习应用于检索，使用预训练语言模型进行知识迁移，在各种任务上取得了显著的改进。但当前信息检索系统的核心结构上与几十年前的经典系统相比也没有发生太大的变化，主要遵循index-retrieval-rank的模式。这一模式历经时间考验，但在端到端优化、错误传播和大规模文档索引需求方面存在局限性。这些局限性催生了生成式检索(GenIR)的发展。</p>
+<p>生成式检索的动机在于突破传统的检索范式，提供一种更灵活、效率更高的检索方法。它旨在直接生成与Query的信息资源ID，而不是依赖传统的index-retrieval-rank过程。GenIR通过将整个语料库的知识编码到模型参数中，从而允许在训练期间针对IR任务进行端到端的优化。这种方法不仅提高了检索效率，也可以更全面地捕获Query和Doc之间的相关性。</p>
+<p>主流训练方案分为两阶段训练以及多任务学习。前者在第一阶段将Doc和DocID建立起联系，第二阶段将Query和DocID建立关联，而后者同时将Doc和Query作为输入，直接得到DocID。在我们的方案中采取的是两阶段训练。</p>
+</blockquote>
+<h2 id="数据说明">数据说明</h2>
+<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/官网数据.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="冠军方案">冠军方案</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63598369/article/details/142137384">2024年百度商业AI技术创新大赛冠军经验分享——基于大模型的广告检索赛道</a></p>
+<h1 id="初赛数据分析">初赛：数据分析</h1>
 <h2 id="query落地页核心词长度分布">Query、落地页、核心词长度分布</h2>
 <figure>
 <img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query.png" srcset="/img/loading.gif" lazyload alt="query"><figcaption aria-hidden="true">query</figcaption>
@@ -328,29 +344,45 @@
 <figure>
 <img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/ID分布.png" srcset="/img/loading.gif" lazyload alt="初赛数据的广告ID分布"><figcaption aria-hidden="true">初赛数据的广告ID分布</figcaption>
 </figure>
-<h2 id="训练过程">训练过程</h2>
-<p>在论文中</p>
-<h1 id="baseline">Baseline</h1>
+<h1 id="初赛方案">初赛：方案</h1>
+<h2 id="query增强1利用click重采样query">Query增强1：利用Click重采样Query</h2>
+<p>得到的数据中有Query搜索后结果的点击量，考虑到点击数量越多，说明这条Query的有效性就越高，越能达到用户的目的。因此我们按Click数量对Query进行重采样。比如：“小天鹅洗衣”有4条点击量，我们便再次生成4条放入Query中。</p>
+<p>我们考虑过对新生成的Query进行改写以及小范围的增删，但效果不太理想，于是没有继续做下去。</p>
+<h2 id="doc增强利用bge-m3筛选对query相似度最高的片段">Doc增强：利用BGE-M3筛选对Query相似度最高的片段</h2>
+<p>通过数据分析发现，Doc的长度（主要是广告落地页）平均长度达到上百。在浏览具体数据的时候，发现其中无用的语料很多：想象点开一个广告页，上面可能有各种各样的商品推广内容，以及一些没用的信息。基于此，我们遍历每条Query（只占广告页总量的一部分）并使用BGE-M3将其编码。同样地，我们对核心词和广告落地页的每条语料进行编码，选取其中相似度最高的四条作为我们真正的Doc。</p>
+<p>上面提到，Query对应的广告只占一部分，对于剩下广告的落地页，我们随机进行相同长度的采样。</p>
+<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/doc.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="query增强2利用qwen结合doc生成新的query">Query增强2：利用Qwen结合Doc生成新的Query</h2>
+<p>对于Query的进一步增强，我想到在本地部署一个小参数量的语言模型，输入为Doc中一个片段（太长会导致显存资源暴涨），并附上Prompt，希望Qwen输出10条内容相似，长度相似的Query：</p>
+<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/query2.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="网格搜索最佳参数">网格搜索最佳参数</h2>
+<p>网格搜索需要的时间以及计算资源都很大，因此我们根据经验适度调整了一些参数，对后期的上分起了一些作用：</p>
+<p><strong>训练部分</strong>：因为输入的Query长度很小，我们不希望过度的padding影响encoding，因此我们主要调节的是<code>max_seq_len</code></p>
+<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/train.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>推理部分</strong>：主要调节<code>top_k</code>和<code>top_p</code>用于挑选候选结果，<code>temperature</code>用来增加多样性</p>
+<p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/infer.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="复赛方案">复赛：方案</h1>
+<p>因为复赛的时候结束实习了，因此没法用4090进行高效率的数据增强，加之来到新加坡的最初几天比较忙，就没有深度研究比赛方案。我们的复赛跟初赛的方案差距不是很大，甚至就增强而言可能没有初赛的数据处理完善。复赛的数据量远大于初赛，因此记录下我们的一些尝试。</p>
 <p>数据集中有88wDoc，因为论文中提到直接索引效果较好，因此取落地页连续的短语作为Doc；特别地，观察到Doc长度分布不均，因此在生成Doc时设定为长度越长、采样次数越多。最终得到880wDoc，在第一阶段进行索引学习时4000steps已趋于收敛，遂暂停。</p>
 <figure>
 <img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/简单Doc.png" srcset="/img/loading.gif" lazyload alt="简单构建Doc"><figcaption aria-hidden="true">简单构建Doc</figcaption>
 </figure>
 <p>对于Query，按Click进行增强，从500w得到1200w数据。在上一步得到的权重上训练，效果还可以。</p>
-<h1 id="尝试一semantic-docid">尝试一：Semantic DocID</h1>
+<h2 id="尝试一semantic-docid">尝试一：Semantic DocID</h2>
 <p>官方所给的数据集中ID是没有规律的，不同的广告内容ID可能邻近，相似的广告ID可能很远，因此这对生成式模型而言，像是在做一个“多分类”的任务。在这篇<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2309.13335">Model-enhanced Vector Index</a>论文中提到利用Residual Quantization进行层次聚类效果可能会好，于是考虑用模型对广告内容进行Embedding，但因为本地没有显卡用，并且在AIstudio又不能用Pytorch，因此采用<a target="_blank" rel="noopener" href="https://paddlenlp.readthedocs.io/zh/latest/model_zoo/transformers/ERNIE/contents.html">Ernie-3.0-mini</a>。</p>
-<h2 id="q1embedding文件太大">Q1：Embedding文件太大</h2>
+<h3 id="q1embedding文件太大">Q1：Embedding文件太大</h3>
 <p>即使采用mini，在对约29000个句子（3%）进行Embedding之后，我的json文件就已经达到了220MB</p>
 <p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/mini.png" srcset="/img/loading.gif" lazyload></p>
 <p>文件存储格式如下</p>
 <p><img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/json.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="q2内存过大">Q2：内存过大</h2>
+<h3 id="q2内存过大">Q2：内存过大</h3>
 <p>因为词袋方法耗时更长，占用内存更大，后来又再次尝试使用Embedding。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/home/aistudio/embed.json&quot;</span>,<span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    data=[json.loads(line)<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f]<br></code></pre></td></tr></table></figure>
 <p>居然在读取的时候内存就满了。</p>
 <figure>
 <img src="/2024/08/02/%E7%99%BE%E5%BA%A6-%E5%9F%BA%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B9%BF%E5%91%8A%E6%A3%80%E7%B4%A2/内存.png" srcset="/img/loading.gif" lazyload alt="内存满了"><figcaption aria-hidden="true">内存满了</figcaption>
 </figure>
-<h1 id="尝试二词袋">尝试二：词袋</h1>
+<h2 id="尝试二词袋">尝试二：词袋</h2>
 <p>这里使用Paddle里的Taskflow进行分词。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;./embed.json&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> f:<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(res)+<span class="hljs-number">1</span>)):<br>        seg = Taskflow(<span class="hljs-string">&quot;word segmentation&quot;</span>)temp = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">filter</span>(<span class="hljs-keyword">lambda</span> x:x!=,<span class="hljs-string">&#x27;,seg(res[str(i)])))</span><br><span class="hljs-string">        # 使用counter计算每个分词出现的次数</span><br><span class="hljs-string">        word count= counter(temp)</span><br><span class="hljs-string">        #按照出现次数进行升序排序</span><br><span class="hljs-string">        sorted word count = dict(sorted(word count.items(), key=lambda item: item[1]))</span><br><span class="hljs-string">        json.dump(&#123;&quot;tgt&quot;:i,&quot;bow&quot;: sorted word count&#125;,f,ensure ascii=False)</span><br></code></pre></td></tr></table></figure>
 <p>最终分词结果文件很大，没有进一步处理。</p>
