@@ -196,9 +196,9 @@
       
       <tag>增量学习</tag>
       
-      <tag>在线学习</tag>
-      
       <tag>时间序列</tag>
+      
+      <tag>在线学习</tag>
       
     </tags>
     
@@ -252,13 +252,13 @@
     
     <tags>
       
-      <tag>面经</tag>
-      
       <tag>RNN</tag>
       
       <tag>LSTM</tag>
       
       <tag>GRU</tag>
+      
+      <tag>面经</tag>
       
     </tags>
     
@@ -541,7 +541,7 @@
     <link href="/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/"/>
     <url>/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/</url>
     
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="batchnorm">1、BatchNorm</h1><ul><li>针对一个Batch内的每个特征进行归一化</li></ul><h1 id="layernorm">2、LayerNorm</h1><ul><li><p>针对一个样本所有特征计算均值和方差，然后对样本进行归一化</p></li><li><p>减少内部协变量偏移（Internal Covariate Shift）： 内部协变量偏移是指在深度神经网络的训练过程中，每一层输入的分布会发生变化，导致网络的训练变得困难。层归一化通过对每一层的输入进行归一化处理，可以减少内部协变量偏移，使得每一层的输入分布更加稳定。</p></li><li><p><strong>稳定梯度</strong>： 层归一化有助于保持每一层输出的均值和方差稳定，从而使得梯度的传播更加稳定。这有助于减少梯度消失或梯度爆炸的问题，提高梯度在网络中的流动性，加快训练速度。<sup><a href="#ref1">[1]</a></sup></p></li><li><p>适合在RNN，LSTM等网络中使用，解决序列问题（不一定等长）<sup><a href="#ref2">[2]</a></sup></p></li></ul><h1 id="instancenorm">3、InstanceNorm</h1><h1 id="rmsnorm">4、RMSNorm</h1><h1 id="参考">参考</h1><ol type="1"><li><a href="#ref1"><a href="https://www.cnblogs.com/shine-lee/p/11989612.html">Batch Normalization详解</a></a></li><li><a href="#ref2"><a href="https://blog.csdn.net/u010159842/article/details/109326409">关于batch normalization和layer normalization的理解</a></a></li></ol>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="batchnorm">1、BatchNorm</h1><ul><li>针对一个Batch内的每个特征进行归一化</li></ul><h1 id="layernorm">2、LayerNorm</h1><ul><li><p>针对一个样本所有特征计算均值和方差，然后对样本进行归一化</p></li><li><p>减少内部协变量偏移（Internal Covariate Shift）： 内部协变量偏移是指在深度神经网络的训练过程中，每一层输入的分布会发生变化，导致网络的训练变得困难。层归一化通过对每一层的输入进行归一化处理，可以减少内部协变量偏移，使得每一层的输入分布更加稳定。</p></li><li><p><strong>稳定梯度</strong>： 层归一化有助于保持每一层输出的均值和方差稳定，从而使得梯度的传播更加稳定。这有助于减少梯度消失或梯度爆炸的问题，提高梯度在网络中的流动性，加快训练速度。<sup><a href="#ref1">[1]</a></sup></p></li><li><p>适合在RNN，LSTM等网络中使用，解决序列问题（不一定等长）<sup><a href="#ref2">[2]</a></sup></p></li></ul><h1 id="instancenorm">3、InstanceNorm</h1><h1 id="rmsnorm">4、RMSNorm</h1><h1 id="参考">参考</h1><ol type="1"><li><a href="ref1"></a><a href="https://www.cnblogs.com/shine-lee/p/11989612.html">Batch Normalization详解</a></li><li><a href="ref2"></a><a href="https://blog.csdn.net/u010159842/article/details/109326409">关于batch normalization和layer normalization的理解</a></li></ol>]]></content>
     
     
     <categories>
@@ -752,13 +752,13 @@
       
       <tag>微调</tag>
       
+      <tag>大模型</tag>
+      
       <tag>实习</tag>
       
       <tag>BIGAI</tag>
       
       <tag>数据生成</tag>
-      
-      <tag>大模型</tag>
       
       <tag>P-tuning</tag>
       
