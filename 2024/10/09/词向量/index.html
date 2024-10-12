@@ -19,28 +19,25 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、激活函数  sigmoid：\(\sigma(x)&#x3D;\frac{1}{1+e^{-x}}\)  \(\rm max\{\sigma&#39;(x)\}&#x3D;0.25&lt;1\)，容易出现梯度消失 输出均值不为0，导致收敛变慢 ​ 非零均值？激活函数也太硬核了 ​ 谈谈激活函数以0为中心 的问题  ReLU Tanh：\({\rm tanh(x)}&#x3D;\frac{e^x-e^">
+    <meta name="description" content="1、Word2Vec 参考：  Word2Vec: 一种词向量的训练方法  1.1 CBOW  利用上下文单词预测中心词 训练快  1.2 Skip-gram  利用中心词预测上下文窗口词 训练速度慢、不会回避生僻词  2、GloVe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="激活函数、损失函数与评价指标">
-<meta property="og:url" content="https://europeangovernor.github.io/2024/08/26/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E3%80%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%8E%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/index.html">
+<meta property="og:title" content="词向量">
+<meta property="og:url" content="https://europeangovernor.github.io/2024/10/09/%E8%AF%8D%E5%90%91%E9%87%8F/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="1、激活函数  sigmoid：\(\sigma(x)&#x3D;\frac{1}{1+e^{-x}}\)  \(\rm max\{\sigma&#39;(x)\}&#x3D;0.25&lt;1\)，容易出现梯度消失 输出均值不为0，导致收敛变慢 ​ 非零均值？激活函数也太硬核了 ​ 谈谈激活函数以0为中心 的问题  ReLU Tanh：\({\rm tanh(x)}&#x3D;\frac{e^x-e^">
+<meta property="og:description" content="1、Word2Vec 参考：  Word2Vec: 一种词向量的训练方法  1.1 CBOW  利用上下文单词预测中心词 训练快  1.2 Skip-gram  利用中心词预测上下文窗口词 训练速度慢、不会回避生僻词  2、GloVe">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/d7a4b71d1f2393e35df6988fd990c2d9.jpeg">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/08/26/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E3%80%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%8E%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/BLEU.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/775755d1d5c6866cae97f9a618437a2f.png">
-<meta property="article:published_time" content="2024-08-26T02:55:56.000Z">
-<meta property="article:modified_time" content="2024-10-04T07:33:15.828Z">
+<meta property="article:published_time" content="2024-10-09T11:36:54.000Z">
+<meta property="article:modified_time" content="2024-10-09T11:56:31.774Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="面经">
-<meta property="article:tag" content="激活函数">
-<meta property="article:tag" content="损失函数">
+<meta property="article:tag" content="词向量">
+<meta property="article:tag" content="Embedding">
+<meta property="article:tag" content="Word2Vec">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/d7a4b71d1f2393e35df6988fd990c2d9.jpeg">
   
   
   
-  <title>激活函数、损失函数与评价指标 - Bambi的自留地</title>
+  <title>词向量 - Bambi的自留地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="激活函数、损失函数与评价指标"></span>
+            <span id="subtitle" data-typed-text="词向量"></span>
           
         </div>
 
@@ -230,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-26 10:55" pubdate>
-          2024年8月26日 上午
+        <time datetime="2024-10-09 19:36" pubdate>
+          2024年10月9日 晚上
         </time>
       </span>
     
@@ -242,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          522 字
+          61 字
         
       </span>
     
@@ -253,7 +250,7 @@
         
         
         
-          5 分钟
+          1 分钟
         
       </span>
     
@@ -299,71 +296,28 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">激活函数、损失函数与评价指标</h1>
+            <h1 id="seo-header">词向量</h1>
             
             
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
-<h1 id="激活函数">1、激活函数</h1>
+<h1 id="word2vec">1、Word2Vec</h1>
+<p><strong>参考</strong>：</p>
 <ol type="1">
-<li><p><code>sigmoid</code>：<span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span></p>
-<ul>
-<li><p><span class="math inline">\(\rm max\{\sigma&#39;(x)\}=0.25&lt;1\)</span>，容易出现梯度消失</p></li>
-<li><p>输出均值不为0，导致收敛变慢</p>
-<p>​ <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1829621">非零均值？激活函数也太硬核了</a></p>
-<p>​ <a target="_blank" rel="noopener" href="https://liam.page/2018/04/17/zero-centered-active-function/">谈谈激活函数以0为中心 的问题</a></p></li>
-</ul></li>
-<li><p><code>ReLU</code></p></li>
-<li><p><code>Tanh</code>：<span class="math inline">\({\rm tanh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}\)</span></p>
-<ul>
-<li>容易出现梯度消失</li>
-<li>zero-centered，比<code>sigmoid</code>收敛速度快</li>
-</ul></li>
+<li><a target="_blank" rel="noopener" href="https://paddlepedia.readthedocs.io/en/latest/tutorials/sequence_model/word_representation/word2vec.html#word2vec">Word2Vec: 一种词向量的训练方法</a></li>
 </ol>
-<h1 id="损失函数">2、损失函数</h1>
-<h1 id="评价指标">3、评价指标</h1>
-<h2 id="混淆矩阵-confusion-matrix">3.1 混淆矩阵 Confusion Matrix</h2>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d7a4b71d1f2393e35df6988fd990c2d9.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="cbow">1.1 CBOW</h2>
 <ul>
-<li><p>精确率 Accuracy：评估模型总体，当数据分布不均衡时失效 <span class="math display">\[
-{\rm Acc=\frac{TP+TN}{TP+TN+FT+FP}}
-\]</span></p></li>
-<li><p>F1分数 F1-score：评估模型总体，适合数据分布不均衡时，是正确率和召回率的调和平均数 <span class="math display">\[
-{\rm F1=2\cdot\frac{Precision\times Recall}{Precision+Recall}}
-\]</span></p></li>
-<li><p>准确率 Precision：Pred中，真正为正类的样本有多少 <span class="math display">\[
-{\rm Precision=\frac{TP}{TP+FP}}
-\]</span></p></li>
-<li><p>召回率 Recall/灵敏度 Sensitivity：正类的样本中，被识别出来的有多少 <span class="math display">\[
-{\rm Recall=\frac{TP}{TP+FN}}
-\]</span></p></li>
-<li><p>特异度 Specificity： <span class="math display">\[
-{\rm Specificity=\frac{TN}{FP+TN}}
-\]</span></p></li>
-<li><p><strong>Micro Metrics &amp; Macro Metrics</strong>：前者为加权（数据分别不平衡时），后者为平均（所有类别均等重要）</p></li>
+<li>利用上下文单词预测中心词</li>
+<li>训练快</li>
 </ul>
-<h2 id="auc-roc">3.2 AUC-ROC</h2>
-<p><strong>ROC</strong>：ROC曲线下面的面积就是AUC的值，越大代表分类器的效果越好</p>
-<p><strong>AUC</strong>：假设总共有m+n个样本，其中正样本m个，负样本n个，总共有<span class="math inline">\(m\times n\)</span>个样本对，计数，正样本预测为正样本的概率值大于负样本预测为正样本的概率值记为1，累加计数，然后除以样本对数目就是AUC的值</p>
-<h2 id="其他">3.3 其他</h2>
-<h3 id="bleu关注precision">3.3.1 BLEU（关注Precision）</h3>
-<p><img src="/2024/08/26/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E3%80%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%8E%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/BLEU.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="rouge关注recall">3.3.2 ROUGE（关注Recall）</h3>
+<h2 id="skip-gram">1.2 Skip-gram</h2>
 <ul>
-<li><p><strong>ROUGE-N</strong>：统计N-gram上的召回率</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/775755d1d5c6866cae97f9a618437a2f.png" srcset="/img/loading.gif" lazyload></p></li>
-<li><p><strong>ROUGE-L</strong>：统计最长公共子序列（LCS）的召回率</p></li>
-<li><p><strong>ROUGE-S</strong>：统计可跳跃的N-gram上的召回率</p></li>
+<li>利用中心词预测上下文窗口词</li>
+<li>训练速度慢、不会回避生僻词</li>
 </ul>
-<h3 id="meteor">3.3.3 METEOR</h3>
-<p>该指标考虑了基于整个语料库上的准确率和召回率，并关注翻译结果的语序，引入了chunk penalty</p>
-<h1 id="参考">4、参考</h1>
-<ol type="1">
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/seagal890/article/details/105059498">[机器学习笔记] 混淆矩阵（Confusion Matrix）</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/pearl8899/article/details/112452972">【NLG】(六)文本生成评价指标—— ROUGE原理及代码示例</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/pearl8899/article/details/112452652">【NLG】(二)文本生成评价指标—— METEOR原理及代码示例</a></li>
-</ol>
+<h1 id="glove">2、GloVe</h1>
 
                 
               </div>
@@ -399,9 +353,11 @@
       
         <a href="/tags/%E9%9D%A2%E7%BB%8F/" class="print-no-link">#面经</a>
       
-        <a href="/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" class="print-no-link">#激活函数</a>
+        <a href="/tags/%E8%AF%8D%E5%90%91%E9%87%8F/" class="print-no-link">#词向量</a>
       
-        <a href="/tags/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" class="print-no-link">#损失函数</a>
+        <a href="/tags/Embedding/" class="print-no-link">#Embedding</a>
+      
+        <a href="/tags/Word2Vec/" class="print-no-link">#Word2Vec</a>
       
     </div>
   
@@ -413,8 +369,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>激活函数、损失函数与评价指标</div>
-      <div>https://europeangovernor.github.io/2024/08/26/激活函数、损失函数与评价指标/</div>
+      <div>词向量</div>
+      <div>https://europeangovernor.github.io/2024/10/09/词向量/</div>
     </div>
     <div class="license-meta">
       
@@ -426,7 +382,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月26日</div>
+          <div>2024年10月9日</div>
         </div>
       
       
@@ -458,9 +414,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/27/%E5%BD%92%E4%B8%80%E5%8C%96/" title="归一化">
+                      <a href="/2024/10/10/%E5%9B%BE/" title="图">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">归一化</span>
+                        <span class="hidden-mobile">图</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -468,8 +424,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/24/Transformer/" title="Transformer">
-                        <span class="hidden-mobile">Transformer</span>
+                      <a href="/2024/10/08/%E6%AD%A3%E5%88%99%E5%8C%96%E3%80%81MLE%E3%80%81MAP/" title="正则化、MLE、MAP">
+                        <span class="hidden-mobile">正则化、MLE、MAP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -557,12 +513,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -781,49 +731,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

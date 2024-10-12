@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://code-thinking.cdn.bcebos.com/gifs/206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.gif">
 <meta property="og:image" content="https://code-thinking.cdn.bcebos.com/gifs/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II%EF%BC%88%E6%B1%82%E5%85%A5%E5%8F%A3%EF%BC%89.gif">
 <meta property="article:published_time" content="2024-08-24T03:34:54.000Z">
-<meta property="article:modified_time" content="2024-09-04T08:06:31.684Z">
+<meta property="article:modified_time" content="2024-10-09T04:42:31.204Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="力扣">
 <meta property="article:tag" content="链表">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          444 字
+          493 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -320,10 +320,17 @@
 <li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/">206. Reverse Linked List</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 双指针法</span><br><span class="hljs-comment"># Definition for singly-linked list.</span><br><span class="hljs-comment"># class ListNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, next=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.next = next</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">reverseList</span>(<span class="hljs-params">self, head: ListNode</span>) -&gt; ListNode:<br>        cur = head   <br>        pre = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">while</span> cur:<br>            temp = cur.<span class="hljs-built_in">next</span> <span class="hljs-comment"># 保存一下 cur的下一个节点，因为接下来要改变cur-&gt;next</span><br>            cur.<span class="hljs-built_in">next</span> = pre <span class="hljs-comment">#反转</span><br>            <span class="hljs-comment">#更新pre、cur指针</span><br>            pre = cur<br>            cur = temp<br>        <span class="hljs-keyword">return</span> pre<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="快慢指针删除链表倒数第n个节点">3、快慢指针删除链表倒数第n个节点</h1>
+<h1 id="快慢指针">3、快慢指针</h1>
+<p><strong>删除链表倒数第n个节点</strong></p>
 <ol type="1">
 <li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">19. Remove Nth Node From End of List</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span><br><span class="hljs-comment"># class ListNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, next=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.next = next</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">removeNthFromEnd</span>(<span class="hljs-params">self, head: ListNode, n: <span class="hljs-built_in">int</span></span>) -&gt; ListNode:<br>        <span class="hljs-comment"># 创建一个虚拟节点，并将其下一个指针设置为链表的头部</span><br>        dummy_head = ListNode(<span class="hljs-number">0</span>, head)<br>        <br>        <span class="hljs-comment"># 创建两个指针，慢指针和快指针，并将它们初始化为虚拟节点</span><br>        slow = fast = dummy_head<br>        <br>        <span class="hljs-comment"># 快指针比慢指针快 n+1 步</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n+<span class="hljs-number">1</span>):<br>            fast = fast.<span class="hljs-built_in">next</span><br>        <br>        <span class="hljs-comment"># 移动两个指针，直到快速指针到达链表的末尾</span><br>        <span class="hljs-keyword">while</span> fast:<br>            slow = slow.<span class="hljs-built_in">next</span><br>            fast = fast.<span class="hljs-built_in">next</span><br>        <br>        <span class="hljs-comment"># 通过更新第 (n-1) 个节点的 next 指针删除第 n 个节点</span><br>        slow.<span class="hljs-built_in">next</span> = slow.<span class="hljs-built_in">next</span>.<span class="hljs-built_in">next</span><br>        <br>        <span class="hljs-keyword">return</span> dummy_head.<span class="hljs-built_in">next</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>确定中点</strong></p>
+<ol type="1">
+<li><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-list/">148. Sort List</a></p>
+<p>无头结点链表的快慢指针，快指针初始比慢指针快一步</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">slow,fast=head,head.<span class="hljs-built_in">next</span><br><span class="hljs-keyword">while</span> fast <span class="hljs-keyword">and</span> fast.<span class="hljs-built_in">next</span>:<br>    slow=slow.<span class="hljs-built_in">next</span><br>    fast=fast.<span class="hljs-built_in">next</span>.<span class="hljs-built_in">next</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="环形链表">4、环形链表</h1>
 <ol type="1">
@@ -333,6 +340,8 @@
 <img src="https://code-thinking.cdn.bcebos.com/gifs/142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II%EF%BC%88%E6%B1%82%E5%85%A5%E5%8F%A3%EF%BC%89.gif" srcset="/img/loading.gif" lazyload alt="另一种做法"><figcaption aria-hidden="true">另一种做法</figcaption>
 </figure></li>
 </ol>
+<h1 id="归并排序链表">5、归并排序链表</h1>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-list/">148. Sort List</a></p>
 
                 
               </div>

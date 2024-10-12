@@ -19,14 +19,20 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="低秩分解 LoRA 1234567891011121314151617181920212223242526272829303132333435363738394041import torch import torch.nn as nnimport torch.nn.functional as Fimport mathclass LoRALinear(nn.Module):    def __">
+<meta property="og:type" content="article">
 <meta property="og:title" content="参数高效微调">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/09/07/%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
+<meta property="og:description" content="低秩分解 LoRA 1234567891011121314151617181920212223242526272829303132333435363738394041import torch import torch.nn as nnimport torch.nn.functional as Fimport mathclass LoRALinear(nn.Module):    def __">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-07T06:06:15.000Z">
-<meta property="article:modified_time" content="2024-09-07T06:06:15.286Z">
+<meta property="article:modified_time" content="2024-10-10T12:12:11.579Z">
 <meta property="article:author" content="Michael Zhang">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="微调">
+<meta property="article:tag" content="PEFT">
+<meta property="article:tag" content="LoRA">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -233,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          176 字
         
       </span>
     
@@ -244,7 +250,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -295,7 +301,14 @@
             
               <div class="markdown-body">
                 
-                
+                <meta name="referrer" content="no-referrer">
+<h1 id="低秩分解-lora">低秩分解 LoRA</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch <br><span class="hljs-keyword">import</span> torch.nn <span class="hljs-keyword">as</span> nn<br><span class="hljs-keyword">import</span> torch.nn.functional <span class="hljs-keyword">as</span> F<br><span class="hljs-keyword">import</span> math<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">LoRALinear</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, in_features, out_features, merge, rank=<span class="hljs-number">16</span>, lora_alpha=<span class="hljs-number">16</span>, dropout=<span class="hljs-number">0.5</span></span>):<br>        <span class="hljs-built_in">super</span>(LoRALinear, <span class="hljs-variable language_">self</span>).__init__()<br>        <span class="hljs-variable language_">self</span>.in_features = in_features<br>        <span class="hljs-variable language_">self</span>.out_features = out_features<br>        <span class="hljs-variable language_">self</span>.merge = merge<br>        <span class="hljs-variable language_">self</span>.rank = rank<br>        <span class="hljs-variable language_">self</span>.dropout_rate = dropout<br>        <span class="hljs-variable language_">self</span>.lora_alpha = lora_alpha<br>        <br>        <span class="hljs-variable language_">self</span>.linear = nn.Linear(in_features, out_features)<br>        <span class="hljs-keyword">if</span> rank &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-variable language_">self</span>.lora_b = nn.Parameter(torch.zeros(out_features, rank))<br>            <span class="hljs-variable language_">self</span>.lora_a = nn.Parameter(torch.zeros(rank, in_features))<br>            <span class="hljs-variable language_">self</span>.scale = <span class="hljs-variable language_">self</span>.lora_alpha / <span class="hljs-variable language_">self</span>.rank<br>            <span class="hljs-variable language_">self</span>.linear.weight.requires_grad = <span class="hljs-literal">False</span><br>        <br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.dropout_rate &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-variable language_">self</span>.dropout = nn.Dropout(<span class="hljs-variable language_">self</span>.dropout_rate)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-variable language_">self</span>.dropout = nn.Identity()<br>        <br>        <span class="hljs-variable language_">self</span>.initial_weights()<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">initial_weights</span>(<span class="hljs-params">self</span>):<br>        nn.init.kaiming_uniform_(<span class="hljs-variable language_">self</span>.lora_a, a=math.sqrt(<span class="hljs-number">5</span>))<br>        nn.init.zeros_(<span class="hljs-variable language_">self</span>.lora_b)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.rank &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-variable language_">self</span>.merge:<br>            output = F.linear(x, <span class="hljs-variable language_">self</span>.linear.weight + <span class="hljs-variable language_">self</span>.lora_b @ <span class="hljs-variable language_">self</span>.lora_a * <span class="hljs-variable language_">self</span>.scale, <span class="hljs-variable language_">self</span>.linear.bias)<br>            output = <span class="hljs-variable language_">self</span>.dropout(output)<br>            <span class="hljs-keyword">return</span> output<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.dropout(<span class="hljs-variable language_">self</span>.linear(x))<br><br></code></pre></td></tr></table></figure>
+<p><strong>参考</strong>：</p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dr421w7J5/?spm_id_from=333.337.search-card.all.click&amp;vd_source=19303cc41e28593826f02ec94c4fc790">【研1基本功 （真的很简单）LoRA 低秩微调】大模型微调基本方法1 —— bonus "Focal loss"</a></li>
+<li><a target="_blank" rel="noopener" href="https://dwexzknzsh8.feishu.cn/docx/VkYud3H0zoDTrrxNX5lce0S4nDh">尽量“手撕”代码系列</a></li>
+</ol>
 
                 
               </div>
@@ -304,6 +317,40 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9D%A2%E7%BB%8F/" class="print-no-link">#面经</a>
+      
+        <a href="/tags/%E5%BE%AE%E8%B0%83/" class="print-no-link">#微调</a>
+      
+        <a href="/tags/PEFT/" class="print-no-link">#PEFT</a>
+      
+        <a href="/tags/LoRA/" class="print-no-link">#LoRA</a>
+      
+    </div>
   
 </div>
 
@@ -457,6 +504,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -675,6 +728,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

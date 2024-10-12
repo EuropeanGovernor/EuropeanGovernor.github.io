@@ -19,20 +19,27 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、进度 9月30日~10月6日 对Moment进行Prompt-Tuning 二、调研  TimeMixer: Decomposable Multiscale Mixing for Time Series Forecasting SparseTSF: Modeling Long-term Time Series Forecasting with 1k Parameters">
+    <meta name="description" content=".center  {   width: auto;   display: table;   margin-left: auto;   margin-right: auto;   margin-top: 20px; }  一、进度 9月30日~10月20日 对Moment进行Prompt-Tuning 二、调研  TimeMixer: Decomposable M">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TSCIL论文笔记·IV">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="一、进度 9月30日~10月6日 对Moment进行Prompt-Tuning 二、调研  TimeMixer: Decomposable Multiscale Mixing for Time Series Forecasting SparseTSF: Modeling Long-term Time Series Forecasting with 1k Parameters">
+<meta property="og:description" content=".center  {   width: auto;   display: table;   margin-left: auto;   margin-right: auto;   margin-top: 20px; }  一、进度 9月30日~10月20日 对Moment进行Prompt-Tuning 二、调研  TimeMixer: Decomposable M">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/mixer.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/sparse.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/p1.png">
-<meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/p2.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/ptuning1.png">
+<meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/ptuning2.png">
+<meta property="og:image" content="https://europeangovernor.github.io/p1.png">
+<meta property="og:image" content="https://europeangovernor.github.io/image-20241012114217149.png">
+<meta property="og:image" content="https://europeangovernor.github.io/image-20241012144836693.png">
+<meta property="og:image" content="https://europeangovernor.github.io/image-20241012150046186.png">
+<meta property="og:image" content="https://europeangovernor.github.io/image-20241012145951021.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/ft.png">
+<meta property="og:image" content="https://europeangovernor.github.io/image-20241012141513092.png">
+<meta property="og:image" content="https://europeangovernor.github.io/image-20241012160103166.png">
 <meta property="article:published_time" content="2024-09-29T07:17:26.000Z">
-<meta property="article:modified_time" content="2024-10-05T12:57:27.865Z">
+<meta property="article:modified_time" content="2024-10-12T08:04:03.917Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="类增量学习">
 <meta property="article:tag" content="增量学习">
@@ -244,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          88 字
+          333 字
         
       </span>
     
@@ -255,7 +262,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -307,8 +314,18 @@
               <div class="markdown-body">
                 
                 <meta name="referrer" content="no-referrer">
+<style>
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+</style>
 <h1 id="一进度">一、进度</h1>
-<p><strong>9月30日~10月6日</strong></p>
+<p><strong>9月30日~10月20日</strong></p>
 <p>对Moment进行Prompt-Tuning</p>
 <h1 id="二调研">二、调研</h1>
 <ol type="1">
@@ -319,11 +336,45 @@
 <p><img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/mixer.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="sparsetsf">2. SparseTSF</h2>
 <p><img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/sparse.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="三moment在etth1进行prompt-tuning">三、MOMENT在ETTh1进行Prompt-Tuning</h1>
-<p><img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/p1.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/p2.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="zero-shot">1. Zero-Shot</h2>
-<h2 id="fine-tune">2. Fine-Tune</h2>
+<h1 id="三moment结合prompt">三、MOMENT结合Prompt</h1>
+<h2 id="阅读prompt-tuning代码">1. 阅读Prompt-Tuning代码</h2>
+<ul>
+<li>Prompt-Tuning需要训练一个将Prompt映射到另一个向量的矩阵，从而让输出向量和Input在输入Encoder后更好地优化损失</li>
+<li>我应该需要写一个<code>get_peft_model</code>的函数，将<code>moment</code>和Prompt捆绑在一起，返回一个<code>PeftModel</code>类</li>
+<li>但如何做到samplewise是一个比较难的事情</li>
+</ul>
+<p><img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/ptuning1.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>其中PeftModel有一些必须实现的方法：
+<ul>
+<li><code>from_pretrained</code></li>
+<li><code>prompt_encoder</code></li>
+<li><code>save_prompt_embedding</code></li>
+<li><code>get_prompt</code></li>
+<li><code>save_model</code></li>
+</ul></li>
+</ul>
+<p><img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/ptuning2.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>参考</strong>：</p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35812205/article/details/131647749">【LLM】Prompt tuning大模型微调实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://huggingface.co/docs/peft/en/index">Hugging Face</a></li>
+</ol>
+<h2 id="修改l2pmomentpipeline类">2. 修改L2pMOMENTPipeline类</h2>
+<h3 id="计算key和embed前对x_embed的处理8764102481024">2.1 计算Key和Embed前对x_embed的处理（[8,7,64,1024]—[8,1024]）</h3>
+<p><img src="/p1.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="prompt和embed拼接时形状没有对齐">2.2 Prompt和Embed拼接时形状没有对齐</h3>
+<ul>
+<li><code>batched_prompt</code>和<code>x_embed</code>维度不对齐，通过复制将前者和后者对齐</li>
+<li>因为moment encoder输入维度为512，取x_embed前prompt_len个位置留给prompt，拼接</li>
+</ul>
+<p><img src="/image-20241012114217149.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="将拼接完成待输入进encoder的input-mask进行修改">2.3 将拼接完成，待输入进Encoder的Input Mask进行修改</h3>
+<p><img src="/image-20241012144836693.png" srcset="/img/loading.gif" lazyload></p>
+<p>1个Epoch跑完后，进入测试前报错：</p>
+<p><img src="/image-20241012150046186.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/image-20241012145951021.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="fine-tune">3. Fine-Tune</h2>
 <table>
 
 <thead>
@@ -368,6 +419,68 @@
 </tbody>
 </table>
 <p><img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/ft.png" srcset="/img/loading.gif" lazyload></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">参数</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">II</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">prompt_length</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">embedding_key</td>
+<td style="text-align: center;">mean</td>
+<td style="text-align: center;">mean</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">prompt_key_init</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">zero</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">pool_size</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">top_k</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Epoch</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Test MSE</td>
+<td style="text-align: center;">0.439</td>
+<td style="text-align: center;">0.434</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Test MAE</td>
+<td style="text-align: center;">0.449</td>
+<td style="text-align: center;">0.441</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">备注</td>
+<td style="text-align: center;">可能是Input_mask的问题</td>
+<td style="text-align: center;">如果Forecast模式，Prompt也会被当做数据原本的一段</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="/image-20241012141513092.png" srcset="/img/loading.gif" lazyload alt="I"><figcaption aria-hidden="true">I</figcaption>
+</figure>
+<figure>
+<img src="/image-20241012160103166.png" srcset="/img/loading.gif" lazyload alt="II"><figcaption aria-hidden="true">II</figcaption>
+</figure>
 
                 
               </div>
