@@ -19,12 +19,12 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content=".center  {   width: auto;   display: table;   margin-left: auto;   margin-right: auto;   margin-top: 20px; }  一、进度 9月30日~10月20日 对Moment进行Prompt-Tuning 二、调研  TimeMixer: Decomposable M">
+    <meta name="description" content=".center  {   width: auto;   display: table;   margin-left: auto;   margin-right: auto;   margin-top: 20px; }  一、进度 9月30日~10月19日 对Moment进行Prompt-Tuning，需要注释掉关于target_col（否则效果与论文结果不符），另外未">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TSCIL论文笔记·IV">
 <meta property="og:url" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content=".center  {   width: auto;   display: table;   margin-left: auto;   margin-right: auto;   margin-top: 20px; }  一、进度 9月30日~10月20日 对Moment进行Prompt-Tuning 二、调研  TimeMixer: Decomposable M">
+<meta property="og:description" content=".center  {   width: auto;   display: table;   margin-left: auto;   margin-right: auto;   margin-top: 20px; }  一、进度 9月30日~10月19日 对Moment进行Prompt-Tuning，需要注释掉关于target_col（否则效果与论文结果不符），另外未">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/mixer.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/sparse.png">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/33.png">
 <meta property="og:image" content="https://europeangovernor.github.io/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/34.png">
 <meta property="article:published_time" content="2024-09-29T07:17:26.000Z">
-<meta property="article:modified_time" content="2024-10-12T08:16:31.926Z">
+<meta property="article:modified_time" content="2024-10-23T08:50:55.710Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="类增量学习">
 <meta property="article:tag" content="增量学习">
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          347 字
+          677 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -326,8 +326,10 @@
 }
 </style>
 <h1 id="一进度">一、进度</h1>
-<p><strong>9月30日~10月20日</strong></p>
-<p>对Moment进行Prompt-Tuning</p>
+<p><strong>9月30日~10月19日</strong></p>
+<p>对Moment进行Prompt-Tuning，需要注释掉关于<code>target_col</code>（否则效果与论文结果不符），另外未对<code>Informer_Dataset</code>改动时的效果要优于改动之后的，可能是因为训练集样本多了，也有可能是调节了BatchSize</p>
+<p><strong>10月20日</strong></p>
+<p>尝试复现<code>moment-research</code>的结果，但<code>safetensor</code>转化为<code>pth</code>遇到了麻烦</p>
 <h1 id="二调研">二、调研</h1>
 <ol type="1">
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2405.14616">TimeMixer: Decomposable Multiscale Mixing for Time Series Forecasting</a></li>
@@ -428,11 +430,13 @@
 <h3 id="有prompt-fine-tune">3.3 有Prompt Fine-Tune</h3>
 <div class="center">
 <table>
+
 <thead>
 <tr class="header">
 <th style="text-align: center;">参数</th>
 <th style="text-align: center;">I</th>
 <th style="text-align: center;">II</th>
+<th style="text-align: center;">III</th>
 </tr>
 </thead>
 <tbody>
@@ -440,14 +444,17 @@
 <td style="text-align: center;">prompt_length</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">4</td>
+<td style="text-align: center;">16</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">embedding_key</td>
 <td style="text-align: center;">mean</td>
 <td style="text-align: center;">mean</td>
+<td style="text-align: center;">mean*</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">prompt_key_init</td>
+<td style="text-align: center;">zero</td>
 <td style="text-align: center;">zero</td>
 <td style="text-align: center;">zero</td>
 </tr>
@@ -455,9 +462,11 @@
 <td style="text-align: center;">pool_size</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">top_k</td>
+<td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 </tr>
@@ -465,21 +474,25 @@
 <td style="text-align: center;">Epoch</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">10</td>
+<td style="text-align: center;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Test MSE</td>
 <td style="text-align: center;">0.439</td>
 <td style="text-align: center;">0.434</td>
+<td style="text-align: center;">0.415</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Test MAE</td>
 <td style="text-align: center;">0.449</td>
 <td style="text-align: center;">0.441</td>
+<td style="text-align: center;">0.429</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">备注</td>
 <td style="text-align: center;">可能是Input_mask的问题</td>
 <td style="text-align: center;">如果Forecast模式，Prompt也会被当做数据原本的一段</td>
+<td style="text-align: center;">修改了Key和Embed匹配的机制（prompt对每个通道的Embed求内积之和取最大）；修改了Prompt插入的位置</td>
 </tr>
 </tbody>
 </table>
@@ -490,6 +503,373 @@
 <figure>
 <img src="/2024/09/29/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7IV/34.png" srcset="/img/loading.gif" lazyload alt="II"><figcaption aria-hidden="true">II</figcaption>
 </figure>
+<h3 id="网格搜索">3.4 网格搜索</h3>
+<ul>
+<li>增加了Prompt的数量，将<code>reduce_sim</code>字段注释掉（只出现在分类中）</li>
+<li>同一Prompt计算对不同Channel Embed的点积，加和取最大判断选取哪个Prompt</li>
+<li><code>pool_size</code>变大不会明显导致结果变好，但top_k变大会（因为可调参数量变大了）,并且提升幅度递减</li>
+<li><code>prompt_key</code>初始化为<code>zero</code>效果更好</li>
+</ul>
+<div class="center">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">参数</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">II</th>
+<th style="text-align: center;">III</th>
+<th style="text-align: center;">IV</th>
+<th style="text-align: center;">V</th>
+<th style="text-align: center;">VI</th>
+<th style="text-align: center;">VII</th>
+<th style="text-align: center;"><mark>VIII</mark></th>
+<th style="text-align: center;">IX</th>
+<th style="text-align: center;">X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">prompt_length</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">embedding_key</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">mean*</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">prompt_key_init</td>
+<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">uniform</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">zero</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">pool_size</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">top_k</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Epoch</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Test MSE</td>
+<td style="text-align: center;">0.434</td>
+<td style="text-align: center;">0.433</td>
+<td style="text-align: center;">0.436</td>
+<td style="text-align: center;">0.419</td>
+<td style="text-align: center;">0.417</td>
+<td style="text-align: center;">0.417</td>
+<td style="text-align: center;">0.415</td>
+<td style="text-align: center;">0.412</td>
+<td style="text-align: center;">0.412</td>
+<td style="text-align: center;">0.411</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Test MAE</td>
+<td style="text-align: center;">0.444</td>
+<td style="text-align: center;">0.443</td>
+<td style="text-align: center;">0.447</td>
+<td style="text-align: center;">0.433</td>
+<td style="text-align: center;">0.431</td>
+<td style="text-align: center;">0.431</td>
+<td style="text-align: center;">0.429</td>
+<td style="text-align: center;">0.427</td>
+<td style="text-align: center;">0.427</td>
+<td style="text-align: center;">0.426</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">备注</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">zero效果更好</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="在不同数据集上验证">3.5 在不同数据集上验证</h3>
+<table style="width:100%;">
+
+<thead>
+<tr class="header">
+<th style="text-align: center;">forecast_horizon</th>
+<th style="text-align: center;">head_dropout</th>
+<th style="text-align: center;">weight_decay</th>
+<th style="text-align: center;">prompt_length</th>
+<th style="text-align: center;">embedding_key</th>
+<th style="text-align: center;">prompt_key_init</th>
+<th style="text-align: center;">pool_size</th>
+<th style="text-align: center;">top_k</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">192</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">mean*</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>batchwise_prompt</strong></td>
+<td style="text-align: center;"><strong>batch_size</strong></td>
+<td style="text-align: center;"><strong>max_lr</strong></td>
+<td style="text-align: center;"><strong>max_norm</strong></td>
+<td style="text-align: center;"><strong>scale</strong></td>
+<td style="text-align: center;"><strong>ratio</strong></td>
+<td style="text-align: center;"><strong>random_seed</strong></td>
+<td style="text-align: center;"><strong>stride_len</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">1e-4</td>
+<td style="text-align: center;">5.0</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">6:1:3</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="原始模型测试结果epoch110">原始模型测试结果（Epoch=1、10）</h4>
+<table>
+
+<thead>
+<tr class="header">
+<th style="text-align: center;">Epoch=1</th>
+<th style="text-align: center;">electricity</th>
+<th style="text-align: center;">ETTh1</th>
+<th style="text-align: center;">ETTh2</th>
+<th style="text-align: center;">ETTm1</th>
+<th style="text-align: center;">ETTm2</th>
+<th style="text-align: center;">exchange_rate</th>
+<th style="text-align: center;">national_illness</th>
+<th style="text-align: center;">traffic</th>
+<th style="text-align: center;">weather</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Test MSE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.461</strong></td>
+<td style="text-align: center;"><strong>0.571</strong></td>
+<td style="text-align: center;">0.626</td>
+<td style="text-align: center;"><strong>0.665</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.716</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Test MAE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.457</strong></td>
+<td style="text-align: center;"><strong>0.517</strong></td>
+<td style="text-align: center;">0.541</td>
+<td style="text-align: center;"><strong>0.554</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.581</td>
+</tr>
+</tbody>
+</table>
+<table>
+
+<thead>
+<tr class="header">
+<th style="text-align: center;">Epoch=10</th>
+<th style="text-align: center;">electricity</th>
+<th style="text-align: center;">ETTh1</th>
+<th style="text-align: center;">ETTh2</th>
+<th style="text-align: center;">ETTm1</th>
+<th style="text-align: center;">ETTm2</th>
+<th style="text-align: center;">exchange_rate</th>
+<th style="text-align: center;">national_illness</th>
+<th style="text-align: center;">traffic</th>
+<th style="text-align: center;">weather</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Test MSE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.413</td>
+<td style="text-align: center;"><strong>0.490</strong></td>
+<td style="text-align: center;"><strong>0.506</strong></td>
+<td style="text-align: center;">0.526</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.819</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Test MAE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.428</td>
+<td style="text-align: center;"><strong>0.468</strong></td>
+<td style="text-align: center;"><strong>0.485</strong></td>
+<td style="text-align: center;">0.494</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.648</td>
+</tr>
+</tbody>
+</table>
+<h4 id="带有prompt-pool的模型测试结果epoch110">带有Prompt Pool的模型测试结果（Epoch=1、10）</h4>
+<table>
+
+<thead>
+<tr class="header">
+<th style="text-align: center;">Epoch=1</th>
+<th style="text-align: center;">electricity</th>
+<th style="text-align: center;">ETTh1</th>
+<th style="text-align: center;">ETTh2</th>
+<th style="text-align: center;">ETTm1</th>
+<th style="text-align: center;">ETTm2</th>
+<th style="text-align: center;">exchange_rate</th>
+<th style="text-align: center;">national_illness</th>
+<th style="text-align: center;">traffic</th>
+<th style="text-align: center;">weather</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Test MSE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.482</td>
+<td style="text-align: center;">0.686</td>
+<td style="text-align: center;"><strong>0.610</strong></td>
+<td style="text-align: center;">0.692</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.715</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Test MAE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.479</td>
+<td style="text-align: center;">0.531</td>
+<td style="text-align: center;"><strong>0.531</strong></td>
+<td style="text-align: center;">0.564</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.570</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+
+<thead>
+<tr class="header">
+<th style="text-align: center;">Epoch=10</th>
+<th style="text-align: center;">electricity</th>
+<th style="text-align: center;">ETTh1</th>
+<th style="text-align: center;">ETTh2</th>
+<th style="text-align: center;">ETTm1</th>
+<th style="text-align: center;">ETTm2</th>
+<th style="text-align: center;">exchange_rate</th>
+<th style="text-align: center;">national_illness</th>
+<th style="text-align: center;">traffic</th>
+<th style="text-align: center;">weather</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Test MSE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.408</strong></td>
+<td style="text-align: center;">0.529</td>
+<td style="text-align: center;">0.520</td>
+<td style="text-align: center;"><strong>0.502</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.755</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Test MAE</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.423</strong></td>
+<td style="text-align: center;">0.479</td>
+<td style="text-align: center;">0.492</td>
+<td style="text-align: center;"><strong>0.477</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>0.611</strong></td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
