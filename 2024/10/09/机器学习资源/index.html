@@ -19,26 +19,22 @@
   <meta name="author" content="Michael Zhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="正则化  L1正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择 L2正则化可以防止模型过拟合；一定程度上，L1也可以防止过拟合  Dropout  本质：减少神经元之间复杂的依赖关系；因为dropout导致两个神经元不一定每次都在一个网络中出现。这样权值的更新不再依赖于有固定关系的隐含节点的共同作用，阻止了某些特征仅仅在其它特定特征下才有效果的情况 。迫使网络去学习更">
+    <meta name="description" content="集成学习  AdaBoost算法（一）——基础知识篇  深度学习  深度学习百科及面试资源  推荐系统  王树森：工业界的推荐系统 推荐系统（一）推荐系统整体概览 推荐系统（二）GBDT+LR模型 推荐系统（三）Factorization Machines（FM） 推荐系统（四）Field-aware Factorization Machines（FFM） 推荐系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则化、MLE、MAP">
-<meta property="og:url" content="https://europeangovernor.github.io/2024/10/08/%E6%AD%A3%E5%88%99%E5%8C%96%E3%80%81MLE%E3%80%81MAP/index.html">
+<meta property="og:title" content="机器学习资源">
+<meta property="og:url" content="https://europeangovernor.github.io/2024/10/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/index.html">
 <meta property="og:site_name" content="Bambi的自留地">
-<meta property="og:description" content="正则化  L1正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择 L2正则化可以防止模型过拟合；一定程度上，L1也可以防止过拟合  Dropout  本质：减少神经元之间复杂的依赖关系；因为dropout导致两个神经元不一定每次都在一个网络中出现。这样权值的更新不再依赖于有固定关系的隐含节点的共同作用，阻止了某些特征仅仅在其它特定特征下才有效果的情况 。迫使网络去学习更">
+<meta property="og:description" content="集成学习  AdaBoost算法（一）——基础知识篇  深度学习  深度学习百科及面试资源  推荐系统  王树森：工业界的推荐系统 推荐系统（一）推荐系统整体概览 推荐系统（二）GBDT+LR模型 推荐系统（三）Factorization Machines（FM） 推荐系统（四）Field-aware Factorization Machines（FFM） 推荐系">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-10-08T11:38:47.000Z">
-<meta property="article:modified_time" content="2024-10-28T07:29:59.973Z">
+<meta property="article:published_time" content="2024-10-09T06:39:57.000Z">
+<meta property="article:modified_time" content="2024-10-28T07:53:48.158Z">
 <meta property="article:author" content="Michael Zhang">
 <meta property="article:tag" content="面经">
-<meta property="article:tag" content="正则化">
-<meta property="article:tag" content="贝叶斯">
-<meta property="article:tag" content="最大后验概率">
-<meta property="article:tag" content="最大似然估计">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>正则化、MLE、MAP - Bambi的自留地</title>
+  <title>机器学习资源 - Bambi的自留地</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="正则化、MLE、MAP"></span>
+            <span id="subtitle" data-typed-text="机器学习资源"></span>
           
         </div>
 
@@ -228,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-08 19:38" pubdate>
-          2024年10月8日 晚上
+        <time datetime="2024-10-09 14:39" pubdate>
+          2024年10月9日 下午
         </time>
       </span>
     
@@ -240,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          539 字
+          111 字
         
       </span>
     
@@ -251,7 +247,7 @@
         
         
         
-          5 分钟
+          1 分钟
         
       </span>
     
@@ -297,37 +293,33 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">正则化、MLE、MAP</h1>
+            <h1 id="seo-header">机器学习资源</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="正则化">正则化</h1>
-<ul>
-<li>L1正则化可以产生稀疏权值矩阵，即产生一个稀疏模型，可以用于特征选择</li>
-<li>L2正则化可以防止模型过拟合；一定程度上，L1也可以防止过拟合</li>
-</ul>
-<h2 id="dropout">Dropout</h2>
-<ul>
-<li>本质：减少神经元之间复杂的依赖关系；因为dropout导致<mark>两个神经元不一定每次都在一个网络中出现</mark>。这样<mark>权值的更新不再依赖于有固定关系</mark>的隐含节点的共同作用，阻止了某些特征仅仅在其它特定特征下才有效果的情况 。迫使网络去学习更加鲁棒的特征</li>
-</ul>
-<p><strong>参考</strong>：</p>
+                <meta name="referrer" content="no-referrer">
+<h1 id="集成学习">集成学习</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/jinping_shi/article/details/52433975">机器学习中正则化项L1和L2的直观理解</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zingp/p/10375691.html">深入理解L1、L2正则化</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42475060/article/details/128862411">Dropout的深入理解（基础介绍、模型描述、原理深入、代码实现以及变种）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/89847193">AdaBoost算法（一）——基础知识篇</a></li>
 </ol>
-<h1 id="极大似然估计-mle">极大似然估计 MLE</h1>
-<p>考研时候概率论章节会有一道题要求最大似然估计（MLE），当时的理解是在观测到样本并且已知分布的情况下，估计最有可能让样本拟合的参数。</p>
-<p>最近上课的时候提到最大后验概率（MAP）在形式上和MLE差不太多，我的问题是为什么它们会同时存在呢，有什么本质上的区别吗？</p>
-<hr>
-<p>根据查找资料，发现MLE，MAP分别是由是频率学派和贝叶斯学派提出的，区别在于前者认为。MLE和MAP，都是总体的（某个指标的）分布类型已知前提下的一种参数估计方法。这两种方法的目标就是对分布的未知参数进行估计，以得到确定的分布。在小样本的情况下，MLE容易产生过拟合。</p>
-<p><strong>参考</strong>：</p>
+<h1 id="深度学习">深度学习</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wxc971231/article/details/115054494">一文看懂 “极大似然估计” 与 “最大后验估计” —— 极大似然估计篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://paddlepedia.readthedocs.io/en/latest/">深度学习百科及面试资源</a></li>
 </ol>
-<h1 id="最大后验概率-map">最大后验概率 MAP</h1>
-<p>MAP在MAP的基础上，还考虑了数据的先验概率，在数据较少或者需要结合先验知识的情况下进行更准确的参数估计。在数据集变大后，MLE和MAP的差异不大。</p>
+<h1 id="推荐系统">推荐系统</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://github.com/wangshusen/RecommenderSystem">王树森：工业界的推荐系统</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/119854083?spm=1001.2014.3001.5501">推荐系统（一）推荐系统整体概览</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/120298730?spm=1001.2014.3001.5501">推荐系统（二）GBDT+LR模型</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/120684544?spm=1001.2014.3001.5501">推荐系统（三）Factorization Machines（FM）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/121180796?spm=1001.2014.3001.5501">推荐系统（四）Field-aware Factorization Machines（FFM）</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012328159/article/details/123043033">推荐系统（十一）阿里深度兴趣网络（一）：DIN模型（Deep Interest Network）</a></li>
+</ol>
+<h1 id="手撕代码">手撕代码</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://dwexzknzsh8.feishu.cn/docx/VkYud3H0zoDTrrxNX5lce0S4nDh">尽量“手撕”代码系列</a></li>
+</ol>
 
                 
               </div>
@@ -363,14 +355,6 @@
       
         <a href="/tags/%E9%9D%A2%E7%BB%8F/" class="print-no-link">#面经</a>
       
-        <a href="/tags/%E6%AD%A3%E5%88%99%E5%8C%96/" class="print-no-link">#正则化</a>
-      
-        <a href="/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/" class="print-no-link">#贝叶斯</a>
-      
-        <a href="/tags/%E6%9C%80%E5%A4%A7%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/" class="print-no-link">#最大后验概率</a>
-      
-        <a href="/tags/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1/" class="print-no-link">#最大似然估计</a>
-      
     </div>
   
 </div>
@@ -381,8 +365,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>正则化、MLE、MAP</div>
-      <div>https://europeangovernor.github.io/2024/10/08/正则化、MLE、MAP/</div>
+      <div>机器学习资源</div>
+      <div>https://europeangovernor.github.io/2024/10/09/机器学习资源/</div>
     </div>
     <div class="license-meta">
       
@@ -394,7 +378,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月8日</div>
+          <div>2024年10月9日</div>
         </div>
       
       
@@ -426,9 +410,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" title="机器学习资源">
+                      <a href="/2024/10/09/%E8%AF%8D%E5%90%91%E9%87%8F/" title="词向量">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">机器学习资源</span>
+                        <span class="hidden-mobile">词向量</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -436,8 +420,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/03/%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B/" title="主题模型">
-                        <span class="hidden-mobile">主题模型</span>
+                      <a href="/2024/10/08/%E6%AD%A3%E5%88%99%E5%8C%96%E3%80%81MLE%E3%80%81MAP/" title="正则化、MLE、MAP">
+                        <span class="hidden-mobile">正则化、MLE、MAP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -525,12 +509,6 @@
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -749,49 +727,6 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

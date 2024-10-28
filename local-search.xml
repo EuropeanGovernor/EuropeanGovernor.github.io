@@ -89,6 +89,31 @@
   
   
   <entry>
+    <title>机器学习资源</title>
+    <link href="/2024/10/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/"/>
+    <url>/2024/10/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</url>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><h1 id="集成学习">集成学习</h1><ol type="1"><li><a href="https://blog.csdn.net/u012328159/article/details/89847193">AdaBoost算法（一）——基础知识篇</a></li></ol><h1 id="深度学习">深度学习</h1><ol type="1"><li><a href="https://paddlepedia.readthedocs.io/en/latest/">深度学习百科及面试资源</a></li></ol><h1 id="推荐系统">推荐系统</h1><ol type="1"><li><a href="https://github.com/wangshusen/RecommenderSystem">王树森：工业界的推荐系统</a></li><li><a href="https://blog.csdn.net/u012328159/article/details/119854083?spm=1001.2014.3001.5501">推荐系统（一）推荐系统整体概览</a></li><li><a href="https://blog.csdn.net/u012328159/article/details/120298730?spm=1001.2014.3001.5501">推荐系统（二）GBDT+LR模型</a></li><li><a href="https://blog.csdn.net/u012328159/article/details/120684544?spm=1001.2014.3001.5501">推荐系统（三）Factorization Machines（FM）</a></li><li><a href="https://blog.csdn.net/u012328159/article/details/121180796?spm=1001.2014.3001.5501">推荐系统（四）Field-aware Factorization Machines（FFM）</a></li><li><a href="https://blog.csdn.net/u012328159/article/details/123043033">推荐系统（十一）阿里深度兴趣网络（一）：DIN模型（Deep Interest Network）</a></li></ol><h1 id="手撕代码">手撕代码</h1><ol type="1"><li><a href="https://dwexzknzsh8.feishu.cn/docx/VkYud3H0zoDTrrxNX5lce0S4nDh">尽量“手撕”代码系列</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面经</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>正则化、MLE、MAP</title>
     <link href="/2024/10/08/%E6%AD%A3%E5%88%99%E5%8C%96%E3%80%81MLE%E3%80%81MAP/"/>
     <url>/2024/10/08/%E6%AD%A3%E5%88%99%E5%8C%96%E3%80%81MLE%E3%80%81MAP/</url>
@@ -892,13 +917,13 @@
       
       <tag>微调</tag>
       
-      <tag>大模型</tag>
-      
       <tag>实习</tag>
       
       <tag>BIGAI</tag>
       
       <tag>数据生成</tag>
+      
+      <tag>大模型</tag>
       
       <tag>P-tuning</tag>
       
