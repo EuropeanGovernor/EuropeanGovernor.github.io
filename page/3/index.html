@@ -240,6 +240,71 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/" target="_self">
+          TSCIL论文笔记·II
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/TSCIL%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0%C2%B7II/" target="_self">
+        <div>
+          .center  {   width: auto;   display: table;   margin-left: auto;   margin-right: auto;   margin-top: 20px; }  〇、时间线 9月4日~9月6日  冻结Transformer参数，只利用MOMENT的分类器在Benchmark上进行训练与测试，在3个简单数据集上
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 17:16" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BA%E6%96%87/">#论文</a>
+            
+              <a href="/tags/%E7%B1%BB%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/">#类增量学习</a>
+            
+              <a href="/tags/%E5%BE%AE%E8%B0%83/">#微调</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/09/04/%E5%93%88%E5%B8%8C%E8%A1%A8/" target="_self">
           哈希表
         </a>
@@ -304,7 +369,7 @@
       <h2 class="index-header">
         
         <a href="/2024/09/02/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/" target="_self">
-          大模型架构、KV Cache、Scaling Law与涌现
+          大模型架构
         </a>
       </h2>
 
@@ -565,7 +630,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/26/%E4%BC%98%E5%8C%96%E5%99%A8%E3%80%81%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E3%80%81%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%8E%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/" target="_self">
         <div>
-          1、优化器  随机梯度下降 SGD ：随机取mini batch计算梯度  优点：训练速度快 缺点：引入噪声，容易陷入局部最优  SGD+Momentum：加入动量  优点：解决了SGD引入噪声的问题，因为动量的引入有机会逃脱局部最小值 缺点：没有对学习率的自适应更新  Adam：自动调整学习率  优点：对学习率参数不敏感   参考：  常用的优化器合集
+          1、优化器  随机梯度下降 SGD ：随机取mini batch计算梯度  优点：训练速度快 缺点：引入噪声，容易陷入局部最优  SGD+Momentum：加入动量 \[ \begin{array}{l} \mathbf{g}_{t} \leftarrow \nabla J\left(\boldsymbol{\theta}_{t-1}\right) \\ \mathbf{v
         </div>
       </a>
 
@@ -632,7 +697,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/24/Transformer/" target="_self">
         <div>
-          1、Self-Attention  缩放点积自注意力：\(Attention=Softmax(\frac{QK^t}{\sqrt{d_K}})\cdot V\)  除以\(\sqrt{d}\)：结果不应该随着Key的维度变大而变大；防止Softmax的值过大而导致梯度消失  时间复杂度：自注意力分数计算分为以下三个步骤：  相似度计算：矩阵\(Q(n \times d)\)和\
+          1、Self-Attention 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485class MultiheadAtte
         </div>
       </a>
 
@@ -805,70 +870,7 @@
             
               <a href="/tags/%E5%BE%AE%E8%B0%83/">#微调</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/06/%E5%9F%BA%E4%BA%8ELangchain%E6%9E%84%E5%BB%BA%E7%94%A8%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90Agent/" target="_self">
-          BIGAI1-基于Langchain构建用于数据生成Agent
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/06/%E5%9F%BA%E4%BA%8ELangchain%E6%9E%84%E5%BB%BA%E7%94%A8%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90Agent/" target="_self">
-        <div>
-          类似的文章已经在CSDN发布过了，在这里进行简单总结。 背景
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-06 07:15" pubdate>
-              2024-08-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%9E%E4%B9%A0/">#实习</a>
-            
-              <a href="/tags/BIGAI/">#BIGAI</a>
-            
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90/">#数据生成</a>
+              <a href="/tags/ViT/">#ViT</a>
             
           </div>
         
